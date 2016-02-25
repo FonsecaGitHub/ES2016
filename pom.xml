@@ -25,6 +25,23 @@
             <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist158534</picUrl>
           </properties>
         </developer>
+
+        <developer> <!-- FIXME: one developer for each team member -->
+            <id>ist199999</id> <!-- FIXME -->
+            <name>githubUsername</name> <!-- FIXME -->
+            <email>ist199999@tecnico.ulisboa.pt</email> <!-- FIXME -->
+            <organization>es16 g18al</organization>
+            <roles>
+                <role>Developer</role>
+                <role>Architect</role>
+                <role>Tester</role>
+                <role>Integrator</role>
+            </roles>
+            <properties>
+                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist199999</picUrl> <!-- FIXME -->
+            </properties>
+        </developer>
+
     </developers>
 
     <properties>
