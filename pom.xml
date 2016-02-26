@@ -61,7 +61,7 @@
         <developer>
             <id>ist168199</id>
             <name>tiagokinas</name>
-            <email>tiagokinasmiranda@gmail.com</email>
+            <email>tiagokinasmiranda@gmail.com</email><!-- FIXME -->
             <organization>es16 g18al</organization>
             <roles>
                 <role>Developer</role>
