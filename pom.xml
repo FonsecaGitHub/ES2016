@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pt.tecnico</groupId>
-    <artifactId>mydrive</artifactId> <!-- FIXME -->
+    <artifactId>mydrive</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Mydrive</name>
 
     <developers>
-      <developer> <!-- FIXME: one developer for each team member -->
+      <developer>
         <id>ist158534</id>
         	<name>sikrew</name>
         	<email>ist158534@tecnico.ulisboa.pt</email>
@@ -26,10 +26,10 @@
           </properties>
         </developer>
 
-        <developer> <!-- FIXME: one developer for each team member -->
-            <id>ist167040</id> <!-- FIXME -->
-            <name>FonsecaGitHub</name> <!-- FIXME -->
-            <email>miguel.fonseca1011011@gmail.com</email> <!-- FIXME -->
+        <developer>
+            <id>ist167040</id>
+            <name>FonsecaGitHub</name>
+            <email>miguel.fonseca1011011@gmail.com</email>
             <organization>es16 g18al</organization>
             <roles>
                 <role>Developer</role>
@@ -38,14 +38,14 @@
                 <role>Integrator</role>
             </roles>
             <properties>
-                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist167040</picUrl> <!-- FIXME -->
+                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist167040</picUrl>
             </properties>
         </developer>
 
-        <developer> <!-- FIXME: one developer for each team member -->
-            <id>ist173894</id> <!-- FIXME -->
-            <name>JoaoVasconcelos2</name> <!-- FIXME -->
-            <email>joaovasconcelos2@hotmail.com</email> <!-- FIXME -->
+        <developer>
+            <id>ist173894</id>
+            <name>JoaoVasconcelos2</name>
+            <email>joaovasconcelos2@hotmail.com</email>
             <organization>es16 g18al</organization>
             <roles>
                 <role>Developer</role>
@@ -54,11 +54,11 @@
                 <role>Integrator</role>
             </roles>
             <properties>
-                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist173894</picUrl> <!-- FIXME -->
+                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist173894</picUrl>
             </properties>
         </developer>
 
-        <developer> <!-- FIXME: one developer for each team member -->
+        <developer>
             <id>ist168199</id>
             <name>tiagokinas</name>
             <email>tiagokinasmiranda@gmail.com</email>
@@ -74,7 +74,7 @@
             </properties>
         </developer>
         
-        <developer> <!-- FIXME: one developer for each team member -->
+        <developer>
             <id>ist173978</id>
             <name>joaofeneja</name>
             <email>joaofeneja@gmail.com</email>
