@@ -89,6 +89,22 @@
                 <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist173978</picUrl>
             </properties>
         </developer>
+        
+         <developer>
+            <id>ist173507</id>
+            <name>gilferrugem</name>
+            <email>silva-gil@live.com.pt</email>
+            <organization>es16 g18al</organization>
+            <roles>
+                <role>Developer</role>
+                <role>Architect</role>
+                <role>Tester</role>
+                <role>Integrator</role>
+            </roles>
+            <properties>
+                <picUrl>https://fenix.tecnico.ulisboa.pt/user/photo/ist173507</picUrl>
+            </properties>
+        </developer>
 
     </developers>
 
