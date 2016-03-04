@@ -1,1 +1,103 @@
 package pt.tecnico.mydrive.domain;
+
+/* CLASSES */
+
+class MyDrive{
+	Integer numberofusers;
+} 
+
+class User {
+	String name;
+	String password
+	Integer username;
+	String files;
+	String homedir;
+	String mask;
+	Boolean isRoot;
+}
+
+class Permissions {
+	Boolean read;
+	Boolean write;
+	Boolean exec;
+	Boolean remove;
+}
+
+class File {
+	Integer id;
+	String name;
+	DateTime datamod;
+}
+
+class PlainFile extends File;
+
+class Directory extends File {
+	String name;
+	String children;
+	String parent;
+}
+
+class Link extends PlainFile{
+	String path;
+}
+
+class Application extends PlainFile{
+	String method;
+}
+
+/* RELATIONS */
+
+relation DomainRootHasMyDrive {
+  .pt.ist.fenixframework.DomainRoot playsRole root {
+    multiplicity 0..1;
+  }
+  MyDrive playsRole mydriveRoot {
+    multiplicity 0..1;
+  }
+}
+
+
+relation FileSystemContainsUsers{
+	FileSystem playsRole filesystem {
+   		multiplicity 0..1;
+	}
+	User playsRole user {
+		multiplicity *;
+	}
+}
+
+relation UserContainsFiles{
+	User playsRole owner {
+	    multiplicity 0..1;
+	}
+	File playsRole ownedfiles {
+		multiplicity *;
+	}
+}
+
+relation UserContainsPermissions{
+	User playsRole permiteduser {
+    	multiplicity 0..1;
+	}
+	Permissions playsRole userpermissions {
+		multiplicity *;
+	}
+}
+
+relation PermissionsContainsFiles{
+	Permissions playsRole permitedfile {
+		multiplicity *;
+	}
+	File playsRole filepermissions {
+   		multiplicity 0..1;
+	}	
+}
+
+relation DirectorycontaisFiles{
+	Directory playsRole dir {
+	    multiplicity 0..1;
+	}
+	File playsRole owned {
+		multiplicity *;
+	}
+}
