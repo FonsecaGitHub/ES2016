@@ -57,8 +57,8 @@ relation DomainRootHasMyDrive {
 }
 
 
-relation FileSystemContainsUsers{
-	FileSystem playsRole filesystem {
+relation MyDriveContainsUsers{
+	MyDrive playsRole mydrive {
    		multiplicity 0..1;
 	}
 	User playsRole user {
