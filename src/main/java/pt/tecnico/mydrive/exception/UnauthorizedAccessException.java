@@ -5,6 +5,6 @@ public class UnauthorizedAccess extends MyDriveException {
     private static final long serialVersionUID = 1L;
 
     public UnauthorizedAccess() {
-        super("Unauthorized Access to a file");
+        super("Unauthorized access to a file");
     }
 }
