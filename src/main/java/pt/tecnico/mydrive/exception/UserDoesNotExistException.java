@@ -7,7 +7,7 @@ public class UserDoesNotExistException extends MyDriveException {
     private String userUsername;
 
     public UserDoesNotExistException(String userUsername) {
-        userUsername = userUsername;
+        this.userUsername = userUsername;
     }
 
     public String getUserUsername() {

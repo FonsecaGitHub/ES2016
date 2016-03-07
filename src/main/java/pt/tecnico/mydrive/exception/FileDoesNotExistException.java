@@ -7,7 +7,7 @@ public class FileDoesNotExistException extends MyDriveException {
     private String fileName;
 
     public FileDoesNotExistException(String fileName) {
-        fileName = fileName;
+        this.fileName = fileName;
     }
 
     public String getFileName() {

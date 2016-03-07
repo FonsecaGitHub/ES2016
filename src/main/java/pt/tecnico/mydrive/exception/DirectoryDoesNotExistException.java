@@ -7,7 +7,7 @@ public class DirectoryDoesNotExistException extends MyDriveException {
     private String directoryName;
 
     public DirectoryDoesNotExistException(String directoryName) {
-        directoryName = directoryName;
+        this.directoryName = directoryName;
     }
 
     public String getDirectoryName() {

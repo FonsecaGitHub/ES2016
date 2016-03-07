@@ -1,10 +1,10 @@
 package pt.tecnico.mydrive.exception;
 
-public class UnauthorizedAccess extends MyDriveException {
+public class UnauthorizedAccessException extends MyDriveException {
 
     private static final long serialVersionUID = 1L;
 
-    public UnauthorizedAccess() {
+    public UnauthorizedAccessException() {
         super("Unauthorized access to a file");
     }
 }

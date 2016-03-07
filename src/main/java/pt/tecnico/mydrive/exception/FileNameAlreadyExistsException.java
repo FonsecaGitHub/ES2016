@@ -7,7 +7,7 @@ public class FileNameAlreadyExistsException extends MyDriveException {
     private String conflictingFilename;
 
     public FileNameAlreadyExistsException(String conflictingFilename) {
-        conflictingFilename = conflictingFilename;
+        this.conflictingFilename = conflictingFilename;
     }
 
     public String getConflictingFilename() {

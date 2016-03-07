@@ -7,7 +7,7 @@ public class DirectoryNameAlreadyExistsException extends MyDriveException {
     private String conflictingDirectoryname;
 
     public DirectoryNameAlreadyExistsException(String conflictingDirectoryname) {
-        conflictingDirectoryname = conflictingDirectoryame;
+        this.conflictingDirectoryname = conflictingDirectoryname;
     }
 
     public String getConflictingDirectoryname() {
