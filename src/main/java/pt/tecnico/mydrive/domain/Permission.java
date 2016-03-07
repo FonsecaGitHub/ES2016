@@ -4,7 +4,7 @@ import org.jdom2.Element;
 
 import pt.tecnico.mydrive.domain.File;
 
-public class Permissions extends Permissions_Base {
+public class Permission extends Permission_Base {
 
 	public Permission(User user, File file) {
 		super();
@@ -20,15 +20,15 @@ public class Permissions extends Permissions_Base {
 	}
 
 	public Element exportToXML() {
-		Element permissionsElement = new Element("permissions");
+		Element permissionElement = new Element("permission");
 		//permissionElement.setAttribute("acess-type", getAccess().toString());
 		File file = getFile();
-		permissionsElement.addContent(file.exportToXML());
+		permissionElement.addContent(file.exportToXML());
 
-		return permissionsElement;
+		return permissionElement;
 	}
 
-	public void importFromXML(Element permissionsElement) {
+	public void importFromXML(Element permissionElement) {
 
 	}
 
