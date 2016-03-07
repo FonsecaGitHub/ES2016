@@ -16,7 +16,7 @@ class User {
 	boolean isRoot;
 }
 
-class Permissions {
+class Permission {
 	boolean read;
 	boolean write;
 	boolean exec;
@@ -79,13 +79,13 @@ relation UserContainsPermissions{
 	User playsRole permiteduser {
     	multiplicity 0..1;
 	}
-	Permissions playsRole userpermissions {
+	Permission playsRole userpermissions {
 		multiplicity *;
 	}
 }
 
 relation FileContainsPermissions{
-	Permissions playsRole filepermissions {
+	Permission playsRole filepermissions {
 		multiplicity *;
 	}
 	File playsRole permitedfile  {
