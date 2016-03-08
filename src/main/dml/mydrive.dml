@@ -4,6 +4,7 @@ package pt.tecnico.mydrive.domain;
 
 class MyDrive{
 	int numberofusers;
+	int numberoffiles;
 } 
 
 class User {
@@ -13,8 +14,9 @@ class User {
 	String files;
 	String homedir;
 	String mask;
-	boolean isRoot;
 }
+
+class SuperUser extends User;
 
 class Permission {
 	boolean read;
@@ -62,6 +64,15 @@ relation MyDriveContainsUsers{
    		multiplicity 0..1;
 	}
 	User playsRole user {
+		multiplicity *;
+	}
+}
+
+relation MyDriveContaisFiles{
+	MyDrive playsrole mydrivefiles {
+		multiplicity 0..1;
+	}
+	Files playsrole filesfrommydrive{
 		multiplicity *;
 	}
 }
