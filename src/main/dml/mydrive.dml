@@ -52,7 +52,7 @@ relation DomainRootHasMyDrive {
   .pt.ist.fenixframework.DomainRoot playsRole root {
     multiplicity 0..1;
   }
-  MyDrive playsRole mydriveRoot {
+  MyDrive playsRole mydrive {
     multiplicity 0..1;
   }
 }
