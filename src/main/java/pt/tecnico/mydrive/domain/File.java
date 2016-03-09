@@ -7,7 +7,7 @@ import org.jdom2.DataConversionException;
 
 public class File extends File_Base {
 
-	public File(int id, String name) {
+	/*public File(int id, String name) {
 		super();
 		setId(id);
 		setName(name);
@@ -32,6 +32,6 @@ public class File extends File_Base {
 	public void importFromXML(Element fileElement)
 		throws DataConversionException {
 			
-		}
+		}*/
 
 }

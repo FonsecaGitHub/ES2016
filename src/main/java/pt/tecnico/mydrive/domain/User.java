@@ -1,6 +1,8 @@
 package pt.tecnico.mydrive.domain;
 
-import pt.tecnico.mydrive.domain.Permissions;
+
+
+import pt.tecnico.mydrive.domain.Permission;
 import pt.tecnico.mydrive.domain.File;
 import pt.tecnico.mydrive.exception.InvalidUsernameException;
 import pt.tecnico.mydrive.exception.SpreadSheetDoesNotExistException;
@@ -15,7 +17,7 @@ public class User extends User_Base {
 		super();
 	}
 
-	public User(String username, String name) throws InvalidUsernameException {
+	/*public User(String username, String name) throws InvalidUsernameException {
 		super();
 		if (username.length() < 1) {
 			throw new InvalidUsernameException(username);
@@ -29,7 +31,7 @@ public class User extends User_Base {
 		//adicionar funcao em Permissions
 		/*for (Permissions permissions : getPermissionsSet()) {
 			permissions.getFile().delete();
-		}*/
+		}
 		deleteDomainObject();
 	}
 
@@ -41,5 +43,5 @@ public class User extends User_Base {
 	//TODO
 	public void importFromXML() {
 
-	}
+	}*/
 }
