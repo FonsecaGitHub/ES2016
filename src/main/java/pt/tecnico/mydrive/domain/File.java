@@ -1,13 +1,12 @@
 package pt.tecnico.mydrive.domain;
 
-import org.joda.time.*;
-
-import org.jdom2.Element;
-import org.jdom2.DataConversionException;
-
 public class File extends File_Base {
+    
+    public File() {
+        super();
+    }
 
-	/*public File(int id, String name) {
+    /*public File(int id, String name) {
 		super();
 		setId(id);
 		setName(name);
@@ -33,5 +32,5 @@ public class File extends File_Base {
 		throws DataConversionException {
 			
 		}*/
-
+    
 }

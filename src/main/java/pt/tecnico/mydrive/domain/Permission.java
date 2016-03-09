@@ -1,12 +1,15 @@
 package pt.tecnico.mydrive.domain;
 
 import org.jdom2.Element;
-
 import pt.tecnico.mydrive.domain.File;
 
 public class Permission extends Permission_Base {
+    
+    public Permission() {
+        super();
+    }
 
-	/*public Permission(User user, File file) {
+    /*public Permission(User user, File file) {
 		super();
 		setUser(user);
 		setFile(file);
@@ -31,5 +34,5 @@ public class Permission extends Permission_Base {
 	public void importFromXML(Element permissionElement) {
 
 	}*/
-
+    
 }

@@ -1,23 +1,22 @@
 package pt.tecnico.mydrive.domain;
 
-
-
 import pt.tecnico.mydrive.domain.Permission;
 import pt.tecnico.mydrive.domain.File;
-import pt.tecnico.mydrive.exception.InvalidUsernameException;
-import pt.tecnico.mydrive.exception.SpreadSheetDoesNotExistException;
-import pt.tecnico.mydrive.exception.UserDoesNotHaveAccessException;
+
+import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
+import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
+import pt.tecnico.mydrive.exception.WrongPasswordException;
 
 import org.jdom2.DataConversionException;
 import org.jdom2.Element;
 
 public class User extends User_Base {
-	
-	public User() {
-		super();
-	}
+    
+    public User() {
+        super();
+    }
 
-	/*public User(String username, String name) throws InvalidUsernameException {
+    /*public User(String username, String name) throws InvalidUsernameException {
 		super();
 		if (username.length() < 1) {
 			throw new InvalidUsernameException(username);
@@ -44,4 +43,5 @@ public class User extends User_Base {
 	public void importFromXML() {
 
 	}*/
+    
 }

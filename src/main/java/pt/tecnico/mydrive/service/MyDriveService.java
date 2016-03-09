@@ -1,4 +1,4 @@
-package pt.tecnico.mydrive.service;
+/*package pt.tecnico.mydrive.service;
 
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
@@ -23,4 +23,4 @@ public abstract class MyDriveService {
 	protected abstract void dispatch() throws MyDriveException;
 
 	
-}
+}*/
