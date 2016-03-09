@@ -6,7 +6,7 @@ import pt.tecnico.mydrive.domain.File;
 
 public class Permission extends Permission_Base {
 
-	public Permission(User user, File file) {
+	/*public Permission(User user, File file) {
 		super();
 		setUser(user);
 		setFile(file);
@@ -30,6 +30,6 @@ public class Permission extends Permission_Base {
 
 	public void importFromXML(Element permissionElement) {
 
-	}
+	}*/
 
 }
