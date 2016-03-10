@@ -4,9 +4,6 @@ import org.jdom2.Element;
 import java.io.UnsupportedEncodingException;
 import org.jdom2.DataConversionException;
 
-import pt.tecnico.mydrive.domain.Permission;
-import pt.tecnico.mydrive.domain.File;
-
 import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
 import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
 import pt.tecnico.mydrive.exception.WrongPasswordException;
@@ -43,7 +40,7 @@ public class User extends User_Base {
             md.addUser(this);
     }
     
-    /*@Override
+    @Override
     public void addFile(File fileToBeAdded) throws FileNameAlreadyExistsException {
         if (hasFile(fileToBeAdded.getName()))
             throw new FileNameAlreadyExistsException(fileToBeAdded.getName());
@@ -62,6 +59,7 @@ public class User extends User_Base {
         return getFileByName(fileName) != null;
     }
 
+    /*
     //ATENCAO ver se e preciso eliminar os ficheiros antes de eliminar o User
     public void remove() {
     	for (Permission permission : getPermissionSet()) {

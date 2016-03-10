@@ -77,10 +77,8 @@ relation MyDriveContaisFiles{
 }
 
 relation UserContainsFiles{
-	User playsRole owner {
-	    multiplicity 0..1;
-	}
-	File playsRole ownedfiles {
+	User playsRole user;
+	File playsRole file {
 		multiplicity *;
 	}
 }
