@@ -55,5 +55,10 @@ public class MyDrive extends MyDrive_Base {
 
         super.addUser(userToBeAdded);
     }
+	
+	public void cleanup() {
+        //for (User p: getUserSet())
+	    //p.remove();
+    }
     
 }

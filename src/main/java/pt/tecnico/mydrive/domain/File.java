@@ -1,5 +1,9 @@
 package pt.tecnico.mydrive.domain;
 
+import org.jdom2.Element;
+import org.jdom2.DataConversionException;
+import java.io.UnsupportedEncodingException;
+
 public class File extends File_Base {
     
     public File() {
