@@ -50,10 +50,9 @@ public class MyDrive extends MyDrive_Base {
         super.addUser(userToBeAdded);
     }
 	
-    //TODO implementar remove no User
 	public void cleanup() {
-        //for (User p: getUserSet())
-	    //p.remove();
+        for (User p: getUserSet())
+	    p.remove();
     }
 	
 	/*public void xmlImport(Element element) {

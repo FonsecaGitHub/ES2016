@@ -59,18 +59,23 @@ public class User extends User_Base {
         return getFileByName(fileName) != null;
     }
 
-    /*
+    
     //ATENCAO ver se e preciso eliminar os ficheiros antes de eliminar o User
     public void remove() {
-    	for (Permission permission : getPermissionSet()) {
-			permission.remove();
-		}
+    	//for (Permission permission : getPermissionSet()) {
+		//	permission.remove();
+		//}
 		setMydrive(null);
 		deleteDomainObject();
-	}*/
+	}
 
 	//TODO
 	public Element xmlImport(Element userElement) throws ImportDocumentException {
+		// clear current mydrive
+		//for (File f: getFileSet())
+			
+			//f.remove();
+		
 		//ATENCAO apagar linha seguinte
 		return userElement;
 	}

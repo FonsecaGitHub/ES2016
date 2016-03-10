@@ -1,40 +1,63 @@
 package pt.tecnico.mydrive.domain;
 
+import org.joda.time.*;
+
 import org.jdom2.Element;
 import org.jdom2.DataConversionException;
 import java.io.UnsupportedEncodingException;
 
-public class File extends File_Base {
-    
-    public File() {
-        super();
-    }
+import pt.tecnico.mydrive.exception.ImportDocumentException;
+import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
 
-    /*public File(int id, String name) {
-		super();
+public class File extends File_Base {
+	
+	protected File() { /* for derived classes */ }
+
+	//TODO excepcao
+    public File(int id, String name) {
 		setId(id);
 		setName(name);
-		setDate (new LocalTime());
+		//setDatamod (new LocalTime());
 	}
+    
+    //TODO excepcao
+    protected void init(int id, String name) {
+    	setId(id);
+    	setName(name);
+    }
+    
+    public File(int id, Element xml) {
+    	//xmlImport(xml);
+    	setId(id);
+    }
+    
+    @Override
+    public void setUser(User user) throws UsernameAlreadyExistsException {
+        if (user == null) {
+            super.setUser(null);
+            return;
+        }
 
-	public void delete() {
-		// Ver se e necessario remover todas as linhas do ficheiro, ou
-		// se isso vai ser feito pelas subclasses de File
-		for (Permissions permissions : getPermissionsSet()) {
-			permissions.delete();
-		}
+        user.addFile(this);
+    }
+
+	public void remove() {
+		setUser(null);
 		deleteDomainObject();
 	}
 
+
 	//TODO
-	public Element exportToXML() {
+	public void xmlImpport(Element fileElement) throws ImportDocumentException {
 
 	}
-
+	
 	//TODO
-	public void importFromXML(Element fileElement)
-		throws DataConversionException {
+	public Element xmlExport() {
+		Element element = new Element("file");
+		
+        return element;
 			
-		}*/
+	}
     
 }
