@@ -48,6 +48,7 @@ public class User extends User_Base {
         super.addFile(fileToBeAdded);
     }
     
+    //ATENCAO aqui talvez seja por ID em vez de ser por nome
     public File getFileByName(String name) {
         for (File file: getFileSet())
             if (file.getName().equals(name))
@@ -62,9 +63,9 @@ public class User extends User_Base {
     
     //ATENCAO ver se e preciso eliminar os ficheiros antes de eliminar o User
     public void remove() {
-    	//for (Permission permission : getPermissionSet()) {
-		//	permission.remove();
-		//}
+    	/*for (Permission permission : getPermissionSet()) {
+			permission.remove();
+		}*/
 		setMydrive(null);
 		deleteDomainObject();
 	}

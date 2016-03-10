@@ -30,7 +30,6 @@ public class MydriveApplication {
         } finally { FenixFramework.shutdown(); }*/
 	}
     
-    /*
     @Atomic
     public static void init() { // empty mydrive
     	log.trace("Init: " + FenixFramework.getDomainRoot());
@@ -38,8 +37,10 @@ public class MydriveApplication {
     }
     
     //ATENCAO fazer isto de acordo com os pedidos dos profs
+    
     @Atomic
     public static void setup() { // mydrive with debug data
+    	/*
     	log.trace("Setup: " + FenixFramework.getDomainRoot());
     	MyDrive md = MyDrive.getInstance();
     	User user;
@@ -47,6 +48,27 @@ public class MydriveApplication {
     	if (!md.getUserSet().isEmpty()) return;
     	
     	// setup the initial state if mydrive is empty
-    	User = new User(md, "Miguel");
-    }*/
+    	User = new User(md, "Miguel");*/
+    }
+    
+    @Atomic 
+    public static void print() {
+    	/*log.trace("Print: " + FenixFramework.getDomainRoot());
+    	MyDrive md = MyDrive.getInstance();
+    	
+    	for (User u: md.getUserSet()) {
+    		System.out.println("The user: " + p.getName() + " has " + u.getFileSet().size() + " files :");
+    		for (File f: u.getFileSet())
+    			System.out.println("\t" + f.getName());
+    	}*/
+    }
+    
+    @Atomic
+    public static void xmlPrint() {
+    	
+    }
+    
+    @Atomic public static void xmlScan(File file) {
+    	
+    }
 }
