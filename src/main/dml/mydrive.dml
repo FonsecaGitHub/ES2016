@@ -8,9 +8,9 @@ class MyDrive{
 } 
 
 class User {
+	String username;
 	String name;
 	String password;
-	String username;
 	String homedir;
 	String mask;
 }

@@ -13,35 +13,40 @@ import pt.tecnico.mydrive.exception.WrongPasswordException;
 import pt.tecnico.mydrive.exception.ImportDocumentException;
 import pt.tecnico.mydrive.exception.UserDoesNotExistException;
 import pt.tecnico.mydrive.exception.FileNameAlreadyExistsException;
+import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
 
 
 public class User extends User_Base {
+	
+	public User() {
+		super();
+	}
     
-    public User() {
+	//ATENCAO ver se aqui deve lancar excepcao
+    public User(String username, String name) {
         super();
-        //setName(name);
-        //setMydrive(md);
+        setUsername(username);
+        setName(name);
     }
-
-    //definir xmlImport
-    /*public User(MyDrive md, Element xml) {
+    
+    public User(MyDrive md, Element xml) {
     	super();
     	xmlImport(xml);
     	setMydrive(md);
-    }*/
+    }
     
-   /* @Override
-    public void setMydrive(MyDrive pb) {
-        if (pb == null)
+    @Override
+    public void setMydrive(MyDrive md) {
+        if (md == null)
             super.setMydrive(null);
         else
-            pb.addUser(this);
-    }*/
+            md.addUser(this);
+    }
     
     /*@Override
     public void addFile(File fileToBeAdded) throws FileNameAlreadyExistsException {
         if (hasFile(fileToBeAdded.getName()))
-            throw new UsernameAlreadyExistsException(fileToBeAdded.getName());
+            throw new FileNameAlreadyExistsException(fileToBeAdded.getName());
 
         super.addFile(fileToBeAdded);
     }
@@ -55,26 +60,26 @@ public class User extends User_Base {
     
     public boolean hasFile(String fileName) {
         return getFileByName(fileName) != null;
-    }*/
+    }
 
     //ATENCAO ver se e preciso eliminar os ficheiros antes de eliminar o User
-	//public void remove() {
-		//setMyDrive(null);
-		//adicionar funcao em Permissions
-		/*for (Permissions permissions : getPermissionsSet()) {
-			permissions.getFile().delete();
+    public void remove() {
+    	for (Permission permission : getPermissionSet()) {
+			permission.remove();
 		}
+		setMydrive(null);
 		deleteDomainObject();
-	}
-
-	//TODO
-	public Element exportToXML() {
-
-	}
-
-	//TODO
-	public void importFromXML() {
-
 	}*/
+
+	//TODO
+	public Element xmlImport(Element userElement) throws ImportDocumentException {
+		//ATENCAO apagar linha seguinte
+		return userElement;
+	}
+
+	//TODO
+	public void xmlExport() {
+
+	}
     
 }

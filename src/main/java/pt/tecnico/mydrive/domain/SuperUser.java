@@ -6,4 +6,11 @@ public class SuperUser extends SuperUser_Base {
         super();
     }
     
+    public SuperUser(MyDrive md) {
+    	super();
+    	setMydrive(md);
+    	setUsername("root");
+    	setName("Super User");
+    	setPassword("***");
+    } 
 }
