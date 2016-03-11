@@ -24,16 +24,18 @@ public class MydriveApplication {
 	
 	@Atomic
 	public static void main(String[] args) {
-		MyDrive md = MyDrive.getInstance();
-		setupIfNeeded(md);
-		printMyDrive(md);
+		System.out.println("*** Welcome to the MyDrive application! ***");
+		try {
+			MyDrive md = MyDrive.getInstance();
+			//setupIfNeeded(md);
+			printMyDrive(md);
+		} finally { FenixFramework.shutdown(); } 
 	}
 	
 	private static void setupIfNeeded(MyDrive md) {
 		if (md.getUserSet().isEmpty())
 			SetupDomain.populateDomain();
-	}
-	
+	}	
 	
 	public static void printMyDrive(MyDrive md) {
 		for (User user: md.getUserSet()) {

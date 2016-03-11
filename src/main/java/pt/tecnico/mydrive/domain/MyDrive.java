@@ -71,19 +71,28 @@ public class MyDrive extends MyDrive_Base {
     		userToRemove.remove();
     	}
     }
+    
+    public void addDirectory(String name) {
+    	
+    }
+    
+    public void removeDirectory(String name) {
+    	
+    }
 	
 	public void cleanup() {
         for (User p: getUserSet())
 	    p.remove();
     }
-	
-	/*public void xmlImport(Element element) {
-		for (Element node: element.getChildren("person")) {
+	/*
+	public void xmlImport(Element element) {
+		for (Element node: element.getChildren("user")) {
 		    String username = node.getAttribute("username").getValue();
+		    String name = node.getAttribute("name").getValue();
 		    User user = getUserByUsername(username);
 
-		    if (person == null) // Does not exist
-				user = new User(this, username);
+		    if (user == null) // Does not exist
+				user = new User(name, username);
 
 		    user.xmlImport(node);
 		}
@@ -94,8 +103,10 @@ public class MyDrive extends MyDrive_Base {
 		Element element = new Element("mydrive");
 		Document doc = new Document(element);
 
-	    for (User p: getUserSet())
-	    	element.addContent(p.xmlExport());
+	    for (User u: getUserSet()) {
+	    	//String usr = u.getUsername();
+	    	element.addContent(u.xmlExport());
+	    }
 	    
 	    return doc;
 	}*/
