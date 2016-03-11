@@ -12,7 +12,7 @@ import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
 public class File extends File_Base {
 	
 	protected File() { /* for derived classes */ }
-
+	
 	//TODO excepcao
     public File(int id, String name) {
 		setId(id);

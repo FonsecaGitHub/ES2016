@@ -12,6 +12,7 @@ import pt.ist.fenixframework.FenixFramework;
 
 import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
 import pt.tecnico.mydrive.exception.UserDoesNotExistException;
+import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
 
 public class MyDrive extends MyDrive_Base {
     static final Logger log = LogManager.getRootLogger();
@@ -48,6 +49,27 @@ public class MyDrive extends MyDrive_Base {
             throw new UsernameAlreadyExistsException(userToBeAdded.getUsername());
 
         super.addUser(userToBeAdded);
+    }
+    
+    public void removeUser(String username) {
+    	if (username.equals("root")) {
+    		//JOAO ADICIONA ESTA EXCEPCAO
+    		//throw new UnauthorizedOperationException();
+    	} else {
+    		User userToRemove = getUserByUsername(username);
+    		if (userToRemove == null) {
+    			//JOAO ESTA EXCEPCAO NAO SE ADEQUA
+    			throw new UserDoesNotExistException(username);
+    		}
+    		//Ainda nao e necessario para esta entrega
+    		/*for (Permission permission : userToRemove.getPermissionSet()) {
+    			if (permission.getAccess() == Access.OWNS) {
+    				File file = permission.getFile();
+    				file.remove();
+    			}
+    		}*/
+    		userToRemove.remove();
+    	}
     }
 	
 	public void cleanup() {

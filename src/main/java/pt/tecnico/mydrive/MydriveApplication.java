@@ -1,6 +1,7 @@
 package pt.tecnico.mydrive;
 
 import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.service.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -22,6 +23,17 @@ public class MydriveApplication {
 
     public static void main(String[] args) throws IOException {
         System.out.println("*** Welcome to the MyDrive application! ***");
+        
+        //ATENCAO testa o funcionamento de directorias, apagar mais tarde
+        /*User userTest;
+        Directory directoryTest;
+        
+        userTest = new User("Miguel", "MiguelFonseca");
+        directoryTest = new Directory(userTest, "directoryTest");
+        
+        directoryTest.createDir();*/
+        
+        
         /*try {
         	setup();
         	for (String s: args) xmlScan(new File(s));
@@ -30,14 +42,14 @@ public class MydriveApplication {
         } finally { FenixFramework.shutdown(); }*/
 	}
     
+    /*
     @Atomic
     public static void init() { // empty mydrive
     	log.trace("Init: " + FenixFramework.getDomainRoot());
     	MyDrive.getInstance().cleanup();
-    }
+    }*/
     
-    //ATENCAO fazer isto de acordo com os pedidos dos profs
-    
+    //ATENCAO fazer isto de acordo com os pedidos dos profs 
     @Atomic
     public static void setup() { // mydrive with debug data
     	/*
@@ -50,6 +62,16 @@ public class MydriveApplication {
     	// setup the initial state if mydrive is empty
     	User = new User(md, "Miguel");*/
     }
+    
+    /*
+    private static void createUser(String token, String username, String name, String email) {
+		try {
+			CreateUser service = new CreateUser(token, username, name, email);
+			service.execute();
+		} catch (Exception e) {
+			System.err.println("Error creating user");
+		}
+	}*/
     
     @Atomic 
     public static void print() {
