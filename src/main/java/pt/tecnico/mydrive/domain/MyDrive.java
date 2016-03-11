@@ -58,7 +58,6 @@ public class MyDrive extends MyDrive_Base {
     	} else {
     		User userToRemove = getUserByUsername(username);
     		if (userToRemove == null) {
-    			//JOAO ESTA EXCEPCAO NAO SE ADEQUA
     			throw new UserDoesNotExistException(username);
     		}
     		//Ainda nao e necessario para esta entrega
@@ -67,9 +66,18 @@ public class MyDrive extends MyDrive_Base {
     				File file = permission.getFile();
     				file.remove();
     			}
-    		}*/
+    		}*/ 
     		userToRemove.remove();
     	}
+    }
+    
+    public Directory getDirectoryByName(String name) {
+        for (Directory directory : getDirectorySet()) {
+            if (directory.getName().equals(name)) {
+                return directory;
+            }
+        }
+        return null;
     }
     
     public void addDirectory(String name) {
@@ -77,14 +85,18 @@ public class MyDrive extends MyDrive_Base {
     }
     
     public void removeDirectory(String name) {
-    	
+    	Directory directoryToRemove = getDirectoryByName(name);
+    	directoryToRemove.remove();
     }
 	
 	public void cleanup() {
+		for (Directory d: getDirectorySet())
+			d.remove();
+		
         for (User p: getUserSet())
 	    p.remove();
     }
-	/*
+	
 	public void xmlImport(Element element) {
 		for (Element node: element.getChildren("user")) {
 		    String username = node.getAttribute("username").getValue();
@@ -96,17 +108,15 @@ public class MyDrive extends MyDrive_Base {
 
 		    user.xmlImport(node);
 		}
-		
 	}
 	
-	public Document xmlExport() {
+	/*public Document xmlExport() {
 		Element element = new Element("mydrive");
 		Document doc = new Document(element);
 
-	    for (User u: getUserSet()) {
+	    for (User u: getUserSet()) 
 	    	//String usr = u.getUsername();
 	    	element.addContent(u.xmlExport());
-	    }
 	    
 	    return doc;
 	}*/

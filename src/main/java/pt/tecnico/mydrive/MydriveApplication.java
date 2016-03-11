@@ -27,8 +27,9 @@ public class MydriveApplication {
 		System.out.println("*** Welcome to the MyDrive application! ***");
 		try {
 			MyDrive md = MyDrive.getInstance();
-			//setupIfNeeded(md);
+			setupIfNeeded(md);
 			printMyDrive(md);
+			
 		} finally { FenixFramework.shutdown(); } 
 	}
 	

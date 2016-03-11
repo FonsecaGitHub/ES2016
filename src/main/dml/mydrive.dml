@@ -101,7 +101,7 @@ relation FileContainsPermissions{
 	}	
 }
 
-relation DirectorycontaisFiles{
+relation DirectoryContaisFiles{
 	Directory playsRole dir {
 	    multiplicity 0..1;
 	}
@@ -109,3 +109,13 @@ relation DirectorycontaisFiles{
 		multiplicity *;
 	}
 }
+
+relation MyDriveContainsDirectory{
+	MyDrive playsRole md {
+		multiplicity 1..1;
+	}
+	Directory playsRole directory {
+		multiplicity *;
+	}
+}
+

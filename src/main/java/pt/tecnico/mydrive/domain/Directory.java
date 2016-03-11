@@ -8,11 +8,15 @@ import java.io.File;
 
 public class Directory extends Directory_Base {
     
-	private String local;
+	//private String local;
+	
+	public Directory() {
+		super();
+	}
     
-    public Directory(User username, String name) {
+    public Directory(String name) {
     	super();
-    	setUser(username);
+    	//setUser(username);
     	setName(name);
     }
     
@@ -30,12 +34,14 @@ public class Directory extends Directory_Base {
             user.addDirectory(this);
     }*/
     
-    public void createDir() {
-    	File dir = new File("\test");
+    public void createDir(String local) {
+    	File dir = new File(local);
     	
     	boolean successful = dir.mkdirs();
+    	//dir.mkdirs();
     	
-    	if (successful)
+    	
+    	 if (successful)
         {
           // created the directories successfully
           System.out.println("directories were created successfully");
@@ -45,7 +51,15 @@ public class Directory extends Directory_Base {
           // something failed trying to create the directories
           System.out.println("failed trying to create the directories");
         }
+        
     }
+    
+    public void remove(){
+    	deleteDomainObject();
+    	
+    }
+    
+    
     
     
     

@@ -18,6 +18,7 @@ import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
 import pt.tecnico.mydrive.domain.User;
 import pt.tecnico.mydrive.domain.MyDrive;
+import pt.tecnico.mydrive.domain.Directory;
 
 
 public class SetupDomain {
@@ -29,6 +30,10 @@ public class SetupDomain {
 	static void populateDomain() {
 		MyDrive md = MyDrive.getInstance();
 		User user = new User("Miguel", "MiguelFonseca");
+		Directory direct = new Directory("MiguelPasta");
+		direct.createDir("user\bin");		
 		md.addUser(user);
 	}
+	
+	
 }
