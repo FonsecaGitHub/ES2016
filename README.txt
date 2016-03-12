@@ -1,3 +1,0 @@
-TiagoK
-JoãoV
-MiguelF

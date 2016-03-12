@@ -60,7 +60,19 @@ public class Directory extends Directory_Base {
     	deleteDomainObject();
     	
     }
+
+    public void listFiles(String path) {
+        File[] files = new File(path).listFiles();
+        
+        for(File file : files) {
+            if (file.isFile()) {
+                System.out.println(file.getName());
+            }
+        }
+    }
     
+
+    /*
     public File getFiles(){
         if(this.equals(null))
             return null;
@@ -76,7 +88,7 @@ public class Directory extends Directory_Base {
         Directory d = md.getInstance().getDirectoryByName(lastDir);
         files.add(d.getFiles());
         return files;
-    }
+    }*/
     
     
     
