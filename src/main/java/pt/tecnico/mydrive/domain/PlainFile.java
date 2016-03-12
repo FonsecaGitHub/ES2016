@@ -17,6 +17,10 @@ public class PlainFile extends PlainFile_Base {
         super();
     }
     
+    //TODO Gil
+    public void readFile(String name) {
+    	
+    }
     
     public void listUsers() {
     	MyDrive md = MyDrive.getInstance();
