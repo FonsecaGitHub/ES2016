@@ -4,9 +4,12 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.StringWriter;
+import java.util.Scanner;
 
 import pt.tecnico.mydrive.domain.MyDrive;
 import pt.tecnico.mydrive.domain.User;
@@ -17,10 +20,17 @@ public class PlainFile extends PlainFile_Base {
         super();
     }
     
-    //TODO Gil
-    public void readFile(String name) {
-    	
+    
+    public void readFile(String path) throws IOException{
+    	//File fileIn = new File(local);
+    	try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    		String line = null;
+    		while ((line = br.readLine()) != null)
+    			System.out.println(line);
+    	}	
     }
+    
+    	
     
     public void listUsers() {
     	MyDrive md = MyDrive.getInstance();

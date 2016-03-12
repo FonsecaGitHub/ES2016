@@ -30,6 +30,10 @@ public class MyDrive extends MyDrive_Base {
         setRoot(FenixFramework.getDomainRoot());
     }
     
+    public void userList(){
+    	
+    }
+    
     public User getUserByUsername(String username) throws UserDoesNotExistException {
         for (User user : getUserSet()) {
             if (user.getUsername().equals(username)) {
@@ -88,6 +92,20 @@ public class MyDrive extends MyDrive_Base {
     	Directory directoryToRemove = getDirectoryByName(name);
     	directoryToRemove.remove();
     }
+    
+    public PlainFile getPlainFileByPath(String path) {
+    	for (PlainFile plainFile : getPlainfileSet()) {
+            if (plainFile.getPath().equals(path)) {
+                return plainFile;
+            }
+        }
+        return null;
+    }
+    /*
+    public void readFile(String path) {
+    	PlainFile plainFile = getPlainFileByPath(path);
+    	plainFile.readFile();
+    }*/
 	
 	public void cleanup() {
 		for (Directory d: getDirectorySet())

@@ -38,11 +38,20 @@ public class SetupDomain {
 		md.addUser(user2);
 		md.addUser(user3);
 		
+		// 1 - Criar o ficheiro de texto...
 		PlainFile plainFile = new PlainFile();
 		plainFile.listUsers();
+		
 		/*
+		// 2 - Criar a directoria...
 		Directory directory = new Directory("MiguelPasta");
-		directory.createDir("user\bin");*/
+		directory.createDir("user\bin");
+		*/
+		// 3 - Imprimir o conteudo do ficheiro /home/README
+		//System.out.println("O FICHEIRO README TEM: ");
+		//plainFile.readFile("README");
+		
+		
 	}
 	
 	
