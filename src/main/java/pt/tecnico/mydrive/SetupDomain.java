@@ -19,6 +19,7 @@ import pt.ist.fenixframework.FenixFramework;
 import pt.tecnico.mydrive.domain.User;
 import pt.tecnico.mydrive.domain.MyDrive;
 import pt.tecnico.mydrive.domain.Directory;
+import pt.tecnico.mydrive.domain.PlainFile;
 
 
 public class SetupDomain {
@@ -29,10 +30,19 @@ public class SetupDomain {
 	
 	static void populateDomain() {
 		MyDrive md = MyDrive.getInstance();
-		User user = new User("Miguel", "MiguelFonseca");
-		Directory direct = new Directory("MiguelPasta");
-		direct.createDir("user\bin");		
-		md.addUser(user);
+		
+		User user1 = new User("MiguelF", "Miguel Fonseca");
+		User user2 = new User("JoãoV", "João Vasconcelos");
+		User user3 = new User("TiagoK", "Tiago Kinas");
+		md.addUser(user1);
+		md.addUser(user2);
+		md.addUser(user3);
+		
+		PlainFile plainFile = new PlainFile();
+		plainFile.listUsers();
+		/*
+		Directory directory = new Directory("MiguelPasta");
+		directory.createDir("user\bin");*/
 	}
 	
 	
