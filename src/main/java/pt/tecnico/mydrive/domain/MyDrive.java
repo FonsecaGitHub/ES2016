@@ -93,8 +93,8 @@ public class MyDrive extends MyDrive_Base {
 		for (Directory d: getDirectorySet())
 			d.remove();
 		
-        for (User p: getUserSet())
-	    p.remove();
+        for (User u: getUserSet())
+	    u.remove();
     }
 	
 	public void xmlImport(Element element) {
