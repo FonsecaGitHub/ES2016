@@ -2,6 +2,8 @@ package pt.tecnico.mydrive.domain;
 
 import org.jdom2.Element;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+
 import org.jdom2.DataConversionException;
 
 import java.io.File;
@@ -57,6 +59,23 @@ public class Directory extends Directory_Base {
     public void remove(){
     	deleteDomainObject();
     	
+    }
+    
+    public File getFiles(){
+        if(this.equals(null))
+            return null;
+        //TO DO acabar a função get file
+    }
+        
+        
+    public ArrayList<File> listFilesInDirectory(String path){
+        ArrayList <File> files = new ArrayList<File>(); 
+        String[] p = path.split("/");
+        String lastDir = p[p.length-1];
+        MyDrive md = null;
+        Directory d = md.getInstance().getDirectoryByName(lastDir);
+        files.add(d.getFiles());
+        return files;
     }
     
     
