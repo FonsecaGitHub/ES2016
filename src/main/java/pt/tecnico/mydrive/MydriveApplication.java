@@ -27,13 +27,13 @@ public class MydriveApplication {
 	@Atomic
 	public static void main(String[] args) throws IOException {
 		System.out.println("*** Welcome to the MyDrive application! ***");
-		/*
+
 		CreateXMLFile creator = new CreateXMLFile();
 		creator.create("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\created.xml");
 
 		ReadXMLFile reader = new ReadXMLFile();
 		reader.read("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\testImport.xml");
-		 */
+
 		try {
 			MyDrive md = MyDrive.getInstance();
 			setupIfNeeded(md);

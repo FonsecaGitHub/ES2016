@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 import pt.ist.fenixframework.FenixFramework;
 
 import pt.tecnico.mydrive.exception.*;
+import pt.tecnico.mydrive.service.CreateXMLFile;
+import pt.tecnico.mydrive.service.ReadXMLFile;
 
 public class MyDrive extends MyDrive_Base {
     static final Logger log = LogManager.getRootLogger();
@@ -173,18 +175,17 @@ public class MyDrive extends MyDrive_Base {
 
     }
 	
-	public void xmlImport(Element element) {
-		for (Element node: element.getChildren("user")) {
-		    String username = node.getAttribute("username").getValue();
-		    String name = node.getAttribute("name").getValue();
-		    User user = getUserByUsername(username);
+	public void xmlImport(String path) {
+        ReadXMLFile reader = new ReadXMLFile();
 
-		    if (user == null) // Does not exist
-				user = new User(name, username);
-
-		    user.xmlImport(node);
-		}
+        reader.read(path);
 	}
+
+    public void xmlExport(String path) {
+        CreateXMLFile creator = new CreateXMLFile();
+
+        creator.create(path);
+    }
 	
 	/*public Document xmlExport() {
 		Element element = new Element("mydrive");

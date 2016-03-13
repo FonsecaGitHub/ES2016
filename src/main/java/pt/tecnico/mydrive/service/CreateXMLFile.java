@@ -17,13 +17,8 @@ public class CreateXMLFile {
 
         try {
 
-            System.out.println("Start try");
-
             Element mydrive = new Element("mydrive");
             Document doc = new Document(mydrive);
-            System.out.println(doc.getRootElement());
-
-            System.out.println("before create user");
 
             createUser(doc, "Francisco", "/home/francisco", "a senha do francisco", "rwxd----");
             createUser(doc, "Maria", "/home/maria", "a senha da maria", "rwxd----");
@@ -34,7 +29,8 @@ public class CreateXMLFile {
             createFile(doc, "3", "plain", "Maria", "plainFile1",  null, null, null, null, null);
 
             // output para o terminal
-            // new XMLOutputter().output(doc, System.out);
+            //caso de testes 5
+            new XMLOutputter().output(doc, System.out);
 
             // output para ficheiro
             XMLOutputter xmlOutput = new XMLOutputter();
@@ -62,8 +58,6 @@ public class CreateXMLFile {
         file.addContent(new Element("path").setText(path));
         file.addContent(new Element("datamod").setText(datamod));
 
-        System.out.println("createFile");
-
         doc.getRootElement().addContent(file);
     }
 
@@ -74,7 +68,7 @@ public class CreateXMLFile {
         user.addContent(new Element("homedir").setText(homedir));
         user.addContent(new Element("password").setText(password));
         user.addContent(new Element("mask").setText(mask));
-        System.out.println("createUser");
+
         doc.getRootElement().addContent(user);
     }
 }
