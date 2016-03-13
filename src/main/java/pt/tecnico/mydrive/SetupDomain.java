@@ -53,7 +53,7 @@ public class SetupDomain {
 		//System.out.println("O FICHEIRO README TEM: ");
 		//plainFile.readFile("README");
 		//
-		// 4 - Remover directoria /usr/local/bin
+		// 4 - Remover directoria /usr/local/bin (working)
 		//String pathToDelete = "dirTEST";
 		//Path path = Paths.get(pathToDelete);
 		//md.removeFileOrDirectory(path);
