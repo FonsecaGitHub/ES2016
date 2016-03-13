@@ -1,10 +1,8 @@
 package pt.tecnico.mydrive;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Paths;
+import java.io.*;
 import java.io.File;
+import java.nio.file.Paths;
 import java.nio.file.*;
 
 import org.jdom2.Document;
@@ -20,15 +18,21 @@ import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
 
 import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.exception.DirectoryDoesNotExistException;
+import pt.tecnico.mydrive.exception.FileDoesNotExistException;
 
 
 public class SetupDomain {
 	@Atomic
 	public static void main(String[] args) {
-		populateDomain();
+		try {
+			populateDomain();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	static void populateDomain() {
+	static void populateDomain() throws IOException {
 		MyDrive md = MyDrive.getInstance();
 		/*
 		User user1 = new User("MiguelF", "Miguel Fonseca");
@@ -56,13 +60,23 @@ public class SetupDomain {
 		//
 		// 3 - Imprimir o conteudo do ficheiro /home/README
 		String fileToRead = "home\\README.txt";
-		plainFile.readFile("fileToRead");
+		try {
+			plainFile.readFile("fileToRead");
+		}
+		catch(FileNotFoundException fnfe){
+			fnfe.printStackTrace();
+		}
 		//
 		// 4 - Remover directoria /usr/local/bin
 		String pathToDelete = "usr\\local\\bin";
 		Path path1 = Paths.get(pathToDelete);
-		md.removeDirectory(pathToDelete);
-		md.removeFileOrDirectory(path1);
+		try {
+			md.removeDirectory(pathToDelete);
+			md.removeFileOrDirectory(path1);
+		}
+		catch(DirectoryDoesNotExistException ddne){
+			ddne.printStackTrace();
+		}
 		//
 		// 5 - Imprimir a exportacao em XML do sistema de ficheiros
 		//md.readFiles(Path path);
@@ -70,8 +84,13 @@ public class SetupDomain {
 		// 6 - Remover o ficheiro /home/README
 		String plainFileToDelete = "home\\README.txt";
 		Path path2 = Paths.get(plainFileToDelete);
-		md.removePlainFile(plainFileToDelete);
-		md.removeFileOrDirectory(path2);
+		try {
+			md.removePlainFile(plainFileToDelete);
+			md.removeFileOrDirectory(path2);
+		}
+		catch(FileDoesNotExistException fdnee){
+			fdnee.printStackTrace();
+		}
 		//
 		// 7 - Imprimir a listagem simples da directoria /home
 		String pathToList = "dirTEST";

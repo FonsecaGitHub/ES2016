@@ -25,7 +25,7 @@ import pt.tecnico.mydrive.service.ReadXMLFile;
 public class MydriveApplication {
 	
 	@Atomic
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("*** Welcome to the MyDrive application! ***");
 		/*
 		CreateXMLFile creator = new CreateXMLFile();
@@ -42,7 +42,7 @@ public class MydriveApplication {
 		} finally { FenixFramework.shutdown(); } 
 	}
 	
-	private static void setupIfNeeded(MyDrive md) {
+	private static void setupIfNeeded(MyDrive md) throws IOException {
 		if (md.getUserSet().isEmpty())
 			SetupDomain.populateDomain();
 	}	

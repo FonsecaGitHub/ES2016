@@ -1,14 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.StringWriter;
 import java.util.Scanner;
 
 import pt.tecnico.mydrive.domain.MyDrive;
@@ -27,10 +20,20 @@ public class PlainFile extends PlainFile_Base {
     }
     
     
-    public void readFile(String path) throws IOException{
+    public void readFile(String path) throws FileNotFoundException, IOException{
     	BufferedReader br = new BufferedReader(new FileReader(path));
-        for (String line; (line = br.readLine()) != null;) {
-            System.out.println(line);
+        try {
+            for (String line; (line = br.readLine()) != null; ) {
+                System.out.println(line);
+            }
+        }
+        catch(FileNotFoundException e){
+            //e.printStackTrace();
+            System.out.println(e.toString());
+        }
+        catch(IOException e){
+            //e.printStackTrace();
+            System.out.println(e.toString());
         }
     }
     

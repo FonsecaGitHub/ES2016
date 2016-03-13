@@ -28,10 +28,10 @@ public class CreateXMLFile {
             createUser(doc, "Francisco", "/home/francisco", "a senha do francisco", "rwxd----");
             createUser(doc, "Maria", "/home/maria", "a senha da maria", "rwxd----");
 
-            //createFile(doc, id, type, owner, name,  parent, children, method, datamod)
-            createFile(doc, "1", "dir", "Francisco", "directory1",  "/home/francisco", null, null, null);
-            createFile(doc, "2", "plain", "Francisco", "plainFile1",  null, null, null, null);
-            createFile(doc, "3", "plain", "Maria", "plainFile1",  null, null, null, null);
+            //createFile(doc, id, type, owner, name,  parent, children, path, method, datamod)
+            createFile(doc, "1", "dir", "Francisco", "directory1",  "/home/francisco", null, "/home/francisco", null, null);
+            createFile(doc, "2", "plain", "Francisco", "plainFile1",  null, null, null, null, null);
+            createFile(doc, "3", "plain", "Maria", "plainFile1",  null, null, null, null, null);
 
             // output para o terminal
             // new XMLOutputter().output(doc, System.out);
@@ -50,7 +50,7 @@ public class CreateXMLFile {
     }
 
     private void createFile(Document doc, String id, String type, String owner, String name, String parent,
-                            String children, String method, String datamod) {
+                            String children, String path, String method, String datamod) {
         Element file = new Element("file");
         file.setAttribute(new Attribute("id", id));
         file.addContent(new Element("type").setText(type));
@@ -59,6 +59,7 @@ public class CreateXMLFile {
         file.addContent(new Element("parent").setText(parent));
         file.addContent(new Element("children").setText(children));
         file.addContent(new Element("method").setText(method));
+        file.addContent(new Element("path").setText(path));
         file.addContent(new Element("datamod").setText(datamod));
 
         System.out.println("createFile");

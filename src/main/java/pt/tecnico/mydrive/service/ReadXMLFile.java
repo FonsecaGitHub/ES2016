@@ -38,6 +38,7 @@ public class ReadXMLFile {
         String parent;
         String children;
         String method;
+        String path;
 
         Document document = (Document) builder.build(xmlFile);
         Element rootNode = document.getRootElement();
@@ -55,6 +56,7 @@ public class ReadXMLFile {
             parent = node.getChildText("parent");
             children = node.getChildText("children");
             method = node.getChildText("method");
+            path = node.getChildText("path");
 
             switch(type){
                 case("plain") : {
@@ -65,7 +67,7 @@ public class ReadXMLFile {
                     //theFile.setDatamod();
                     }
                 case("dir") : {
-                    pt.tecnico.mydrive.domain.Directory theFile = new Directory(name);
+                    pt.tecnico.mydrive.domain.Directory theFile = new Directory(path,name);
                     theFile.setId(Integer.parseInt(id));
                     theFile.setParent(parent);
                     theFile.setChildren(children);
