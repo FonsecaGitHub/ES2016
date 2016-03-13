@@ -28,11 +28,14 @@ public class MydriveApplication {
 	public static void main(String[] args) throws IOException {
 		System.out.println("*** Welcome to the MyDrive application! ***");
 
+		String pathToCreatedXMLFile = "C:\\Users\\sikrew\\essd2016\\mydrive\\info\\created.xml";
+		String pathToImportedXMLFile = "C:\\Users\\sikrew\\essd2016\\mydrive\\info\\testImport.xml";
+
 		CreateXMLFile creator = new CreateXMLFile();
-		creator.create("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\created.xml");
+		creator.create(pathToCreatedXMLFile);
 
 		ReadXMLFile reader = new ReadXMLFile();
-		reader.read("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\testImport.xml");
+		reader.read(pathToImportedXMLFile);
 
 		try {
 			MyDrive md = MyDrive.getInstance();

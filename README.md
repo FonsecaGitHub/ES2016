@@ -33,3 +33,8 @@ Cada membro deve adicionar ao ficheiro `pom.xml` as suas informações pessoais.
   Para exportarem um `.xml` devem chamar, no método `MydriveApplication::main`,o método `CreateXMLFile::create`, passando como parâmetro o `path` onde querem que seja gravado o `.xml` a exportar.
   Depois, no ficheiro `CreateXMLFile.java` devem alterar a forma como os valores são guardados no ficheiro `.xml`, i.e., devem aceder aos objectos que querem exportar e chamar os respetivos `getters` para passar os valores corretamente para o ficheiro.
   
+## Paths
+
+  Para garantir que a execução do programa corra sem erros, deverão ser alterados os caminhos:
+  * `pathToCreatedXMLFile` e `pathToImportedXMLFile` no ficheiro `MydriveApplication.java`
+  * `pathToInfoFolder` no ficheiro `SetupDomain.java`
