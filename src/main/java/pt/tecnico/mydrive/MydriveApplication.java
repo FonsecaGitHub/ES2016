@@ -18,6 +18,8 @@ import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
 import pt.tecnico.mydrive.domain.User;
 import pt.tecnico.mydrive.domain.MyDrive;
+import pt.tecnico.mydrive.service.CreateXMLFile;
+import pt.tecnico.mydrive.service.ReadXMLFile;
 
 //TESTE
 public class MydriveApplication {
@@ -25,6 +27,13 @@ public class MydriveApplication {
 	@Atomic
 	public static void main(String[] args) {
 		System.out.println("*** Welcome to the MyDrive application! ***");
+
+		CreateXMLFile creator = new CreateXMLFile();
+		creator.create("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\created.xml");
+
+		ReadXMLFile reader = new ReadXMLFile();
+		reader.read("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\testImport.xml");
+
 		try {
 			MyDrive md = MyDrive.getInstance();
 			setupIfNeeded(md);
