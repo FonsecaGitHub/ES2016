@@ -71,15 +71,5 @@ public class Directory extends Directory_Base {
         this.children = children;
     }
 
-    public void listFiles(String path) {
-    	String[] p = path.split("/");
-        String lastDir = p[p.length-1];
-        File[] files = new File(lastDir).listFiles();
-        
-        for(File file : files){
-            if (file.isFile()){
-                System.out.println(file.getName());
-            }
-        }
-    }
+
 }

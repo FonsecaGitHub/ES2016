@@ -132,6 +132,18 @@ public class MyDrive extends MyDrive_Base {
 		}
 	}
 	
+	public void listFiles(String path) {
+    	String[] p = path.split("/");
+        String lastDir = p[p.length-1];
+        File[] files = new File(lastDir).listFiles();
+        
+        for(File file : files){
+            if (file.isFile()){
+                System.out.println(file.getName());
+            }
+        }
+    }
+	
 	public void xmlImport(Element element) {
 		for (Element node: element.getChildren("user")) {
 		    String username = node.getAttribute("username").getValue();

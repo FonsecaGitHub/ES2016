@@ -57,7 +57,10 @@ public class SetupDomain {
 		//String pathToDelete = "dirTEST";
 		//Path path = Paths.get(pathToDelete);
 		//md.removeFileOrDirectory(path);
-		
+		//
+		// 5 - Listar ficheiros de directoria
+		String path = "dirTEST";
+		md.listFiles(path);
 	}
 	
 	
