@@ -33,7 +33,7 @@ class File {
 class PlainFile extends File;
 
 class Directory extends File {
-	String name;
+	String dirName;
 	String children;
 	String parent;
 }
