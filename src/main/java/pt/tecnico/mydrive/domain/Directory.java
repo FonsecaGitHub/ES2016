@@ -62,36 +62,14 @@ public class Directory extends Directory_Base {
     }
 
     public void listFiles(String path) {
-        File[] files = new File(path).listFiles();
+    	String[] p = path.split("/");
+        String lastDir = p[p.length-1];
+        File[] files = new File(lastDir).listFiles();
         
-        for(File file : files) {
-            if (file.isFile()) {
+        for(File file : files){
+            if (file.isFile()){
                 System.out.println(file.getName());
             }
         }
     }
-    
-
-    /*
-    public File getFiles(){
-        if(this.equals(null))
-            return null;
-        //TO DO acabar a função get file
-    }
-        
-        
-    public ArrayList<File> listFilesInDirectory(String path){
-        ArrayList <File> files = new ArrayList<File>(); 
-        String[] p = path.split("/");
-        String lastDir = p[p.length-1];
-        MyDrive md = null;
-        Directory d = md.getInstance().getDirectoryByName(lastDir);
-        files.add(d.getFiles());
-        return files;
-    }*/
-    
-    
-    
-    
-    
 }
