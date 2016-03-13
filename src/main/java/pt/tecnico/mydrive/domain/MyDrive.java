@@ -93,6 +93,7 @@ public class MyDrive extends MyDrive_Base {
     	directoryToRemove.remove();
     }
     
+    /*
     public PlainFile getPlainFileByPath(String path) {
     	for (PlainFile plainFile : getPlainfileSet()) {
             if (plainFile.getPath().equals(path)) {
@@ -100,7 +101,7 @@ public class MyDrive extends MyDrive_Base {
             }
         }
         return null;
-    }
+    }*/
     /*
     public void readFile(String path) {
     	PlainFile plainFile = getPlainFileByPath(path);

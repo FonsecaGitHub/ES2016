@@ -30,9 +30,7 @@ class File {
 	DateTime datamod;
 }
 
-class PlainFile extends File {
-	String path;
-}
+class PlainFile extends File;
 
 class Directory extends File {
 	String name;
@@ -40,9 +38,7 @@ class Directory extends File {
 	String parent;
 }
 
-class Link extends PlainFile{
-	String path;
-}
+class Link extends PlainFile;
 
 class Application extends PlainFile{
 	String method;
@@ -90,7 +86,7 @@ relation UserContainsPermissions{
     	multiplicity 1..1;
 	}
 	Permission playsRole permission {
-		multiplicity 0..*;
+		multiplicity *;
 	}
 }
 
@@ -114,8 +110,9 @@ relation DirectoryContaisFiles{
 
 relation MyDriveContainsDirectory{
 	MyDrive playsRole md {
-		multiplicity 1..1;
+		multiplicity 0..1;
 	}
+
 	Directory playsRole directory {
 		multiplicity *;
 	}
@@ -123,8 +120,9 @@ relation MyDriveContainsDirectory{
 
 relation MyDriveContainsPlainFile{
 	MyDrive playsRole md {
-		multiplicity 1..1;
+		multiplicity 0..1;
 	}
+
 	PlainFile playsRole plainfile {
 		multiplicity *;
 	}
