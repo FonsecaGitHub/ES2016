@@ -28,12 +28,10 @@ public class PlainFile extends PlainFile_Base {
     
     
     public void readFile(String path) throws IOException{
-    	//File fileIn = new File(local);
-    	try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-    		String line = null;
-    		while ((line = br.readLine()) != null)
-    			System.out.println(line);
-    	}	
+    	BufferedReader br = new BufferedReader(new FileReader(path));
+        for (String line; (line = br.readLine()) != null;) {
+            System.out.println(line);
+        }
     }
     
     	

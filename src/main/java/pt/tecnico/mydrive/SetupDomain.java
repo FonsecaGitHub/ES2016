@@ -55,8 +55,8 @@ public class SetupDomain {
 		directory.createDir("user\\local\\bin");
 		//
 		// 3 - Imprimir o conteudo do ficheiro /home/README
-		//String fileToRead = "home\\README.txt";
-		//plainFile.readFile("fileToRead");
+		String fileToRead = "home\\README.txt";
+		plainFile.readFile("fileToRead");
 		//
 		// 4 - Remover directoria /usr/local/bin
 		String pathToDelete = "usr\\local\\bin";
