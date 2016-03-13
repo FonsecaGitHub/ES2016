@@ -34,7 +34,7 @@ public class MydriveApplication {
 	}
 	
 	private static void setupIfNeeded(MyDrive md) {
-		if (md.getUserSet().isEmpty())
+		//if (md.getUserSet().isEmpty())
 			SetupDomain.populateDomain();
 	}	
 	
@@ -44,13 +44,6 @@ public class MydriveApplication {
 		}
 	}
 }
-
-
-
-
-
-
-
 
 
 /*

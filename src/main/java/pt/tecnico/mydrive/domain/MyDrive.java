@@ -1,6 +1,9 @@
 package pt.tecnico.mydrive.domain;
 
 import java.io.File;
+import java.io.IOException;
+//import java.nio.file.;
+import java.nio.file.*;
 
 import org.jdom2.Element;
 import org.jdom2.Document;
@@ -115,6 +118,19 @@ public class MyDrive extends MyDrive_Base {
         for (User u: getUserSet())
 	    u.remove();
     }
+	
+	public void removeFileOrDirectory(Path path) {
+		try {
+		    Files.delete(path);
+		} catch (NoSuchFileException x) {
+		    System.err.format("%s: no such" + " file or directory%n", path);
+		} catch (DirectoryNotEmptyException x) {
+		    System.err.format("%s not empty%n", path);
+		} catch (IOException x) {
+		    // File permission problems are caught here.
+		    System.err.println(x);
+		}
+	}
 	
 	public void xmlImport(Element element) {
 		for (Element node: element.getChildren("user")) {
