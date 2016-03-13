@@ -79,8 +79,8 @@ public class SetupDomain {
 		}
 		//
 		// 5 - Imprimir a exportacao em XML do sistema de ficheiros
-		//md.readFiles(Path path);
-		//
+		md.xmlExport("C:\\Users\\sikrew\\essd2016\\mydrive\\info"); //path to /info folder on your local machine
+
 		// 6 - Remover o ficheiro /home/README
 		String plainFileToDelete = "home\\README.txt";
 		Path path2 = Paths.get(plainFileToDelete);
