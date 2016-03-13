@@ -11,16 +11,14 @@ import java.io.File;
 public class Directory extends Directory_Base {
     private String parent;
     private String children;
-
-    //private String local;
 	
 	public Directory() {
 		super();
 	}
     
-    public Directory(String name) {
+    public Directory(String path, String name) {
     	super();
-    	//setUser(username);
+    	setPath(path);
     	setName(name);
     }
     

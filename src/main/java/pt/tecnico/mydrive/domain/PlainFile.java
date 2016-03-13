@@ -15,9 +15,15 @@ import pt.tecnico.mydrive.domain.MyDrive;
 import pt.tecnico.mydrive.domain.User;
 
 public class PlainFile extends PlainFile_Base {
+	
+	public PlainFile() {
+		super();
+	}
     
-    public PlainFile() {
+    public PlainFile(String path, String name) {
         super();
+        setPath(path);
+        setName(name);
     }
     
     
@@ -32,13 +38,13 @@ public class PlainFile extends PlainFile_Base {
     
     	
     
-    public void listUsers() {
+    public void writeListOfUsers(String fileName) {
     	MyDrive md = MyDrive.getInstance();
     	
     	FileWriter file = null;
         try {
             try {
-                file = new FileWriter("README.txt");
+                file = new FileWriter(fileName);
                 String user;
                 for (User u: md.getUserSet()) {
             		user = (u.getUsername());

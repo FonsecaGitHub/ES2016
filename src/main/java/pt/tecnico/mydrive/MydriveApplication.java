@@ -16,10 +16,10 @@ import org.apache.logging.log4j.Logger;
 import pt.ist.fenixframework.Config;
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
-import pt.tecnico.mydrive.domain.User;
-import pt.tecnico.mydrive.domain.MyDrive;
+import pt.tecnico.mydrive.domain.*;
 import pt.tecnico.mydrive.service.CreateXMLFile;
 import pt.tecnico.mydrive.service.ReadXMLFile;
+
 
 //TESTE
 public class MydriveApplication {
@@ -27,13 +27,13 @@ public class MydriveApplication {
 	@Atomic
 	public static void main(String[] args) {
 		System.out.println("*** Welcome to the MyDrive application! ***");
-
+		/*
 		CreateXMLFile creator = new CreateXMLFile();
 		creator.create("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\created.xml");
 
 		ReadXMLFile reader = new ReadXMLFile();
 		reader.read("C:\\Users\\sikrew\\essd2016\\mydrive\\info\\testImport.xml");
-
+		 */
 		try {
 			MyDrive md = MyDrive.getInstance();
 			setupIfNeeded(md);
@@ -43,7 +43,7 @@ public class MydriveApplication {
 	}
 	
 	private static void setupIfNeeded(MyDrive md) {
-		//if (md.getUserSet().isEmpty())
+		if (md.getUserSet().isEmpty())
 			SetupDomain.populateDomain();
 	}	
 	
@@ -76,41 +76,20 @@ public class MydriveApplication {
     	MyDrive.getInstance().cleanup();
     }
     
-    //ATENCAO fazer isto de acordo com os pedidos dos profs 
+    
     @Atomic
-    public static void setup() { // mydrive with debug data
-    	
-    	//ATENCAO testa o funcionamento de directorias, apagar mais tarde
-        
-    	Userser userTest;
-        Directory directoryTest;
-        
-        userTest = new User("Miguel", "MiguelFonseca");
-        directoryTest = new Directory(userTest, "directoryTest");
-        
-        directoryTest.createDir();
-    	
-    	
-    	
-    	//log.trace("Setup: " + FenixFramework.getDomainRoot());
-    	//MyDrive md = MyDrive.getInstance();
-    	//User user;
-    	
-    	//if (!md.getUserSet().isEmpty()) return;
+    public static void setup() { // mydrive with debug data 	   	
+    	log.trace("Setup: " + FenixFramework.getDomainRoot());
+    	MyDrive md = MyDrive.getInstance();
+    	SuperUser userRoot;
+ 	
+    	if (!md.getUserSet().isEmpty()) return;
     	
     	// setup the initial state if mydrive is empty
-    	//User = new User(md, "Miguel");
+    	userRoot = new SuperUser(md);
+    	new PlainFile()
     }
     
-    
-    private static void createUser(String token, String username, String name, String email) {
-		try {
-			CreateUser service = new CreateUser(token, username, name, email);
-			service.execute();
-		} catch (Exception e) {
-			System.err.println("Error creating user");
-		}
-	}
     
     @Atomic 
     public static void print() {

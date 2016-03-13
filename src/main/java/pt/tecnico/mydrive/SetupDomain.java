@@ -18,10 +18,8 @@ import org.apache.logging.log4j.Logger;
 import pt.ist.fenixframework.Config;
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
-import pt.tecnico.mydrive.domain.User;
-import pt.tecnico.mydrive.domain.MyDrive;
-import pt.tecnico.mydrive.domain.Directory;
-import pt.tecnico.mydrive.domain.PlainFile;
+
+import pt.tecnico.mydrive.domain.*;
 
 
 public class SetupDomain {
@@ -40,27 +38,44 @@ public class SetupDomain {
 		md.addUser(user2);
 		md.addUser(user3);*/
 		
-		// 1 - Criar o ficheiro de texto...
-		//PlainFile plainFile = new PlainFile();
-		//plainFile.listUsers();
+		SuperUser root = new SuperUser();
+		md.addUser(root);
 		
-		/*
-		// 2 - Criar a directoria...
-		Directory directory = new Directory("MiguelPasta");
-		directory.createDir("user\bin");
-		*/
+		// 1 - Criar o ficheiro de texto /home/README com o conteudo lista de utilizadores
+		String filePath = "\\home";
+		String fileName = "README.txt";
+		PlainFile plainFile = new PlainFile(filePath, fileName);
+		plainFile.writeListOfUsers(fileName);
+		md.addPlainFile(plainFile);
+		//
+		// 2 - Criar a directoria /usr/local/bin
+		String dirPath = "\\usr\\local\\bin";
+		String dirName = "bin";
+		Directory directory = new Directory(dirPath, dirName);
+		directory.createDir("user\\local\\bin");
+		//
 		// 3 - Imprimir o conteudo do ficheiro /home/README
-		//System.out.println("O FICHEIRO README TEM: ");
-		//plainFile.readFile("README");
+		//String fileToRead = "home\\README.txt";
+		//plainFile.readFile("fileToRead");
 		//
-		// 4 - Remover directoria /usr/local/bin (working)
-		//String pathToDelete = "dirTEST";
-		//Path path = Paths.get(pathToDelete);
-		//md.removeFileOrDirectory(path);
+		// 4 - Remover directoria /usr/local/bin
+		String pathToDelete = "usr\\local\\bin";
+		Path path1 = Paths.get(pathToDelete);
+		md.removeDirectory(pathToDelete);
+		md.removeFileOrDirectory(path1);
 		//
-		// 5 - Listar ficheiros de directoria
-		String path = "dirTEST";
-		md.listFiles(path);
+		// 5 - Imprimir a exportacao em XML do sistema de ficheiros
+		//md.readFiles(Path path);
+		//
+		// 6 - Remover o ficheiro /home/README
+		String plainFileToDelete = "home\\README.txt";
+		Path path2 = Paths.get(plainFileToDelete);
+		md.removePlainFile(plainFileToDelete);
+		md.removeFileOrDirectory(path2);
+		//
+		// 7 - Imprimir a listagem simples da directoria /home
+		String pathToList = "dirTEST";
+		md.listFiles(pathToList);
 	}
 	
 	

@@ -2,7 +2,6 @@ package pt.tecnico.mydrive.domain;
 
 import java.io.File;
 import java.io.IOException;
-//import java.nio.file.;
 import java.nio.file.*;
 
 import org.jdom2.Element;
@@ -13,9 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import pt.ist.fenixframework.FenixFramework;
 
-import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
-import pt.tecnico.mydrive.exception.UserDoesNotExistException;
-import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
+import pt.tecnico.mydrive.exception.*;
 
 public class MyDrive extends MyDrive_Base {
     static final Logger log = LogManager.getRootLogger();
@@ -33,9 +30,6 @@ public class MyDrive extends MyDrive_Base {
         setRoot(FenixFramework.getDomainRoot());
     }
     
-    public void userList(){
-    	
-    }
     
     public User getUserByUsername(String username) throws UserDoesNotExistException {
         for (User user : getUserSet()) {
@@ -78,38 +72,68 @@ public class MyDrive extends MyDrive_Base {
     	}
     }
     
-    public Directory getDirectoryByName(String name) {
+    
+    //			HANDLES DIRECTORY
+    public Directory getDirectoryByPath(String path) {
         for (Directory directory : getDirectorySet()) {
-            if (directory.getName().equals(name)) {
+            if (directory.getPath().equals(path)) {
                 return directory;
             }
         }
         return null;
     }
     
-    public void addDirectory(String name) {
+    public boolean hasDirectory(String path) {
+        return getDirectoryByPath(path) != null;
+    }
+  
+    @Override
+    public void addDirectory(Directory directoryToBeAdded) throws DirectoryNameAlreadyExistsException {
+    	if (hasDirectory(directoryToBeAdded.getPath()))
+    		throw new DirectoryNameAlreadyExistsException(directoryToBeAdded.getPath());
     	
+    	super.addDirectory(directoryToBeAdded);
     }
     
-    public void removeDirectory(String name) {
-    	Directory directoryToRemove = getDirectoryByName(name);
+    public void removeDirectory(String path) {
+    	Directory directoryToRemove = getDirectoryByPath(path);
+    	if (directoryToRemove == null) {
+    		throw new DirectoryDoesNotExistException(path);
+    	}
     	directoryToRemove.remove();
     }
     
-    /*
-    public PlainFile getPlainFileByPath(String path) {
+    
+    //			HANDLES PLAINFILE
+    public PlainFile getPlainFileByPath(String path) {	
     	for (PlainFile plainFile : getPlainfileSet()) {
             if (plainFile.getPath().equals(path)) {
                 return plainFile;
             }
         }
         return null;
-    }*/
-    /*
-    public void readFile(String path) {
-    	PlainFile plainFile = getPlainFileByPath(path);
-    	plainFile.readFile();
-    }*/
+    }
+    
+    public boolean hasPlainFile(String path) {
+        return getPlainFileByPath(path) != null;
+    }
+    
+    //JOAO ARRANJA UMA EXCEPCAO MELHOR
+    public void addPlainFile(PlainFile plainFileToBeAdded) throws FileNameAlreadyExistsException {
+    	if (hasPlainFile(plainFileToBeAdded.getPath()))
+    		throw new FileNameAlreadyExistsException(plainFileToBeAdded.getPath());
+    	
+    	super.addPlainfile(plainFileToBeAdded);
+    }
+    
+    public void removePlainFile(String path) {
+    	PlainFile plainFileToRemove = getPlainFileByPath(path);
+    	if (plainFileToRemove == null) {
+    		throw new FileDoesNotExistException(path);
+    	}
+    	plainFileToRemove.remove();
+    }
+   
 	
 	public void cleanup() {
 		for (Directory d: getDirectorySet())

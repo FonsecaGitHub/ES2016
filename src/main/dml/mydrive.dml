@@ -26,6 +26,7 @@ class Permission {
 
 class File {
 	int id;
+	String path;
 	String name;
 	DateTime datamod;
 }
