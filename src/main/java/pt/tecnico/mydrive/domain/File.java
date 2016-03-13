@@ -45,6 +45,8 @@ public class File extends File_Base {
 		setUser(null);
 		deleteDomainObject();
 	}
+	
+	
 
 
 	//TODO
