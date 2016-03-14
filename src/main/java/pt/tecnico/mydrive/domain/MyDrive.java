@@ -145,7 +145,9 @@ public class MyDrive extends MyDrive_Base {
 	    u.remove();
     }
 	
-	public void removeFileOrDirectory(Path path) {
+	public void removeFileOrDirectory(String stringPath) {
+		Path path = Paths.get(stringPath);
+		
 		try {
 		    Files.delete(path);
 		} catch (NoSuchFileException x) {

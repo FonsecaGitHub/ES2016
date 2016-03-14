@@ -69,10 +69,9 @@ public class SetupDomain {
 		//
 		// 4 - Remover directoria /usr/local/bin
 		String pathToDelete = "usr\\local\\bin";
-		Path path1 = Paths.get(pathToDelete);
 		try {
 			md.removeDirectory(pathToDelete);
-			md.removeFileOrDirectory(path1);
+			md.removeFileOrDirectory(pathToDelete);
 		}
 		catch(DirectoryDoesNotExistException ddne){
 			ddne.printStackTrace();
@@ -85,10 +84,10 @@ public class SetupDomain {
 
 		// 6 - Remover o ficheiro /home/README
 		String plainFileToDelete = "home\\README.txt";
-		Path path2 = Paths.get(plainFileToDelete);
+		
 		try {
 			md.removePlainFile(plainFileToDelete);
-			md.removeFileOrDirectory(path2);
+			md.removeFileOrDirectory(plainFileToDelete);
 		}
 		catch(FileDoesNotExistException fdnee){
 			fdnee.printStackTrace();
