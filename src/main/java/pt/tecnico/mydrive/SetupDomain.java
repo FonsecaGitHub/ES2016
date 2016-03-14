@@ -34,41 +34,34 @@ public class SetupDomain {
 	
 	static void populateDomain() throws IOException {
 		MyDrive md = MyDrive.getInstance();
-		/*
-		User user1 = new User("MiguelF", "Miguel Fonseca");
-		User user2 = new User("JoãoV", "João Vasconcelos");
-		User user3 = new User("TiagoK", "Tiago Kinas");
-		md.addUser(user1);
-		md.addUser(user2);
-		md.addUser(user3);*/
 		
 		SuperUser root = new SuperUser();
 		md.addUser(root);
 		
 		// 1 - Criar o ficheiro de texto /home/README com o conteudo lista de utilizadores
-		String filePath = "\\home";
-		String fileName = "README.txt";
+		String filePath = "/home";
+		String fileName = "/home/README.txt";
 		PlainFile plainFile = new PlainFile(filePath, fileName);
 		plainFile.writeListOfUsers(fileName);
 		md.addPlainFile(plainFile);
 		//
 		// 2 - Criar a directoria /usr/local/bin
-		String dirPath = "\\usr\\local\\bin";
+		String dirPath = "/usr/local/bin";
 		String dirName = "bin";
 		Directory directory = new Directory(dirPath, dirName);
-		directory.createDir("user\\local\\bin");
+		directory.createDir(dirPath);
 		//
 		// 3 - Imprimir o conteudo do ficheiro /home/README
-		String fileToRead = "home\\README.txt";
+		String fileToRead = "/home/README";
 		try {
-			plainFile.readFile("fileToRead");
+			plainFile.readFile(fileToRead);
 		}
 		catch(FileNotFoundException fnfe){
 			fnfe.printStackTrace();
 		}
 		//
 		// 4 - Remover directoria /usr/local/bin
-		String pathToDelete = "usr\\local\\bin";
+		String pathToDelete = "/usr/local/bin";
 		try {
 			md.removeDirectory(pathToDelete);
 			md.removeFileOrDirectory(pathToDelete);
@@ -81,10 +74,9 @@ public class SetupDomain {
 		//path to /info folder on your local machine
 		String pathToInfoFolder = "C:\\Users\\sikrew\\essd2016\\mydrive\\info";
 		md.xmlExport(pathToInfoFolder);
-
+		//
 		// 6 - Remover o ficheiro /home/README
-		String plainFileToDelete = "home\\README.txt";
-		
+		String plainFileToDelete = "/home/README.txt";
 		try {
 			md.removePlainFile(plainFileToDelete);
 			md.removeFileOrDirectory(plainFileToDelete);
@@ -94,7 +86,7 @@ public class SetupDomain {
 		}
 		//
 		// 7 - Imprimir a listagem simples da directoria /home
-		String pathToList = "dirTEST";
+		String pathToList = "/home";
 		md.listFiles(pathToList);
 	}
 	
