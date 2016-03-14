@@ -4,13 +4,7 @@ import org.jdom2.Element;
 import java.io.UnsupportedEncodingException;
 import org.jdom2.DataConversionException;
 
-import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
-import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
-import pt.tecnico.mydrive.exception.WrongPasswordException;
-import pt.tecnico.mydrive.exception.ImportDocumentException;
-import pt.tecnico.mydrive.exception.UserDoesNotExistException;
-import pt.tecnico.mydrive.exception.FileNameAlreadyExistsException;
-import pt.tecnico.mydrive.exception.UsernameCannotBeNullException;
+import pt.tecnico.mydrive.exception.*;
 
 
 public class User extends User_Base {
@@ -19,9 +13,11 @@ public class User extends User_Base {
 		super();
 	}
     
-	//ATENCAO ver se aqui deve lancar excepcao
-    public User(String username, String name) {
+    public User(String username, String name) throws InvalidUsernameException {
         super();
+        if (username.length() == 0 || !isAlphaNumeric(username)) {
+        	throw new InvalidUsernameException(username);
+        }
         setUsername(username);
         setName(name);
     }
@@ -38,6 +34,14 @@ public class User extends User_Base {
             super.setMydrive(null);
         else
             md.addUser(this);
+    }
+    
+    public boolean isAlphaNumeric(String s){
+        String pattern= "^[a-zA-Z0-9]*$";
+            if(s.matches(pattern)){
+                return true;
+            }
+            return false;   
     }
     
     @Override
