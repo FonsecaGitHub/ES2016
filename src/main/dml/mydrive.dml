@@ -15,6 +15,11 @@ class User {
 	String mask;
 }
 
+class Session {
+	LocalTime lastTimeInSession;
+	String token;
+}
+
 class SuperUser extends User;
 
 class Permission {
