@@ -21,7 +21,11 @@ Cada membro deve adicionar ao ficheiro `pom.xml` as suas informações pessoais.
 
 ## Compilação
 
+  * Normal:
   $ mvn clean package exec:java
+
+  *Testes:
+  $ mvn clean test cobertura:cobertura site
 
 ## Importação e exportação XML
 
