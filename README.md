@@ -17,7 +17,7 @@ Cada membro deve copiar a pasta `phonebook-V1/src/main/resources` para `mydrive/
 
 ## TODOs e FIXMEs
 
-Cada membro deve adicionar ao ficheiro `pom.xml` as suas informações pessoais.
+
 
 ## Compilação
 
