@@ -22,11 +22,12 @@ public class User extends User_Base {
         setName(name);
     }
     
+    /*
     public User(MyDrive md, Element xml) {
     	super();
     	xmlImport(xml);
     	setMydrive(md);
-    }
+    }*/
     
     @Override
     public void setMydrive(MyDrive md) {
@@ -73,21 +74,43 @@ public class User extends User_Base {
 		setMydrive(null);
 		deleteDomainObject();
 	}
-
-	//TODO
-	public Element xmlImport(Element userElement) throws ImportDocumentException {
-		// clear current mydrive
-		//for (File f: getFileSet())
-			
-			//f.remove();
-		
-		//ATENCAO apagar linha seguinte
-		return userElement;
-	}
-
-	//TODO
-	public void xmlExport() {
-
+    
+    //REMOVER O ANTERIOR
+    public void delete() {
+		setMydrive(null);
+		if (isInSession()) {
+			getSession().delete();
+		}
+		for (Permission permission : getPermissionSet()) {
+			permission.getFile().delete();
+		}
+		deleteDomainObject();
 	}
     
+    public String createSession() {
+		if (getSession() != null) {
+			getSession().reloadToken();
+		} else {
+			new Session(this);
+		}
+		return getSession().getToken();
+	}
+    
+    public void endSession() {
+		getSession().delete();
+	}
+    
+    public String getToken() {
+		if (getSession() != null) {
+			return getSession().getToken();
+		}
+		return null;
+	}
+    
+    public Boolean isInSession() {
+		if (getSession() != null) {
+			return true;
+		} else
+			return false;
+	}
 }

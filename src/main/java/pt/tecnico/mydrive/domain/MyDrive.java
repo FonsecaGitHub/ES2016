@@ -42,16 +42,51 @@ public class MyDrive extends MyDrive_Base {
         return null;
     }
     
+    //JOAO EXCEPCAO
+    public User getUserByToken(String token)/* throws UserNotInSessionException*/ {
+    	for (User user : getUserSet()) {
+    		if (user.isInSession() && user.getToken().equals(token)) {
+    			return user;
+    		}
+    	}
+    	return null;
+    }
+    
+    public User updateUserLastAccess(String token) {
+    	User user = getUserByToken(token);
+    	user.updateSession();
+    }
+    
     public boolean hasUser(String username) {
         return getUserByUsername(username) != null;
     }
     
-    @Override
-    public void addUser(User userToBeAdded) throws UsernameAlreadyExistsException {
-        if (hasUser(userToBeAdded.getUsername()))
+    //@Override
+    public User addUser(String username) throws UsernameAlreadyExistsException {
+        /*
+    	if (hasUser(userToBeAdded.getUsername()))
             throw new UsernameAlreadyExistsException(userToBeAdded.getUsername());
-
+        
+    	//JOAO VE ESTA EXCEPCAO
+    	if (getUserByUsername(username) != null) {
+			throw new DuplicateUsernameException(username);
+		}
+    	
+        //JOAO ADICIONA ESTA EXCEPCAO
+        if(username.isEmpty()) {
+        	throw new EmptyUsernameException();
+        }
+        
+        //JOAO ADICIONA ESTA EXCEPCAO
+        if (username.equals("root")) {
+        	throw new UnauthorizedOperationException();
+        }
+        */
+        String name = username;
+        
+        User userToBeAdded = new User(username, name);
         super.addUser(userToBeAdded);
+        return userToBeAdded;
     }
     
     public void removeUser(String username) {

@@ -9,7 +9,7 @@ public class Permission extends Permission_Base {
         super();
     }
 
-    /*public Permission(User user, File file) {
+    public Permission(User user, File file) {
 		super();
 		setUser(user);
 		setFile(file);
@@ -21,7 +21,7 @@ public class Permission extends Permission_Base {
 		setFile(null);
 		deleteDomainObject();
 	}
-
+	/*
 	public Element exportToXML() {
 		Element permissionElement = new Element("permission");
 		//permissionElement.setAttribute("acess-type", getAccess().toString());

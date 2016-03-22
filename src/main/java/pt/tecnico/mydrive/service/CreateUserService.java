@@ -1,9 +1,6 @@
 package pt.tecnico.mydrive.service;
 
-import pt.tecnico.mydrive.exception.MyDriveException;
-
 import pt.tecnico.mydrive.exception.*;
-import pt.tecnico.mydrive.domain.*;
 
 
 public class CreateUserService extends MyDriveService{
@@ -21,8 +18,7 @@ public class CreateUserService extends MyDriveService{
 	@Override
 	protected void dispatch() throws MyDriveException {
 		checkUserIsRoot(userToken);
-		validateEmail(email);
-		getMyDrive().addUser(newUser, name);
+		getMyDrive().addUser(newUser);
 	}
 
 }
