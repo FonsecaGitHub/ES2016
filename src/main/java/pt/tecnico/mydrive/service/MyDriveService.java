@@ -35,7 +35,7 @@ public abstract class MyDriveService {
 	}
 
 	protected void updateUserSession(String token) {
-		getBubbleDocs().updateUserLastAccess(token);
+		getMyDrive().updateUserLastAccess(token);
 	}
 
 	static User getUser(String token) throws UserDoesNotExistException {
