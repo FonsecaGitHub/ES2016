@@ -15,7 +15,7 @@ public class User extends User_Base {
     
     public User(String username, String name) throws InvalidUsernameException {
         super();
-        if (username.length() == 0 || !isAlphaNumeric(username)) {
+        if (username.length() < 3 || !isAlphaNumeric(username)) {
         	throw new InvalidUsernameException(username);
         }
         setUsername(username);
