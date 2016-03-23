@@ -23,7 +23,7 @@ public abstract class MyDriveService {
 	protected void sessionIsValid(String token) {
 		User user = getMyDrive().getUserByToken(token);
 		if(user == null) {
-			throw new UserIsNotInSessionException();
+			throw new UserIsNotInSessionException(userToken);
 		}
 	}
 
