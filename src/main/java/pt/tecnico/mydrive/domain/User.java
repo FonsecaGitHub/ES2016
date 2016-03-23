@@ -76,13 +76,14 @@ public class User extends User_Base {
 	}
     
     //REMOVER O ANTERIOR
+    /*
     public void delete() {
 		setMydrive(null);
 		if (isInSession()) {
 			getSession().delete();
 		}
 		for (Permission permission : getPermissionSet()) {
-			permission.getFile().delete();
+			permission.delete();
 		}
 		deleteDomainObject();
 	}
@@ -112,5 +113,9 @@ public class User extends User_Base {
 			return true;
 		} else
 			return false;
-	}
+	}*/
+    
+    public boolean isRoot() {
+    	return getUsername().equals("root");
+    }
 }

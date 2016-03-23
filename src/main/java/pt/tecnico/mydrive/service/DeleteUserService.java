@@ -10,14 +10,14 @@ public class DeleteUserService extends MyDriveService{
 
 	private String username;
 
-	public DeleteUserService(String userToken, String usernameToDelete) {
+	public DeleteUserService(long userToken, String usernameToDelete) {
 		super.userToken = userToken;
 		this.username = usernameToDelete;
 	}
 
 	@Override
 	protected void dispatch() throws MyDriveException {
-		checkUserIsRoot(userToken);
+		//checkUserIsRoot(userToken);
 		
 		getMyDrive().removeUser(username);
 	}

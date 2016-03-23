@@ -17,7 +17,7 @@ public class LoginUserService extends MyDriveService{
 	public final long getUserToken() {
 		return super.userToken;
 	}
-
+	/*
 	@Override
 	protected void sessionIsValid(String token) {
 		//override to blank
@@ -26,5 +26,5 @@ public class LoginUserService extends MyDriveService{
 	@Override
 	protected void updateUserSession(String token) {
 		//override to blank
-	}
+	}*/
 }

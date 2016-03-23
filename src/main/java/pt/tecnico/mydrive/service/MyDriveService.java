@@ -20,23 +20,26 @@ public abstract class MyDriveService {
 
 	protected abstract void dispatch() throws MyDriveException;
 
+	/*
 	protected void sessionIsValid(String token) {
 		User user = getMyDrive().getUserByToken(token);
 		if(user == null) {
 			throw new UserIsNotInSessionException(userToken);
 		}
-	}
-
+	}*/
+	
+	/*
 	protected void checkUserIsRoot(String token) {
 		User user = getMyDrive().getMyDriveByToken(token);
 		if(!user.getUsername().equals("root")) {
 			throw new UnauthorizedOperationException();
 		}
-	}
+	}*/
 
+	/*
 	protected void updateUserSession(String token) {
 		getMyDrive().updateUserLastAccess(token);
-	}
+	}*/
 
 	static User getUser(String token) throws UserDoesNotExistException {
         User u = getMyDrive().getUserByUsername(token);

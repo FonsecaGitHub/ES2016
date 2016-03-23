@@ -8,7 +8,7 @@ public class CreateUserService extends MyDriveService{
 	private String newUser;
 	private String name;
 
-	public CreateUserService(String userToken, String newUsername, String name) {
+	public CreateUserService(long userToken, String newUsername, String name) {
 		this.userToken = userToken;
 		this.newUser = newUsername;
 		this.name = name;
@@ -17,7 +17,7 @@ public class CreateUserService extends MyDriveService{
 
 	@Override
 	protected void dispatch() throws MyDriveException {
-		checkUserIsRoot(userToken);
+		//checkUserIsRoot(userToken);
 		getMyDrive().addUser(newUser);
 	}
 

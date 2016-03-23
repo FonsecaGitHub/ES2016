@@ -7,7 +7,7 @@ import org.joda.time.*;
 
 public class Session extends Session_Base {
     
-    public Session(User user) {
+  /*  public Session(User user) {
         super();
         setUserInSession(user);
         setToken(user.getUsername() + new Random().nextInt(10));
@@ -36,6 +36,6 @@ public class Session extends Session_Base {
 			newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
 		}
 		setToken(newToken);
-	} 
+	} */
     
 }

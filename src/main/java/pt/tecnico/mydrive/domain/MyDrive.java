@@ -43,19 +43,22 @@ public class MyDrive extends MyDrive_Base {
     }
     
     //JOAO EXCEPCAO
-    public User getUserByToken(String token)/* throws UserNotInSessionException*/ {
+    /*public User getUserByToken(String token) throws UserIsNotInSessionException {
     	for (User user : getUserSet()) {
     		if (user.isInSession() && user.getToken().equals(token)) {
     			return user;
     		}
     	}
     	return null;
-    }
+    }*/
     
+    
+    //PARA APAGAR
+    /*
     public User updateUserLastAccess(String token) {
     	User user = getUserByToken(token);
     	user.updateSession();
-    }
+    }*/
     
     public boolean hasUser(String username) {
         return getUserByUsername(username) != null;

@@ -96,6 +96,7 @@ relation UserContainsPermissions{
 	}
 }
 
+/*
 relation FileContainsPermissions{
 	Permission playsRole filepermissions {
 		multiplicity *;
@@ -103,6 +104,15 @@ relation FileContainsPermissions{
 	File playsRole permitedfile  {
    		multiplicity 0..1;
 	}	
+}*/
+
+relation PermissionHasFile {
+	Permission playsRole permission {
+		multiplicity 1..*;
+	}
+	File playsRole file {
+		multiplicity 1..1;
+	}
 }
 
 relation DirectoryContaisFiles{
