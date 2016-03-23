@@ -7,7 +7,7 @@ import pt.tecnico.mydrive.exception.*;
 
 public abstract class MyDriveService {
 	
-	protected String userToken; 
+	protected long userToken; 
 
 	@Atomic
 	public final void execute() throws MyDriveException {

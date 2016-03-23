@@ -11,10 +11,10 @@ public class LoginUserService extends MyDriveService{
 
 	@Override
 	protected void dispatch() throws MyDriveException {
-		super.userToken = getMyDrive().loginUser(this.username);
+		//super.userToken = getMyDrive().loginUser(this.username);
 	}
 
-	public final String getUserToken() {
+	public final long getUserToken() {
 		return super.userToken;
 	}
 

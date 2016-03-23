@@ -8,8 +8,8 @@ import pt.tecnico.mydrive.exception.MyDriveException;
 
 public class ListDirectoryService extends MyDriveService{
 
-	public ListDirectoryService(String token) {
-		super.token = token;
+	public ListDirectoryService(long token) {
+		super.userToken = token;
 		
 
 	}
