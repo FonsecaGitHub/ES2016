@@ -32,6 +32,17 @@ public class MyDrive extends MyDrive_Base {
         setRoot(FenixFramework.getDomainRoot());
     }
     
+    public void incNumberOfFiles() {
+    	int files = getNumberOfFiles();
+    	files++;
+    	setNumberOfFiles(files);
+    }
+  
+    public void incNumberOfUsers() {
+    	int users = getNumberOfUsers();
+    	users++;
+    	setNumberOfUsers(users);
+    }
     
     public User getUserByUsername(String username) throws UserDoesNotExistException {
         for (User user : getUserSet()) {
@@ -171,7 +182,7 @@ public class MyDrive extends MyDrive_Base {
     	if (plainFileToRemove == null) {
     		throw new FileDoesNotExistException(path);
     	}
-    	plainFileToRemove.remove();
+    	plainFileToRemove.delete();
     }
    
 	

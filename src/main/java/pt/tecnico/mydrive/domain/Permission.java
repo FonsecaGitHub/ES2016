@@ -12,13 +12,13 @@ public class Permission extends Permission_Base {
     public Permission(User user, File file) {
 		super();
 		setUser(user);
-		//setFile(file);
+		setFile(file);
 
 	}
 
 	public void delete() {
 		setUser(null);
-		//setFile(null);
+		setFile(null);
 		deleteDomainObject();
 	}
 	/*

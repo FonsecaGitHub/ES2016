@@ -16,8 +16,13 @@ public class Directory extends Directory_Base {
 		super();
 	}
     
-    public Directory(String path, String name) {
+    public Directory(String path, String name)/* throws PathTooLongException */{
     	super();
+    	String pathString = path.toString();
+    	//VASCONCELOS ADDICIONA EXCEPCAO
+    	if (pathString.length() > 1024) {
+    		//throw new PathTooLongException(path);
+    	}
     	setPath(path);
     	setName(name);
     }

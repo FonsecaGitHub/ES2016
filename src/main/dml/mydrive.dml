@@ -3,8 +3,8 @@ package pt.tecnico.mydrive.domain;
 /* CLASSES */
 
 class MyDrive{
-	int numberofusers;
-	int numberoffiles;
+	int numberOfUsers;
+	int numberOfFiles;
 } 
 
 class User {
@@ -87,7 +87,16 @@ relation UserContainsFiles{
 	}
 }
 
-relation UserContainsPermissions{
+relation UserHasSession {
+  User playsRole userInSession {
+    multiplicity 1..1;
+  }
+  Session playsRole session {
+    multiplicity 0..1;
+  }
+}
+
+relation UserHasPermissions{
 	User playsRole user {
     	multiplicity 1..1;
 	}

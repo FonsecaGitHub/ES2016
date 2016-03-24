@@ -1,10 +1,6 @@
 package pt.tecnico.mydrive.domain;
 
-import org.joda.time.*;
-
 import org.jdom2.Element;
-import org.jdom2.DataConversionException;
-import java.io.UnsupportedEncodingException;
 
 import pt.tecnico.mydrive.exception.ImportDocumentException;
 import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
@@ -41,14 +37,13 @@ public class File extends File_Base {
         user.addFile(this);
     }
 
-	public void remove() {
-		setUser(null);
+	public void delete() {
+		for(Permission permission : getPermissionSet()) {
+			permission.delete();
+		}
 		deleteDomainObject();
 	}
 	
-	
-
-
 	//TODO
 	public void xmlImpport(Element fileElement) throws ImportDocumentException {
 
