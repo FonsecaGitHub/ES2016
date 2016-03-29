@@ -18,6 +18,13 @@ class User {
 class Session {
 	LocalTime lastTimeInSession;
 	String token;
+	//isto é necessário?
+}
+
+class MyToken
+{
+	DateTime validFrom;
+	String token;
 }
 
 class SuperUser extends User;
@@ -51,6 +58,39 @@ class Application extends PlainFile{
 }
 
 /* RELATIONS */
+
+
+relation MyTokenContainsUser {
+
+	MyToken playsRole token {
+		multiplicity 0..1;
+	}
+
+	User playsRole user {
+		multiplicity 0..1;
+	}
+}
+
+relation MyDriveContainsSession
+{
+	MyDrive playsRole mydrive {
+   		multiplicity 0..1;
+	}
+	Session playsRole session {
+		multiplicity 0..1;
+	}
+}
+
+relation SessionContainsMyToken
+{
+	Session playsRole session {
+		multiplicity 0..1;
+	}
+
+	MyToken playsRole token {
+		multiplicity *;
+	}
+}
 
 relation DomainRootHasMyDrive {
   .pt.ist.fenixframework.DomainRoot playsRole root {
