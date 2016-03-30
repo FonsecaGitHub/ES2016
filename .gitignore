@@ -7,6 +7,6 @@
 *.iml
 /web/
 /bin/
-src/main/resources/
+#src/main/resources/
 /info/created.xml
 /info/testImport.xml
