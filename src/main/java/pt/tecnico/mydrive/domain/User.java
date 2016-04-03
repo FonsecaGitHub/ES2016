@@ -42,6 +42,19 @@ public class User extends User_Base {
 		}
 		return false;
 	}
+	
+	public long createSession() {
+		if (getSession() != null) {
+			//getSession().reloadToken();
+		} else {
+			new Session(this);
+		}
+		return getSession().getToken();
+	}
+	
+	public void endSession() {
+		getSession().delete();
+	}
 
 	@Override
 	public void addFile(File fileToBeAdded) throws FileNameAlreadyExistsException {

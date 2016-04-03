@@ -43,6 +43,16 @@ public class MyDrive extends MyDrive_Base {
 		users++;
 		setNumberOfUsers(users);
 	}
+	
+	//Vasconcelos faz excepcao
+	public String loginUser(String username, String password) throws LoginMyDriveException {
+		User user = getUserByName(username);
+		if (user == null || user.getPassword() == null) {
+			throw new LoginMyDriveException();
+		}
+		user.createSession();
+		return user.getToken();
+	}
 
 	public User getUserByUsername(String username) throws UserDoesNotExistException {
 		for (User user : getUserSet()) {
