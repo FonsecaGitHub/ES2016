@@ -17,7 +17,7 @@ class User {
 
 class Session {
 	LocalTime lastTimeInSession;
-	String token;
+	long token;
 	//isto é necessário?
 }
 
@@ -28,13 +28,6 @@ class MyToken
 }
 
 class SuperUser extends User;
-
-class Permission {
-	boolean read;
-	boolean write;
-	boolean exec;
-	boolean remove;
-}
 
 class File {
 	int id;
@@ -57,8 +50,8 @@ class Application extends PlainFile{
 	String method;
 }
 
-/* RELATIONS */
 
+/* RELATIONS */
 
 relation MyTokenContainsUser {
 
@@ -101,27 +94,19 @@ relation DomainRootHasMyDrive {
   }
 }
 
-
 relation MyDriveContainsUsers{
 	MyDrive playsRole mydrive {
-   		multiplicity 0..1;
+   		multiplicity 1..1;
 	}
 	User playsRole user {
 		multiplicity *;
 	}
 }
 
-relation MyDriveContaisFiles{
-	MyDrive playsRole mydrivefiles {
-		multiplicity 0..1;
-	}
-	File playsRole filesfrommydrive{
-		multiplicity *;
-	}
-}
-
 relation UserContainsFiles{
-	User playsRole user;
+	User playsRole user {
+		multiplicity 1..1;
+	} 
 	File playsRole file {
 		multiplicity *;
 	}
@@ -136,59 +121,51 @@ relation UserHasSession {
   }
 }
 
-relation UserHasPermissions{
-	User playsRole user {
-    	multiplicity 1..1;
-	}
-	Permission playsRole permission {
-		multiplicity *;
-	}
-}
-
-/*
-relation FileContainsPermissions{
-	Permission playsRole filepermissions {
-		multiplicity *;
-	}
-	File playsRole permitedfile  {
-   		multiplicity 0..1;
-	}	
-}*/
-
-relation PermissionHasFile {
-	Permission playsRole permission {
-		multiplicity 1..*;
-	}
-	File playsRole file {
-		multiplicity 1..1;
-	}
-}
-
 relation DirectoryContaisFiles{
 	Directory playsRole dir {
-	    multiplicity 0..1;
+	    multiplicity 1..1;
 	}
 	File playsRole owned {
 		multiplicity *;
 	}
 }
 
-relation MyDriveContainsDirectory{
-	MyDrive playsRole md {
+relation UserHasHomeDir{
+	User playsRole user {
 		multiplicity 0..1;
 	}
 
 	Directory playsRole directory {
-		multiplicity *;
+		multiplicity 1..1;
 	}
 }
 
-relation MyDriveContainsPlainFile{
-	MyDrive playsRole md {
-		multiplicity 0..1;
+relation UserHasPlainFile{
+	User playsRole user {
+		multiplicity 1..1;
 	}
 
 	PlainFile playsRole plainfile {
-		multiplicity *;
+		multiplicity 0..*;
+	}
+}
+
+relation UserHasDirectory{
+	User playsRole user {
+		multiplicity 1..1;
+	}
+
+	Directory playsRole directory {
+		multiplicity 0..*;
+	}
+}
+
+/*pode ser necessaria a criacao de um rootDir*/
+relation MyDriveHasRootDir{
+	MyDrive playsRole mydrive {
+		multiplicity 1..1;
+	}
+	Directory playsRole directory {
+		multiplicity 0..1;
 	}
 }

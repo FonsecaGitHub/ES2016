@@ -38,9 +38,6 @@ public class File extends File_Base {
     }
 
 	public void delete() {
-		for(Permission permission : getPermissionSet()) {
-			permission.delete();
-		}
 		deleteDomainObject();
 	}
 	

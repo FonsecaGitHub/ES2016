@@ -10,11 +10,11 @@ public class Session extends Session_Base {
     public Session(User user) {
         super();
         setUserInSession(user);
-        setToken(user.getUsername() + new Random().nextInt(10));
+       // setToken(user.getUsername() + new Random().nextInt(10));
         //renewSession();
     }
     
-    public Session(User user, String token) {
+    public Session(User user, long token) {
     	super();
     	setUserInSession(user);
     	setToken(token);
@@ -30,12 +30,13 @@ public class Session extends Session_Base {
 		deleteDomainObject();
 	}
 	
+	/*
 	public void reloadToken() {
-		String newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
+		long newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
 		while (newToken.equals(getToken())) {
 			newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
 		}
 		setToken(newToken);
-	} 
+	} */
     
 }

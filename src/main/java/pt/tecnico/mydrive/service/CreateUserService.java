@@ -1,6 +1,7 @@
 package pt.tecnico.mydrive.service;
 
 import pt.tecnico.mydrive.exception.*;
+import pt.tecnico.mydrive.domain.*;
 
 
 public class CreateUserService extends MyDriveService{
@@ -16,9 +17,8 @@ public class CreateUserService extends MyDriveService{
 	}
 
 	@Override
-	protected void dispatch() throws MyDriveException {
-		//checkUserIsRoot(userToken);
-		getMyDrive().addUser(newUser);
+	protected void dispatch() throws UsernameAlreadyExistsException {
+		new User(getMyDrive(), newUser, name);
 	}
 
 }
