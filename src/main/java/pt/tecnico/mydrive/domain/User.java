@@ -149,24 +149,25 @@ public class User extends User_Base {
 		deleteDomainObject();
 	}
 
-	// REMOVER O ANTERIOR
-	/*
-	 * public void delete() { setMydrive(null); if (isInSession()) {
-	 * getSession().delete(); } for (Permission permission : getPermissionSet())
-	 * { permission.delete(); } deleteDomainObject(); }
-	 * 
-	 * public String createSession() { if (getSession() != null) {
-	 * getSession().reloadToken(); } else { new Session(this); } return
-	 * getSession().getToken(); }
-	 * 
-	 * public void endSession() { getSession().delete(); }
-	 * 
-	 * public String getToken() { if (getSession() != null) { return
-	 * getSession().getToken(); } return null; }
-	 * 
-	 * public Boolean isInSession() { if (getSession() != null) { return true; }
-	 * else return false; }
-	 */
+
+	public void delete() { 
+		setMydrive(null); if (isInSession()) {
+			getSession().delete(); 
+		} 
+		deleteDomainObject(); 
+	}
+	  
+	  
+	  public long getToken() { 
+		  if (getSession() != null) { 
+			  return getSession().getToken(); 
+		} 
+		  return null; 
+		}
+	 
+	  public Boolean isInSession() { if (getSession() != null) { return true; }
+	  else return false; }
+	 
 
 	public boolean isRoot() {
 		return getUsername().equals("root");

@@ -18,13 +18,7 @@ class User {
 class Session {
 	LocalTime lastTimeInSession;
 	long token;
-	//isto é necessário?
-}
-
-class MyToken
-{
-	DateTime validFrom;
-	String token;
+	/*isto é necessário?*/
 }
 
 class SuperUser extends User;
