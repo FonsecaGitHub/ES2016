@@ -18,7 +18,7 @@ public class ListDirectoryService extends MyDriveService{
 	protected void dispatch() throws MyDriveException {
 		// TODO Auto-generated method stub
 		MyDrive md = super.getMyDrive();
-		User u = md.getUserByToken(this.userToken);
+		md.listFiles(path);
 		
 	}
 	

@@ -19,7 +19,7 @@ public class ListUsersService extends MyDriveService{
         registeredUsers = new ArrayList<String>();
 
         for (User u : md.getUserSet()) {
-            registeredUsers.add(p.getName());
+            registeredUsers.add(u.getName());
         }
 
         Collections.sort(registeredUsers);

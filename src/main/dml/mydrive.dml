@@ -18,6 +18,7 @@ class User {
 class Session {
 	LocalTime lastTimeInSession;
 	long token;
+
 	/*isto é necessário?*/
 }
 
@@ -30,7 +31,9 @@ class File {
 	DateTime datamod;
 }
 
-class PlainFile extends File;
+class PlainFile extends File{
+	String content;	
+}
 
 class Directory extends File {
 	String dirName;
@@ -161,5 +164,15 @@ relation MyDriveHasRootDir{
 	}
 	Directory playsRole directory {
 		multiplicity 0..1;
+	}
+}
+
+relation SessionHasWorkingDirectory{
+	Session playsRole session {
+		multiplicity 0..1;
+	}
+
+	Directory playsRole directory {
+		multiplicity 1..1;
 	}
 }
