@@ -36,9 +36,9 @@ public class PlainFile extends PlainFile_Base {
             System.out.println(e.toString());
         }
     }
-    
-    	
-    
-    
-    
+
+
+    public void writeListOfUsers(String fileName) {
+        //TODO
+    }
 }

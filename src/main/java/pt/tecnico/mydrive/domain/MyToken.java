@@ -8,9 +8,9 @@ public class MyToken extends MyToken_Base {
     
     public MyToken(long token, User user) {
     	super();
-    	setMyToken(token);
-    	if(user.getMyToken()!=null)
-    		user.getMyToken().delete;
+    	user.setMyToken(token);
+    	//if(user.getMyToken()!=null) rever isto! TODO
+    	//	user.getMyToken().delete();
     	setUser(user);
     }
     
@@ -19,5 +19,7 @@ public class MyToken extends MyToken_Base {
     	setSession(null);
     	deleteDomainObject();
     }
-    
+
+
+
 }

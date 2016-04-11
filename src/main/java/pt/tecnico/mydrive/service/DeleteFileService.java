@@ -4,6 +4,9 @@ package pt.tecnico.mydrive.service;
 //import pt.tecnico.mydrive.domain.*;
 
 
+import pt.tecnico.mydrive.exception.FileDoesNotExistException;
+import pt.tecnico.mydrive.exception.MyDriveException;
+
 public class DeleteFileService extends MyDriveService{
 
 	//private String filename;
@@ -15,7 +18,7 @@ public class DeleteFileService extends MyDriveService{
 	}
 	
 	@Override
-	protected void dispatch() throws MyDriveException, FileDoesNotExist {
+	protected void dispatch() throws MyDriveException, FileDoesNotExistException {
 		// TODO Auto-generated method stub
 		
 		//missing way to get userfiles from token

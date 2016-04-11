@@ -4,17 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 
-import org.jdom2.Element;
-import org.jdom2.Document;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import pt.ist.fenixframework.FenixFramework;
 
 import pt.tecnico.mydrive.exception.*;
-import pt.tecnico.mydrive.service.CreateXMLFile;
-import pt.tecnico.mydrive.service.ReadXMLFile;
 
 public class MyDrive extends MyDrive_Base {
 	static final Logger log = LogManager.getRootLogger();
@@ -45,13 +40,22 @@ public class MyDrive extends MyDrive_Base {
 	}
 	
 	//Vasconcelos faz excepcao
-	public String loginUser(String username, String password) throws LoginMyDriveException {
+	public MyToken loginUser(String username, String password) throws LoginMyDriveException {
 		User user = getUserByName(username);
 		if (user == null || user.getPassword() == null) {
 			throw new LoginMyDriveException();
 		}
 		user.createSession();
 		return user.getToken();
+	}
+
+	private User getUserByName(String name) throws UserDoesNotExistException{
+		for (User user : getUserSet()) {
+			if (user.getName().equals(name)) {
+				return user;
+			}
+		}
+		return null;
 	}
 
 	public User getUserByUsername(String username) throws UserDoesNotExistException {
@@ -67,7 +71,7 @@ public class MyDrive extends MyDrive_Base {
 
 	public User getUserByToken(long token) throws UserIsNotInSessionException { 
 		for (User user : getUserSet()) {
-			if (user.isInSession() && user.getToken().equals(token)) { 
+			if (user.isInSession() && user.getToken().equals(token)) {
 				return user; 
 			} 
 		}
@@ -191,4 +195,15 @@ public class MyDrive extends MyDrive_Base {
 		return new java.io.File(classLoader.getResource(filename).getFile());
 	}
 
+	public void addPlainFile(PlainFile plainFile) {
+		//TODO
+	}
+
+	public void removeDirectory(String pathToDelete) {
+		//TODO
+	}
+
+	public void removePlainFile(String plainFileToDelete) {
+		//TODO
+	}
 }

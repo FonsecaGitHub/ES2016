@@ -8,6 +8,8 @@ import pt.tecnico.mydrive.exception.*;
 
 public class User extends User_Base {
 
+	private long myToken;
+
 	public User() {
 		super();
 	}
@@ -158,13 +160,7 @@ public class User extends User_Base {
 		deleteDomainObject(); 
 	}
 	  
-	  
-	  public long getToken() { 
-		  if (getSession() != null) { 
-			  return getSession().getToken(); 
-		} 
-		  return null; 
-		}
+
 	 
 	  public Boolean isInSession() { 
 		  if (getSession() != null) { 
@@ -176,5 +172,13 @@ public class User extends User_Base {
 
 	public boolean isRoot() {
 		return getUsername().equals("root");
+	}
+
+	public long getMyToken() {
+		return myToken;
+	}
+
+	public void setMyToken(long myToken) {
+		this.myToken = myToken;
 	}
 }

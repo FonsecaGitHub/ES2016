@@ -30,14 +30,19 @@ public class Session extends Session_Base {
 		deleteDomainObject();
 	}
 	
+	public Directory getWorkingDirectory() {
+		Directory dir = this.getWorkingDirectory();
+		return dir;
+	}
 	
+	/*
 	public void reloadToken() {
 		long newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
 		while (newToken.equals(getToken())) {
 			newToken = (getUserInSession().getUsername() + new Random().nextInt(10));
 		}
 		setToken(newToken);
-	} 
+	}*/ 
     
     public Directory getWorkingDirectory(){ 
     	Directory dir = this.getWorkingDirectory();
