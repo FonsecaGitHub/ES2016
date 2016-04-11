@@ -2,7 +2,6 @@ package pt.tecnico.mydrive.service;
 
 import pt.tecnico.mydrive.exception.MyDriveException;
 
-import pt.tecnico.mydrive.exception.*;
 import pt.tecnico.mydrive.domain.*;
 
 
@@ -18,27 +17,17 @@ public class LoginUserService extends MyDriveService{
 	}
 
 	@Override
-	protected void dispatch() throws MyDriveException {
-		/*super.userToken = getMyDrive().loginUser(this.username, this.password);*/
+	protected void dispatch() throws MyDriveException {	
 		MyDrive md = MyDrive.getInstance();
 		Session session = md.getSession();
-		//TODO elimina inactivos
+		session.removeInactives();
 		
-		
-		
+		MyToken mt = session.createSession(_username, _password);
+		String tokenString = Long.toString(mt.getToken());
+		_username = tokenString;
 	}
 
 	public final long getUserToken() {
-		return super.userToken;
+		return _token;
 	}
-	/*
-	@Override
-	protected void sessionIsValid(String token) {
-		//override to blank
-	}
-
-	@Override
-	protected void updateUserSession(String token) {
-		//override to blank
-	}*/
 }
