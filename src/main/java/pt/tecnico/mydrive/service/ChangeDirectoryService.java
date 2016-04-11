@@ -1,11 +1,11 @@
-package pt.tecnico.MyDrive.service;
+package pt.tecnico.mydrive.service;
 
 
-import pt.tecnico.MyDrive.domain.Directory;
-import pt.tecnico.MyDrive.domain.MyToken;
+import pt.tecnico.mydrive.domain.Directory;
+import pt.tecnico.mydrive.domain.MyToken;
 
-import pt.tecnico.MyDrive.exception.UnauthorizedAccessException;
-import pt.tecnico.MyDrive.exception.DirectoryDoesNotExistsException;
+import pt.tecnico.mydrive.exception.UnauthorizedAccessException;
+import pt.tecnico.mydrive.exception.DirectoryDoesNotExistsException;
 
 public class ChangeDirectoryService extends MyDriveService{
    
