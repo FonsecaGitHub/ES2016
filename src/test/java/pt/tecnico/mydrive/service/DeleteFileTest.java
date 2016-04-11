@@ -10,6 +10,13 @@ import pt.tecnico.mydrive.exception.*;
 
 public class DeleteFileTest extends AbstractServiceTest {
 
+	private long token;
+	
+	private static final int FILE_ID = 20; 
+	
+	private static final String FILE_NAME = "";
+	
+	
     protected void populate() {
         
     }
