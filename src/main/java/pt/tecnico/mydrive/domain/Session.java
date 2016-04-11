@@ -39,4 +39,10 @@ public class Session extends Session_Base {
 		setToken(newToken);
 	} 
     
+    public Directory getWorkingDirectory(){ 
+    	Directory dir = this.getWorkingDirectory();
+    	return dir;
+
+    }
+
 }
