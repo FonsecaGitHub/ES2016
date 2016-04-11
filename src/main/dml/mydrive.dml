@@ -15,6 +15,10 @@ class User {
 	String mask;
 }
 
+class MyToken {
+	long token;
+}
+
 class Session {
 	LocalTime lastTimeInSession;
 	long token;
@@ -64,7 +68,7 @@ relation MyTokenContainsUser {
 relation MyDriveContainsSession
 {
 	MyDrive playsRole mydrive {
-   		multiplicity 0..1;
+   		multiplicity 1..1;
 	}
 	Session playsRole session {
 		multiplicity 0..1;

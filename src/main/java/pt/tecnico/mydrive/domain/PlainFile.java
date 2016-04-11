@@ -39,30 +39,6 @@ public class PlainFile extends PlainFile_Base {
     
     	
     
-    public void writeListOfUsers(String fileName) {
-    	MyDrive md = MyDrive.getInstance();
-    	
-    	FileWriter file = null;
-        try {
-            try {
-                file = new FileWriter(fileName);
-                String user;
-                for (User u: md.getUserSet()) {
-            		user = (u.getUsername());
-                    System.out.println(user);
-                    int length = user.length();
-                    file.write(user);
-                    file.write(System.getProperty( "line.separator" ));
-                    if (length == 30) {
-                        user = " ";
-                    }
-                }
-            } finally {
-                file.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    
     
 }

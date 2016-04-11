@@ -7,17 +7,22 @@ import pt.tecnico.mydrive.domain.*;
 
 
 public class LoginUserService extends MyDriveService{
-	private String username;
-	private String password;
+	
+	private long _token;
+	private String _username;
+	private String _password;
 
 	public LoginUserService(String username, String password) {
-		this.username = username;
-		this.password = password;
+		_username = username;
+		_password = password;
 	}
 
 	@Override
 	protected void dispatch() throws MyDriveException {
-		super.userToken = getMyDrive().loginUser(this.username, this.password);
+		/*super.userToken = getMyDrive().loginUser(this.username, this.password);*/
+		MyDrive md = MyDrive.getInstance();
+		Session session = md.getSession();
+		
 	}
 
 	public final long getUserToken() {
