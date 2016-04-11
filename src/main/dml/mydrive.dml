@@ -176,7 +176,7 @@ relation SessionHasWorkingDirectory{
 		multiplicity 0..1;
 	}
 
-	Directory playsRole directory {
+	Directory playsRole workingdirectory {
 		multiplicity 1..1;
 	}
 }
