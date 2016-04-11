@@ -45,19 +45,6 @@ public class User extends User_Base {
 		}
 		return false;
 	}
-	
-	public long createSession() {
-		if (getSession() != null) {
-			//getSession().reloadToken();
-		} else {
-			new Session(this);
-		}
-		return getSession().getToken();
-	}
-	
-	public void endSession() {
-		getSession().delete();
-	}
 
 	@Override
 	public void addFile(File fileToBeAdded) throws FileNameAlreadyExistsException {
@@ -153,11 +140,12 @@ public class User extends User_Base {
 	}
 
 
-	public void delete() { 
-		setMydrive(null); if (isInSession()) {
-			getSession().delete(); 
-		} 
-		deleteDomainObject(); 
+	public void delete() {
+		//apagar o que ta pra tras
+		if(getMytoken() != null)
+			getMytoken().delete();
+		setMydrive(null);
+		deleteDomainObject();
 	}
 	  
 

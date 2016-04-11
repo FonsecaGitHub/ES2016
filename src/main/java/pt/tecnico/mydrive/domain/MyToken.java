@@ -1,5 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
+import org.joda.time.DateTime;
+
 public class MyToken extends MyToken_Base {
     
     public MyToken() {
@@ -8,9 +10,10 @@ public class MyToken extends MyToken_Base {
     
     public MyToken(long token, User user) {
     	super();
-    	user.setMyToken(token);
-    	//if(user.getMyToken()!=null) rever isto! TODO
-    	//	user.getMyToken().delete();
+    	setToken(token);
+    	setInitialDate(new DateTime());
+    	if(user.getMytoken()!=null)
+    		user.getMytoken().delete();
     	setUser(user);
     }
     
@@ -19,7 +22,4 @@ public class MyToken extends MyToken_Base {
     	setSession(null);
     	deleteDomainObject();
     }
-
-
-
 }
