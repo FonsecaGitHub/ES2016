@@ -7,9 +7,10 @@ package pt.tecnico.mydrive.service;
 public class DeleteFileService extends MyDriveService{
 
 	//private String filename;
+	//private long token
 	
-	public DeleteFileService(Long userToken, String filename) {
-		//super.userToken = getMyDrive().getUserByToken(usertoken);
+	public DeleteFileService(Long token, String filename) {
+		//this.token = getMyDrive().getUserByToken(token);
 		//this.filename = filename;
 	}
 	
@@ -18,15 +19,15 @@ public class DeleteFileService extends MyDriveService{
 		// TODO Auto-generated method stub
 		
 		//missing way to get userfiles from token
-		/*for {User u : directory.getdirectorySet(userToken)
+		/*for {User u : directory.getdirectorySet(token)
 			if (u.hasDirectory(filename))
-				for {Directory d : directory.getdownedSet(userToken)
+				for {Directory d : directory.getdownedSet(token)
 					user.RemoveFilesFromDirectory(d);
 					user.RemoveDirectory(filename);
 				}
 		}
 		File f = getFileByName(filename);
-		for {User u : file.getFileSet(userToken)
+		for {User u : file.getFileSet(token)
 			if (u.hasfile(f) == null)
 			throw new FileDoesNotExist(filename);
 		user.RemoveFile(f);
