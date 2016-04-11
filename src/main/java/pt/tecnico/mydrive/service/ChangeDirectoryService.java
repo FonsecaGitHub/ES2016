@@ -11,11 +11,6 @@ public class ChangeDirectoryService extends MyDriveService{
 
 	@Override
 	protected void dispatch() throws MyDriveException {
-		MyDrive md = MyDrive.getInstance();
-		Session session = md.getSession();
-		
 		
 	}
-	
-	
 }

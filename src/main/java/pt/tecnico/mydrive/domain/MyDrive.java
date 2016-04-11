@@ -38,16 +38,6 @@ public class MyDrive extends MyDrive_Base {
 		users++;
 		setNumberOfUsers(users);
 	}
-	
-	//Vasconcelos faz excepcao
-	public MyToken loginUser(String username, String password) throws LoginMyDriveException {
-		User user = getUserByName(username);
-		if (user == null || user.getPassword() == null) {
-			throw new LoginMyDriveException();
-		}
-		user.createSession();
-		return user.getToken();
-	}
 
 	private User getUserByName(String name) throws UserDoesNotExistException{
 		for (User user : getUserSet()) {
@@ -67,17 +57,15 @@ public class MyDrive extends MyDrive_Base {
 		return null;
 	}
 
-	// JOAO EXCEPCAO
-
-	public User getUserByToken(long token) throws UserIsNotInSessionException { 
-		for (User user : getUserSet()) {
-			if (user.isInSession() && user.getToken().equals(token)) {
-				return user; 
-			} 
+	public User getUserApplication(String str) {
+		for(User exist : getUserSet()) {
+			if(exist.getUsername().equals(str))
+				return exist;
 		}
-	  	return null;
+		return null;
 	}
-	 
+
+	
 
 	// PARA APAGAR
 	/*
