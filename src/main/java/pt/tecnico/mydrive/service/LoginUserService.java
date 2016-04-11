@@ -22,6 +22,9 @@ public class LoginUserService extends MyDriveService{
 		/*super.userToken = getMyDrive().loginUser(this.username, this.password);*/
 		MyDrive md = MyDrive.getInstance();
 		Session session = md.getSession();
+		//TODO elimina inactivos
+		
+		
 		
 	}
 
