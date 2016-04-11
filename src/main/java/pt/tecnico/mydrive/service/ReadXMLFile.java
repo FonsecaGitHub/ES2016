@@ -119,7 +119,7 @@ public class ReadXMLFile {
             homedir = node.getChildText("homedir");
             mask = node.getChildText("mask");
 
-            User theUser = new User(username, username);
+            User theUser = new User(); //User(username, username); TODO
             theUser.setPassword(password);
             theUser.setHomedir(homedir);
             theUser.setMask(mask);

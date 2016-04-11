@@ -42,14 +42,14 @@ public class SetupDomain {
 		String filePath = "/home";
 		String fileName = "/home/README.txt";
 		PlainFile plainFile = new PlainFile(filePath, fileName);
-		plainFile.writeListOfUsers(fileName);
-		md.addPlainFile(plainFile);
+		plainFile.writeListOfUsers(fileName); //TODO
+		md.addPlainFile(plainFile); //TODO
 		//
 		// 2 - Criar a directoria /usr/local/bin
 		String dirPath = "/usr/local/bin";
 		String dirName = "bin";
 		Directory directory = new Directory(dirPath, dirName);
-		directory.createDir(dirPath);
+		directory.createDir(dirPath); //TODO
 		//
 		// 3 - Imprimir o conteudo do ficheiro /home/README
 		String fileToRead = "/home/README";
@@ -63,7 +63,7 @@ public class SetupDomain {
 		// 4 - Remover directoria /usr/local/bin
 		String pathToDelete = "/usr/local/bin";
 		try {
-			md.removeDirectory(pathToDelete);
+			md.removeDirectory(pathToDelete); //TODO
 			md.removeFileOrDirectory(pathToDelete);
 		}
 		catch(DirectoryDoesNotExistException ddne){
@@ -73,12 +73,12 @@ public class SetupDomain {
 		// 5 - Imprimir a exportacao em XML do sistema de ficheiros
 		//path to /info folder on your local machine
 		String pathToInfoFolder = "C:\\Users\\sikrew\\essd2016\\mydrive\\info";
-		md.xmlExport(pathToInfoFolder);
+		//md.xmlExport(pathToInfoFolder); //TODO UNCOMMENT METHOD IN MD
 		//
 		// 6 - Remover o ficheiro /home/README
 		String plainFileToDelete = "/home/README.txt";
 		try {
-			md.removePlainFile(plainFileToDelete);
+			md.removePlainFile(plainFileToDelete); //TODO
 			md.removeFileOrDirectory(plainFileToDelete);
 		}
 		catch(FileDoesNotExistException fdnee){
