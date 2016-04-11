@@ -12,13 +12,14 @@ public class User extends User_Base {
 		super();
 	}
 
-	public User(MyDrive md, String username, String name) throws InvalidUsernameException {
+	public User(MyDrive md, String username, String name, String password) throws InvalidUsernameException {
 		super();
 		if (username.length() < 3 || !isAlphaNumeric(username)) {
 			throw new InvalidUsernameException(username);
 		}
 		setUsername(username);
 		setName(name);
+		setPassword(password);
 	}
 
 	public User(MyDrive md, Element xml) {
@@ -165,8 +166,12 @@ public class User extends User_Base {
 		  return null; 
 		}
 	 
-	  public Boolean isInSession() { if (getSession() != null) { return true; }
-	  else return false; }
+	  public Boolean isInSession() { 
+		  if (getSession() != null) { 
+			  return true; 
+		  }
+		  else return false; 
+	  }
 	 
 
 	public boolean isRoot() {
