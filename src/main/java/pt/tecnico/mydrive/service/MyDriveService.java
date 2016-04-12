@@ -18,38 +18,7 @@ public abstract class MyDriveService {
 		return FenixFramework.getDomainRoot().getMydrive();
 	}
 
-	protected abstract void dispatch() throws MyDriveException;
-
-	/*
-	protected void sessionIsValid(String token) {
-		User user = getMyDrive().getUserByToken(token);
-		if(user == null) {
-			throw new UserIsNotInSessionException(userToken);
-		}
-	}*/
-	
-	/*
-	protected void checkUserIsRoot(String token) {
-		User user = getMyDrive().getMyDriveByToken(token);
-		if(!user.getUsername().equals("root")) {
-			throw new UnauthorizedOperationException();
-		}
-	}*/
-
-	/*
-	protected void updateUserSession(String token) {
-		getMyDrive().updateUserLastAccess(token);
-	}*/
-
-	static User getUser(String token) throws UserDoesNotExistException {
-        User u = getMyDrive().getUser(token);
-        if (u == null)
-            throw new UserDoesNotExistException(token);
-        return u;
-    }
-	
-	
-	
+	protected abstract void dispatch() throws MyDriveException;	
 }
 
 
