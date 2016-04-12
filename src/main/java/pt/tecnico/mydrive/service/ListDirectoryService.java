@@ -17,11 +17,12 @@ public class ListDirectoryService extends MyDriveService{
 	@Override
 	protected void dispatch() throws MyDriveException {
 		// TODO Auto-generated method stub
-	
-		/*User u = getUserFromToken(userToken);
-		Directory d = u.getWorkingDirectory();
+		MyDrive md = MyDrive.getInstance();
+		User u = md.getUserByToken(userToken);
+		Session s = u.getSession();
+		Directory d = s.getWorkingDirectory();
 		if(u.isInSession()){
 			d.listFiles();
-		}*/
+		}
 	}
 }

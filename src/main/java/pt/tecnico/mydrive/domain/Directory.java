@@ -57,10 +57,11 @@ public class Directory extends Directory_Base {
     
     
     //Corrigir isto: verificar se estou a por dir ou files
+    
     public void listFiles() {
 		String[] p = getPath().split("/");
-		String lastDir = p[p.length - 1];
-		File[] files = new File(lastDir).listFiles();
+		String dir = p[p.length - 1];
+		File[] files = new File(dir).listFiles();
 
 		if (files != null) {
 			for (File file : files) {
@@ -72,7 +73,7 @@ public class Directory extends Directory_Base {
 		System.out.println("No files were found."); // corrigir isto
 
 	}
-    /*
+    /* Versao original
     public void listFiles(String path) {
 		String[] p = path.split("/");
 		String lastDir = p[p.length - 1];
