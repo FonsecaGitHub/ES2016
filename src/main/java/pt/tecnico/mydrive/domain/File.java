@@ -32,16 +32,6 @@ public class File extends File_Base {
     	setDatamod(new DateTime());
     	
     }
-    
-    @Override
-    public void setUser(User user) throws UsernameAlreadyExistsException {
-        if (user == null) {
-            super.setUser(null);
-            return;
-        }
-
-        user.addFile(this);
-    }
 
 	public void delete() {
 		deleteDomainObject();
