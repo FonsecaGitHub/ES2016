@@ -24,7 +24,7 @@ public class LoginUserTest extends AbstractServiceTest {
     	LoginUserService service = new LoginUserService(USERNAME, PASSWORD);
         service.execute;
 
-       User user = getUserInSession(service.getUserToken);
+       User user = getUserInSession(service.getUserByToken(token));
        assertEquals(USERNAME, user.getUsername());
        
     }
