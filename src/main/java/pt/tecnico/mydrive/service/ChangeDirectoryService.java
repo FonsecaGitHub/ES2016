@@ -33,7 +33,7 @@ public class ChangeDirectoryService extends MyDriveService{
    			}
    		}
    		else{
-   			throw new DirectoryDoesNotExistException();
+   			throw new DirectoryDoesNotExistException(_path);
    		}
 	}
 		
