@@ -18,10 +18,17 @@ public class CreateUserService extends MyDriveService{
 		_password = password;
 	}
 
+	//VASCONCELOS ADICIONA ESSAS EXCEPCOES E APAGA ESTE COMENTARIO
 	@Override
 	protected void dispatch() throws MyDriveException {
 		MyDrive mydrive = MyDrive.getInstance();
-		
+		User user = mydrive.getSession().getUserFromToken(_userToken);
+		if(user == null || !user.getMytoken().getSession().inSession(user)) {
+			//throw new UserNotInSessionException();	
+		}
+		if(!user.isRoot()) {
+			//throw new UnathorizedOperationException();
+		}
 		mydrive.addUser(new User(mydrive, _newUser, _name, _password));
 	}
 }
