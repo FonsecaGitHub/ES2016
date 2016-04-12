@@ -9,8 +9,7 @@ import org.jdom2.DataConversionException;
 import java.io.File;
 
 public class Directory extends Directory_Base {
-    private String parent;
-    private String children;
+   
 	
 	public Directory() {
 		super();
@@ -46,16 +45,13 @@ public class Directory extends Directory_Base {
     	deleteDomainObject();
     }
 
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
-
-    public void setChildren(String children) {
-        this.children = children;
-    }
-
+   
 
     public void createDir(String dirPath) {
         //TODO
+    }
+    
+    public String getPath(){
+    	return getDir().getPath() + "/" + getName();
     }
 }
