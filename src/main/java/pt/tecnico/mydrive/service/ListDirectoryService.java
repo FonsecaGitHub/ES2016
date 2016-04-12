@@ -20,7 +20,7 @@ public class ListDirectoryService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		User u = md.getUserByToken(userToken);
 		Session s = u.getSession();
-		Directory d = s.getWorkingDirectory();
+		Directory d = s.getWorkDir();
 		if(u.isInSession()){
 			d.listAllFiles();
 		}

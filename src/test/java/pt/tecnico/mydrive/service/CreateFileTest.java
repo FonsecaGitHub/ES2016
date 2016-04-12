@@ -40,7 +40,7 @@ public class CreateFileTest extends AbstractServiceTest {
     
     //corrigir teste
     @Test(expected = FileAlreadyExistsException.class)
-    public void unauthorizedUserCreation() {
+    public void unauthorizedFileCreation() {
         CreateFileService service = new CreateFileService(userToken, name, type, content); 
         service.execute();
     }

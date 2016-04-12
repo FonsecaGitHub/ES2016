@@ -3,10 +3,11 @@ package pt.tecnico.mydrive.domain;
 import org.jdom2.Element;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jdom2.DataConversionException;
 
-import java.io.File;
+
 
 public class Directory extends Directory_Base {
    
@@ -59,19 +60,11 @@ public class Directory extends Directory_Base {
     //Corrigir isto: verificar se estou a por dir ou files
     
     public void listAllFiles() {
-		String[] p = getPath().split("/");
-		String dir = p[p.length - 1];
-		File[] files = new File(dir).listFiles();
-
-		if (files != null) {
-			for (File f: files) {
-				System.out.println(f.getName());
-				//System.out.println(f.getType());
-			}
-			return;
-		}
-		System.out.println("No files were found."); // corrigir isto
-
+    	List<File> files = new ArrayList<File>();
+    	/*while(){
+			System.out.println(f.getName());
+			System.out.println(f.getType());
+		}*/
 	}
 
     public boolean fileExists(int id)
