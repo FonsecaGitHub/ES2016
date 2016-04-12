@@ -54,4 +54,38 @@ public class Directory extends Directory_Base {
     public String getPath(){
     	return getDir().getPath() + "/" + getName();
     }
+    
+    public void listFiles() {
+		String[] p = getPath().split("/");
+		String lastDir = p[p.length - 1];
+		File[] files = new File(lastDir).listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				if (file.isFile()) {
+					System.out.println(file.getName());
+				}
+			}
+			return;
+		}
+		System.out.println("No files were found."); // corrigir isto
+
+	}
+    /*
+    public void listFiles(String path) {
+		String[] p = path.split("/");
+		String lastDir = p[p.length - 1];
+		File[] files = new File(lastDir).listFiles();
+
+		if (files != null) {
+			for (File file : files) {
+				if (file.isFile()) {
+					System.out.println(file.getName());
+				}
+			}
+			return;
+		}
+		System.out.println("No files were found."); // corrigir isto
+
+	}*/
 }
