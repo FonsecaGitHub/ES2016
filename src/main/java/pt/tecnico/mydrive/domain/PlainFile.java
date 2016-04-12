@@ -43,8 +43,7 @@ public class PlainFile extends PlainFile_Base {
     }
     
     @Override
-    public void printType(){
-    	super.printType();
-    	System.out.println("Plain File");
+    public String getType(){
+    	return super.getType() +"Plain File";
     }
 }

@@ -7,8 +7,7 @@ public class Link extends Link_Base {
     }
     
     @Override
-    public void printType(){
-    	super.printType();
-    	System.out.println("Link");
+    public String getType(){
+    	return super.getType() +"Link";
     }
 }

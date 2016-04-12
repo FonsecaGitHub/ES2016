@@ -7,8 +7,7 @@ public class Application extends Application_Base {
     }
     
     @Override
-    public void printType(){
-    	super.printType();
-    	System.out.println("Application");
+    public String getType(){
+    	return super.getType() +"Application";
     }
 }

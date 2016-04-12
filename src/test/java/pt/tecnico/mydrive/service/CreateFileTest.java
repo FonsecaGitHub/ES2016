@@ -10,31 +10,25 @@ import pt.tecnico.mydrive.exception.*;
 
 public class CreateFileTest extends AbstractServiceTest {
 	
-	private long token;
-	
-	private static final int FILE_ID = 10;
-	
-	private static final String FILE_NAME = "";
-	private static final String FILE_TYPE = "";
-	private static final String FILE_CONTENT = "";
+	private long userToken;
+	private String name = "ola";
+	private String type = "PlainFile";
+	private String content = "ola mundo";
 	
     protected void populate() {
-    	File f= new File(FILE_ID, FILE_NAME);
-		// to be done 
-    	//token = addUserToSession();
+    	MyDrive md = MyDrive.getInstance();
+
+    	PlainFile f =  new PlainFile(10, name);
+       
     }
 
    
 
     @Test
     public void success() {
-    	CreateFileService service = new CreateFileService(token,FILE_NAME, FILE_TYPE, FILE_CONTENT);
-		service.execute();
-		
-		File file = getFileByName(FILE_NAME);
-		
-		assertEquals(FILE_NAME, getFileByName(FILE_NAME).getName());
-		assertEquals(FILE_TYPE, file.getType());
-		assertEquals(FILE_CONTENT, file.getContent());
+    	CreateFileService service = new CreateFileService(userToken, name, type, content); 
+    	service.execute();
+    	
+    	
     }
 }

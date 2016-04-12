@@ -66,7 +66,7 @@ public class Directory extends Directory_Base {
 		if (files != null) {
 			for (File f: files) {
 				System.out.println(f.getName());
-				//f.printType();
+				//System.out.println(f.getType());
 			}
 			return;
 		}
@@ -92,8 +92,7 @@ public class Directory extends Directory_Base {
 	}*/
     
     @Override
-    public void printType(){
-    	super.printType();
-    	System.out.println("Directory");
+    public String getType(){
+    	return super.getType() +"Directory";
     }
 }

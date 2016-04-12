@@ -54,7 +54,7 @@ public class File extends File_Base {
 			
 	}
     
-	public void printType(){
-		System.out.print("Este ficheiro é: ");
+	public String getType(){
+		return "Este ficheiro é: ";
 	}
 }
