@@ -108,7 +108,7 @@ relation MyDriveContainsUsers{
 }
 
 relation UserContainsFiles{
-	User playsRole user {
+	User playsRole owner {
 		multiplicity 1..1;
 	} 
 	File playsRole file {

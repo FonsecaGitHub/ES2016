@@ -24,11 +24,18 @@ public class MyDrive extends MyDrive_Base {
 		setNumberOfFiles(new Integer(0));
 		setSession(new Session());
 	}
+	
+	public int getFileCount() {
+		return getNumberOfFiles();
+	}
 
-	public void incNumberOfFiles() {
-		int files = getNumberOfFiles();
-		files++;
-		setNumberOfFiles(files);
+	public int incNumberOfFiles(int inc) {
+		setNumberOfFiles(new Integer(getNumberOfFiles() + inc));
+		return getFileCount();
+	}
+	
+	public int incNumberOfFiles() {
+		return incNumberOfFiles(1);
 	}
 
 	public void incNumberOfUsers() {
