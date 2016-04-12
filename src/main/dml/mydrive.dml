@@ -38,10 +38,11 @@ class PlainFile extends File{
 	String content;	
 }
 
+//atributos da classe apagados pois ja estao definidos
+//noutros sitios directoryname vem de file,
+//parent da relacao directorycontainsfiles
+
 class Directory extends File {
-	String dirName;
-	String children;
-	String parent;
 }
 
 class Link extends PlainFile;
@@ -126,6 +127,9 @@ relation UserHasSession {
 
 relation DirectoryContaisFiles{
 //mudar dir para parent (conselho do prof para conseguirmos identificar)
+//se mudarmos nomes nao esquecer de mudar tanto nas classes 
+//como nos servicos como nos testes
+
 	Directory playsRole dir{
 	    multiplicity 1..1;
 	}
