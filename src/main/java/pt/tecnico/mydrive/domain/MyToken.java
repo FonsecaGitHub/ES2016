@@ -22,4 +22,12 @@ public class MyToken extends MyToken_Base {
     	setSession(null);
     	deleteDomainObject();
     }
+/*
+    public Directory getCurrentDirectory() {
+        return getSession().getWorkDir();
+    }
+
+    public void SetCurrentDirectory(Directory newdir){
+
+    }*/
 }

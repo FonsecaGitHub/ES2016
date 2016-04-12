@@ -65,11 +65,6 @@ public class Session extends Session_Base {
    		return validSession(mt);
   	}
    	
-   	/**
-     * Gera um token resultante da concatenacao do username com um digito aleatorio de 0 a 9.
-     * @param username
-     * @return
-     */
     public long createToken() {
     	return new BigInteger(64, new Random()).longValue();
     }
@@ -134,8 +129,8 @@ public class Session extends Session_Base {
     	return null;
     }
     
-    public Directory getWorkingDirectory(){ 
-    	Directory dir = this.getWorkingDirectory();
+    public Directory getWorkDir(){ 
+    	Directory dir = this.getWorkingdirectory();
     	return dir;
     }
 

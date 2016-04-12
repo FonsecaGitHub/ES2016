@@ -1,35 +1,33 @@
 package pt.tecnico.mydrive.service;
 
 
-import pt.tecnico.mydrive.domain.Directory;
-import pt.tecnico.mydrive.domain.MyToken;
+import pt.tecnico.mydrive.domain.*;
 
 import pt.tecnico.mydrive.exception.*;
 
 public class ChangeDirectoryService extends MyDriveService{
    
-   private long _token;
+   private MyToken _token;
    private String _path;
    private String _newPath;
    
-   public ChangeDirectoryService(long token, String path){
-    		_token= token;
-    		_path= path;
+   public ChangeDirectoryService(MyToken token, String path){
+    		_token = token;
+    		_path = path;
     }
    
    @Override 
    public void dispatch() throws UnauthorizedAccessException , DirectoryDoesNotExistException {
-	
-  /*
-	Directory _dir = _token.getCurrDir();   
+/*	 	
+	Directory _dir = _token.getCurrentDirectory();   
 	if(_token.validate() == true){
    		_token.newTime();
-   		if(_dir.fileExists( _dir.getFilebyPath(_path))== true){
+   		if(_dir.fileExists( _dir.getFileByPath(_path).getId())== true){
    			if(_path.equals(".")){
-   				_newPath=_dir.get_path() + _dir.get_name();
+   				_newPath=_dir.getPath() + _dir.getName();
    			}
    			else{
-   				Directory newDir =(Directory) _dir.getFilebyPath(_path);
+   				Directory newDir =(Directory) _dir.getFileByPath(_path).getId();
    				_token.setCurrDir(newDir);
    				_newPath=newDir.get_path() + "/" + newDir.get_name();
    			}
@@ -39,7 +37,7 @@ public class ChangeDirectoryService extends MyDriveService{
    		}
 	}
    	else{
-   		throw new AccessDeniedException(_token.getUser1().get_name());
+   		throw new UnauthorizedAccessException(_token.getUser1().get_name());
    	}
 		
    }
@@ -47,6 +45,6 @@ public class ChangeDirectoryService extends MyDriveService{
 	  
 	   return _newPath;
    }
-   */
-}
+   
+}*/
 }

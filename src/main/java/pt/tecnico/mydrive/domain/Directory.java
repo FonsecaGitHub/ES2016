@@ -73,6 +73,25 @@ public class Directory extends Directory_Base {
 		System.out.println("No files were found."); // corrigir isto
 
 	}
+
+    public boolean fileExists(int id)
+    {
+        MyDrive md = MyDrive.getInstance();
+        pt.tecnico.mydrive.domain.File file = md.getFile(id);
+        return (file != null);
+    }
+
+    public pt.tecnico.mydrive.domain.File getFileByPath(String path)
+    {
+        for(pt.tecnico.mydrive.domain.File file : getOwnedSet())
+        {
+            if(file.getPath().equals(path))
+                return file;
+        }
+        return null;
+    }
+    
+
     /* Versao original
     public void listFiles(String path) {
 		String[] p = path.split("/");
