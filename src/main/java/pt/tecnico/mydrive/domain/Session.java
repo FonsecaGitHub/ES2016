@@ -35,7 +35,7 @@ public class Session extends Session_Base {
     * nao passaram 2 horas desde o seu ultimo acesso
     * @param token
     */
-   public boolean emSessao(long token)
+   public boolean inSessao(long token)
    {
    	for(MyToken mt : getMytokenSet())
    	{
