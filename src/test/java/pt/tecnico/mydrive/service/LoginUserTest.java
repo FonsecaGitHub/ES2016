@@ -14,7 +14,6 @@ public class LoginUserTest extends AbstractServiceTest {
 	protected static final String PASSWORD = "vasco";
 
     protected void populate() {
-        super.populate();
     	createUserService(USERNAME, PASSWORD, "Joao Vasconcelos");
     }
 
