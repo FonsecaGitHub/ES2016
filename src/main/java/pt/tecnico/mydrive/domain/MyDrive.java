@@ -56,6 +56,15 @@ public class MyDrive extends MyDrive_Base {
 		}
 		return null;
 	}
+	
+	public User getUserByToken(long token) throws UserIsNotInSessionException {
+		for (User user : getUserSet()) {
+			if (user.isInSession() && user.getMytoken().equals(token)) {
+				return user;
+			}
+		}
+		return null;
+	}
 
 	public User getUserApplication(String str) {
 		for(User exist : getUserSet()) {
