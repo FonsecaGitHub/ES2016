@@ -55,6 +55,8 @@ public class Directory extends Directory_Base {
     	return getDir().getPath() + "/" + getName();
     }
     
+    
+    //Corrigir isto: verificar se estou a por dir ou files
     public void listFiles() {
 		String[] p = getPath().split("/");
 		String lastDir = p[p.length - 1];
@@ -62,10 +64,8 @@ public class Directory extends Directory_Base {
 
 		if (files != null) {
 			for (File file : files) {
-				if (file.isFile()) {
-					System.out.println(file.getName());
-					file.printType();
-				}
+				System.out.println(file.getName());
+				//file.printType();
 			}
 			return;
 		}
@@ -89,4 +89,10 @@ public class Directory extends Directory_Base {
 		System.out.println("No files were found."); // corrigir isto
 
 	}*/
+    
+    @Override
+    public void printType(){
+    	super.printType();
+    	System.out.println("Directory");
+    }
 }
