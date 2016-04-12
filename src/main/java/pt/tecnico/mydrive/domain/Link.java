@@ -8,6 +8,6 @@ public class Link extends Link_Base {
     
     @Override
     public String getType(){
-    	return super.getType() +"Link";
+    	return "Link";
     }
 }

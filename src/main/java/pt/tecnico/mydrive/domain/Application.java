@@ -8,6 +8,6 @@ public class Application extends Application_Base {
     
     @Override
     public String getType(){
-    	return super.getType() +"Application";
+    	return "Application";
     }
 }

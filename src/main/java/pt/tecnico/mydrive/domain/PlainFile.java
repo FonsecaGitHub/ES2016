@@ -44,6 +44,6 @@ public class PlainFile extends PlainFile_Base {
     
     @Override
     public String getType(){
-    	return super.getType() +"Plain File";
+    	return "Plain File";
     }
 }

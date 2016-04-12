@@ -93,6 +93,6 @@ public class Directory extends Directory_Base {
     
     @Override
     public String getType(){
-    	return super.getType() +"Directory";
+    	return "Directory";
     }
 }

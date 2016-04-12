@@ -55,6 +55,6 @@ public class File extends File_Base {
 	}
     
 	public String getType(){
-		return "Este ficheiro é: ";
+		return "File";
 	}
 }
