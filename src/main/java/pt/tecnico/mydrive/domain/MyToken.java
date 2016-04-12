@@ -22,12 +22,25 @@ public class MyToken extends MyToken_Base {
     	setSession(null);
     	deleteDomainObject();
     }
-/*
+
     public Directory getCurrentDirectory() {
         return getSession().getWorkDir();
     }
 
-    public void SetCurrentDirectory(Directory newdir){
+    public void setCurrentDirectory(Directory newdir){
+        getSession().setWorkingdirectory(newdir); //pode precisar de mudar o ID mas não sei
+    }
 
-    }*/
+    public boolean isValid(){
+        DateTime now = new DateTime();
+        if (this.getInitialDate().isAfter(now.minusHours(2))) 
+            return true;
+        else
+            return false;
+   }
+
+    public void dateReset(){
+        setInitialDate(new DateTime().plusHours(2));
+    }
+
 }
