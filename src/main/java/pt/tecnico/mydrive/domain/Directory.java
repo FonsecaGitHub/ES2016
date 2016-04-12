@@ -64,6 +64,7 @@ public class Directory extends Directory_Base {
 			for (File file : files) {
 				if (file.isFile()) {
 					System.out.println(file.getName());
+					file.printType();
 				}
 			}
 			return;

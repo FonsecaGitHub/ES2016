@@ -41,4 +41,10 @@ public class PlainFile extends PlainFile_Base {
     public void writeListOfUsers(String fileName) {
         //TODO
     }
+    
+    @Override
+    public void printType(){
+    	super.printType();
+    	System.out.println("Plain File");
+    }
 }

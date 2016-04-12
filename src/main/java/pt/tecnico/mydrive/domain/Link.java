@@ -6,4 +6,9 @@ public class Link extends Link_Base {
         super();
     }
     
+    @Override
+    public void printType(){
+    	super.printType();
+    	System.out.println("Link");
+    }
 }

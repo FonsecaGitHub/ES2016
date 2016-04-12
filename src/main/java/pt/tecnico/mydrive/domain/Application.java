@@ -6,4 +6,9 @@ public class Application extends Application_Base {
         super();
     }
     
+    @Override
+    public void printType(){
+    	super.printType();
+    	System.out.println("Application");
+    }
 }
