@@ -22,7 +22,7 @@ public class ListDirectoryService extends MyDriveService{
 		// TODO Auto-generated method stub
 		MyDrive md = getMyDrive();/*
 		User u = getUserFromToken(userToken);
-		Directory d = u.getHomeDirectory();
+		Directory d = u.getWorkingDirectory();
 		if(u.isInSession()){
 			md.listFiles(d.getPath());
 		}	*/
