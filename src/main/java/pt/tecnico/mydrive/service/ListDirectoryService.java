@@ -22,7 +22,7 @@ public class ListDirectoryService extends MyDriveService{
 		Session s = u.getSession();
 		Directory d = s.getWorkingDirectory();
 		if(u.isInSession()){
-			d.listFiles();
+			d.listAllFiles();
 		}
 	}
 }

@@ -58,15 +58,15 @@ public class Directory extends Directory_Base {
     
     //Corrigir isto: verificar se estou a por dir ou files
     
-    public void listFiles() {
+    public void listAllFiles() {
 		String[] p = getPath().split("/");
 		String dir = p[p.length - 1];
 		File[] files = new File(dir).listFiles();
 
 		if (files != null) {
-			for (File file : files) {
-				System.out.println(file.getName());
-				//file.printType();
+			for (File f: files) {
+				System.out.println(f.getName());
+				//f.printType();
 			}
 			return;
 		}
