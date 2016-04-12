@@ -82,7 +82,7 @@ public class Session extends Session_Base {
      */
     
     public MyToken createSession(String username, String password) throws WrongPasswordException {
-	User user = getMyDrive().getUserApplication(username);
+	User user = getMyDrive().getUser(username);
 	
 	if(user.getPassword().equals(password)) {
 		long token = createToken();

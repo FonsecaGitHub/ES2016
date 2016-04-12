@@ -1,9 +1,5 @@
 package pt.tecnico.mydrive.domain;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +21,8 @@ public class MyDrive extends MyDrive_Base {
 
 	private MyDrive() {
 		setRoot(FenixFramework.getDomainRoot());
+		setNumberOfFiles(new Integer(0));
+		setSession(new Session());
 	}
 
 	public void incNumberOfFiles() {
@@ -38,24 +36,6 @@ public class MyDrive extends MyDrive_Base {
 		users++;
 		setNumberOfUsers(users);
 	}
-
-	private User getUserByName(String name) throws UserDoesNotExistException{
-		for (User user : getUserSet()) {
-			if (user.getName().equals(name)) {
-				return user;
-			}
-		}
-		return null;
-	}
-
-	public User getUserByUsername(String username) throws UserDoesNotExistException {
-		for (User user : getUserSet()) {
-			if (user.getUsername().equals(username)) {
-				return user;
-			}
-		}
-		return null;
-	}
 	
 	public User getUserByToken(long token) throws UserIsNotInSessionException {
 		for (User user : getUserSet()) {
@@ -66,7 +46,7 @@ public class MyDrive extends MyDrive_Base {
 		return null;
 	}
 
-	public User getUserApplication(String str) {
+	public User getUser(String str) {
 		for(User exist : getUserSet()) {
 			if(exist.getUsername().equals(str))
 				return exist;
@@ -74,16 +54,9 @@ public class MyDrive extends MyDrive_Base {
 		return null;
 	}
 
-	
-
-	// PARA APAGAR
-	/*
-	 * public User updateUserLastAccess(String token) { User user =
-	 * getUserByToken(token); user.updateSession(); }
-	 */
 
 	public boolean hasUser(String username) {
-		return getUserByUsername(username) != null;
+		return getUser(username) != null;
 	}
 
 	// @Override
@@ -109,7 +82,7 @@ public class MyDrive extends MyDrive_Base {
 			// JOAO ADICIONA ESTA EXCEPCAO
 			// throw new UnauthorizedOperationException();
 		} else {
-			User userToRemove = getUserByUsername(username);
+			User userToRemove = getUser(username);
 			if (userToRemove == null) {
 				throw new UserDoesNotExistException(username);
 			}
@@ -128,54 +101,15 @@ public class MyDrive extends MyDrive_Base {
 			u.remove();
 	}
 
-	public void removeFileOrDirectory(String stringPath) {
-		Path path = Paths.get(stringPath);
-
-		try {
-			Files.delete(path);
-		} catch (NoSuchFileException x) {
-			System.err.format("%s: no such" + " file or directory%n", path);
-		} catch (DirectoryNotEmptyException x) {
-			System.err.format("%s not empty%n", path);
-		} catch (IOException x) {
-			// File permission problems are caught here.
-			System.err.println(x);
+	public pt.tecnico.mydrive.domain.File getFile(int id) {
+		for(pt.tecnico.mydrive.domain.File file : getFileSet()) {
+			if(file.getId()==id)
+				return file;
 		}
+		return null;
 	}
-
 	
-
-	/*
-	public void xmlImport(String path) {
-		ReadXMLFile reader = new ReadXMLFile();
-
-		reader.read(path);
-	}
-
-	public void xmlExport(String path) {
-		CreateXMLFile creator = new CreateXMLFile();
-
-		creator.create(path);
-	}*/
-
-	/*
-	 * public Document xmlExport() { Element element = new Element("mydrive");
-	 * Document doc = new Document(element);
-	 * 
-	 * for (User u: getUserSet()) //String usr = u.getUsername();
-	 * element.addContent(u.xmlExport());
-	 * 
-	 * return doc; }
-	 */
-
-	// ATENCAO verificar a utilidade deste metodo
-	public File resourceFile(String filename) {
-		log.trace("Resource: " + filename);
-		ClassLoader classLoader = getClass().getClassLoader();
-		if (classLoader.getResource(filename) == null)
-			return null;
-		return new java.io.File(classLoader.getResource(filename).getFile());
-	}
+	//TODO SETPERMISSIONS !!!
 
 	public void addPlainFile(PlainFile plainFile) {
 		//TODO

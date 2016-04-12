@@ -42,7 +42,7 @@ public abstract class MyDriveService {
 	}*/
 
 	static User getUser(String token) throws UserDoesNotExistException {
-        User u = getMyDrive().getUserByUsername(token);
+        User u = getMyDrive().getUser(token);
         if (u == null)
             throw new UserDoesNotExistException(token);
         return u;

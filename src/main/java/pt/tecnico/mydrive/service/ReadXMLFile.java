@@ -69,8 +69,8 @@ public class ReadXMLFile {
                 case("dir") : {
                     pt.tecnico.mydrive.domain.Directory theFile = new Directory(path,name);
                     theFile.setId(Integer.parseInt(id));
-                    theFile.setParent(parent);
-                    theFile.setChildren(children);
+                    //theFile.setParent(parent);
+                    //theFile.setChildren(children);
                     //theFile.setDatamod();
                 }
                 case("link") : {

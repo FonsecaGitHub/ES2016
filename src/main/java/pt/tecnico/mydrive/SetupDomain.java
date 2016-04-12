@@ -61,33 +61,33 @@ public class SetupDomain {
 		}
 		//
 		// 4 - Remover directoria /usr/local/bin
-		String pathToDelete = "/usr/local/bin";
+		/*String pathToDelete = "/usr/local/bin";
 		try {
 			md.removeDirectory(pathToDelete); //TODO
 			md.removeFileOrDirectory(pathToDelete);
 		}
 		catch(DirectoryDoesNotExistException ddne){
 			ddne.printStackTrace();
-		}
+		}*/
 		//
 		// 5 - Imprimir a exportacao em XML do sistema de ficheiros
 		//path to /info folder on your local machine
-		String pathToInfoFolder = "C:\\Users\\sikrew\\essd2016\\mydrive\\info";
+		//String pathToInfoFolder = "C:\\Users\\sikrew\\essd2016\\mydrive\\info";
 		//md.xmlExport(pathToInfoFolder); //TODO UNCOMMENT METHOD IN MD
 		//
 		// 6 - Remover o ficheiro /home/README
-		String plainFileToDelete = "/home/README.txt";
+		/*String plainFileToDelete = "/home/README.txt";
 		try {
 			md.removePlainFile(plainFileToDelete); //TODO
 			md.removeFileOrDirectory(plainFileToDelete);
 		}
 		catch(FileDoesNotExistException fdnee){
 			fdnee.printStackTrace();
-		}
+		}*/
 		//
 		// 7 - Imprimir a listagem simples da directoria /home
-		String pathToList = "/home";
-		md.listFiles(pathToList);
+		//String pathToList = "/home";
+		//md.listFiles(pathToList);
 	}
 	
 	
