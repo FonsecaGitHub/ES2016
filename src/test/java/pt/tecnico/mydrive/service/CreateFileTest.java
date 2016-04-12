@@ -20,7 +20,8 @@ public class CreateFileTest extends AbstractServiceTest {
 	
     protected void populate() {
     	File f= new File(FILE_ID, FILE_NAME);
-		token = addUserToSession();
+		// to be done 
+    	//token = addUserToSession();
     }
 
    

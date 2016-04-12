@@ -11,9 +11,8 @@ public class ListDirectoryService extends MyDriveService{
 	
 	public ListDirectoryService(long token) {
 		super.userToken = token;
-		
-
 	}
+	
 	@Override
 	protected void dispatch() throws MyDriveException {
 		// TODO Auto-generated method stub
@@ -21,6 +20,4 @@ public class ListDirectoryService extends MyDriveService{
 		//md.listFiles(path); TODO
 		
 	}
-	
-	
 }
