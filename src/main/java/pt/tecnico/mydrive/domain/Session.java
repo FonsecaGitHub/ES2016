@@ -133,16 +133,10 @@ public class Session extends Session_Base {
     	}
     	return null;
     }
-	
-	public Directory getWorkingDirectory() {
-		Directory dir = this.getWorkingDirectory();
-		return dir;
-	}
     
     public Directory getWorkingDirectory(){ 
     	Directory dir = this.getWorkingDirectory();
     	return dir;
-
     }
 
 }

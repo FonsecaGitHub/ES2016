@@ -4,22 +4,21 @@ package pt.tecnico.mydrive.service;
 import pt.tecnico.mydrive.domain.Directory;
 import pt.tecnico.mydrive.domain.MyToken;
 
-import pt.tecnico.mydrive.exception.UnauthorizedAccessException;
-import pt.tecnico.mydrive.exception.DirectoryDoesNotExistsException;
+import pt.tecnico.mydrive.exception.*;
 
 public class ChangeDirectoryService extends MyDriveService{
    
-   private Token _token;
+   private long _token;
    private String _path;
    private String _newPath;
    
-   public ChangeDirectoryService(Token token, String path){
+   public ChangeDirectoryService(long token, String path){
     		_token= token;
     		_path= path;
     }
    
    @Override 
-   public void dispatch() throws UnauthorizedAccessException , DirectoryDoesNotExistsException {
+   public void dispatch() throws UnauthorizedAccessException , DirectoryDoesNotExistException {
 	
   /*
 	Directory _dir = _token.getCurrDir();   
@@ -49,4 +48,5 @@ public class ChangeDirectoryService extends MyDriveService{
 	   return _newPath;
    }
    */
+}
 }
