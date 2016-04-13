@@ -1,6 +1,9 @@
 package pt.tecnico.mydrive.domain;
 
 import org.jdom2.Element;
+
+import pt.tecnico.mydrive.exception.FileDoesNotExistException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +71,15 @@ public class Directory extends Directory_Base {
     		System.out.print(f.getContent());*/
     	}
     	return files;
+	}
+    public File getFileByName(String fileName) {
+    	for(File f: getOwnedSet()){
+    		if(f.getName().equals(fileName)){
+    			return f;
+    		}
+    	}
+		throw new FileDoesNotExistException(fileName);
+    	
 	}
 
     public boolean fileExists(int id){

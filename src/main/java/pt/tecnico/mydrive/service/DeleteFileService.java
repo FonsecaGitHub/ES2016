@@ -1,7 +1,9 @@
 package pt.tecnico.mydrive.service;
 
+
+
 //import pt.tecnico.mydrive.exception.*;
-//import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.domain.*;
 
 
 import pt.tecnico.mydrive.exception.FileDoesNotExistException;
@@ -9,12 +11,11 @@ import pt.tecnico.mydrive.exception.MyDriveException;
 
 public class DeleteFileService extends MyDriveService{
 
-	//private String filename;
-	//private long token
-	
-	public DeleteFileService(Long token, String filename) {
-		//this.token = getMyDrive().getUserByToken(token);
-		//this.filename = filename;
+	private String filename;
+
+	public DeleteFileService(Long token, String filename){
+		this.filename = filename;
+		super.userToken = token;
 	}
 	
 	@Override
@@ -35,6 +36,13 @@ public class DeleteFileService extends MyDriveService{
 			throw new FileDoesNotExist(filename);
 		user.RemoveFile(f);
 		}	*/	
+		
+		/*
+		//Sugestão do Feneja
+		MyDrive md = MyDrive.getInstance();
+		User u = md.getUserByToken(userToken);
+		File f = u.getFileByName(filename);
+		u.removeFile(f); //não sei se isto remove mesmo fala com alguem que saiba.*/
 		
 	}
 		
