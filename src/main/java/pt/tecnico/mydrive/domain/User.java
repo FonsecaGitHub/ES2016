@@ -94,6 +94,9 @@ public class User extends User_Base {
 		if (directoryToRemove == null) {
 			throw new DirectoryDoesNotExistException(path);
 		}
+		for (File f : directoryToRemove.getOwnedSet()){
+			f.delete();
+		}
 		directoryToRemove.remove();
 	}
 	

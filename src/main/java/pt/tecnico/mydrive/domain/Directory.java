@@ -45,6 +45,7 @@ public class Directory extends Directory_Base {
     
     
     public void remove(){
+    	setOwner(null);
     	deleteDomainObject();
     }
 
