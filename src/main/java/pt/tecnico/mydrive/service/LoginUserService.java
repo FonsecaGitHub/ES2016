@@ -7,13 +7,13 @@ import pt.tecnico.mydrive.domain.*;
 
 public class LoginUserService extends MyDriveService{
 	
-	private long _token;
-	private String _username;
-	private String _password;
+	private long token;
+	private String username;
+	private String password;
 
 	public LoginUserService(String username, String password) {
-		_username = username;
-		_password = password;
+		this.username = username;
+		this.password = password;
 	}
 
 	@Override
@@ -22,12 +22,19 @@ public class LoginUserService extends MyDriveService{
 		Session session = md.getSession();
 		session.removeInactives();
 		
-		MyToken mt = session.createSession(_username, _password);
+		MyToken mt = session.createSession(this.username, this.password);
 		String tokenString = Long.toString(mt.getToken());
-		_username = tokenString;
+		this.username = tokenString;
+		//TU nem sequer mexes no token. a ultima linha que te deixei embaixo cria te um token para a sessao
+		// para que servem estas duas? 
+		//String tokenString = Long.toString(mt.getToken());
+		//this.username = tokenString;
+		
+		
+		//this.token = session.createToken();
 	}
 
-	public final long getUserToken() {
-		return _token;
+	public final long getToken() {
+		return token;
 	}
 }

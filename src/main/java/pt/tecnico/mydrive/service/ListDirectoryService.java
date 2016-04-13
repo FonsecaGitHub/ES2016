@@ -1,7 +1,5 @@
 package pt.tecnico.mydrive.service;
 
-import pt.tecnico.mydrive.exception.MyDriveException;
-
 import java.util.ArrayList;
 import java.util.List;
 
