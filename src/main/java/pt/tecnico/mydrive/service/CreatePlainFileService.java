@@ -1,7 +1,7 @@
 package pt.tecnico.mydrive.service;
 
 import pt.tecnico.mydrive.domain.*;
-import pt.tecnico.mydrive.exception.MyDriveException;
+import pt.tecnico.mydrive.exception.*;
 
 //import pt.tecnico.mydrive.exception.*;
 //import pt.tecnico.mydrive.domain.*;
@@ -21,11 +21,11 @@ public class CreatePlainFileService extends MyDriveService{
 	
 	//VASCONCELOS EXCEPCOES...
 	@Override
-	protected void dispatch() throws MyDriveException {
+	protected void dispatch() throws MyDriveException, UserIsNotInSessionException {
 		MyDrive md = MyDrive.getInstance();
 		User user = md.getSession().getUserFromToken(userToken);
 		if(user == null || !md.getSession().inSession(user)) {
-			//throw new UserNotInSessionException();
+			throw new UserIsNotInSessionException();
 		}
 		PlainFile plainFile = new PlainFile(md, fileName, fileContent);
 	}

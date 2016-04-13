@@ -17,34 +17,30 @@ public class ChangeDirectoryService extends MyDriveService{
     }
    
    @Override 
-   public void dispatch() throws UnauthorizedAccessException , DirectoryDoesNotExistException {
-/*	 	
-	Directory _dir = _token.getCurrentDirectory();   
-	if(_token.validate() == true){
-   		_token.newTime();
+   public void dispatch() throws DirectoryDoesNotExistException {
+	 	
+	 Directory _dir = _token.getCurrentDirectory();   
+	 if(_token.isValid() == true){
+   		_token.dateReset();
    		if(_dir.fileExists( _dir.getFileByPath(_path).getId())== true){
    			if(_path.equals(".")){
    				_newPath=_dir.getPath() + _dir.getName();
    			}
    			else{
-   				Directory newDir =(Directory) _dir.getFileByPath(_path).getId();
-   				_token.setCurrDir(newDir);
-   				_newPath=newDir.get_path() + "/" + newDir.get_name();
+   				Directory newDir =(Directory) _dir.getFileByPath(_path);
+   				_token.setCurrentDirectory(newDir);
+   				_newPath=newDir.getPath() + "/" + newDir.getName();
    			}
    		}
    		else{
-   			throw new DirectoryUnknownException( _path);
+   			throw new DirectoryDoesNotExistException(_path);
    		}
 	}
-   	else{
-   		throw new UnauthorizedAccessException(_token.getUser1().get_name());
-   	}
 		
-   }
-   public String cd(){
+  }
+   public String changeDir(){
 	  
 	   return _newPath;
    }
    
-}*/
 }

@@ -202,3 +202,13 @@ relation MyDriveContainsFile
 		multiplicity *;
 	}
 }
+
+relation MyDriveContainsPlainFile
+{
+	MyDrive playsRole mydrive {
+   		multiplicity 0..1;
+	}
+	PlainFile playsRole plainfile {
+		multiplicity *;
+	}
+}

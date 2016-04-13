@@ -116,6 +116,13 @@ public class MyDrive extends MyDrive_Base {
 		return null;
 	}
 	
+	public PlainFile getPlainFileByName(String name){
+		for (PlainFile pf : getPlainfileSet()){
+			if(pf.getName().equals(name))
+				return pf;
+		}
+	}
+	
 	//TODO SETPERMISSIONS !!!
 
 	public void addPlainFile(PlainFile plainFile) {
