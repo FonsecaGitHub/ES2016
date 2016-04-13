@@ -4,7 +4,6 @@ import org.jdom2.Element;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.jdom2.DataConversionException;
 
 
@@ -60,24 +59,25 @@ public class Directory extends Directory_Base {
     //Corrigir isto: verificar se estou a por dir ou files
     
     public void listAllFiles() {
-    	List<File> files = new ArrayList<File>();
-    	/*while(){
-			System.out.println(f.getName());
-			System.out.println(f.getType());
-		}*/
+    	for(File f: getOwnedSet()){
+    		System.out.print(f.getType());
+    		//System.out.print(f.getPermissions());
+    		//System.out.print(f.getContent());
+    		System.out.print(f.getOwner().getUsername());
+    		System.out.print(f.getId());
+    		System.out.print(f.getDatamod());
+    		System.out.println(f.getName());
+    	}
 	}
 
-    public boolean fileExists(int id)
-    {
+    public boolean fileExists(int id){
         MyDrive md = MyDrive.getInstance();
         pt.tecnico.mydrive.domain.File file = md.getFile(id);
         return (file != null);
     }
 
-    public pt.tecnico.mydrive.domain.File getFileByPath(String path)
-    {
-        for(pt.tecnico.mydrive.domain.File file : getOwnedSet())
-        {
+    public pt.tecnico.mydrive.domain.File getFileByPath(String path) {
+        for(pt.tecnico.mydrive.domain.File file : getOwnedSet()){
             if(file.getPath().equals(path))
                 return file;
         }
@@ -85,23 +85,6 @@ public class Directory extends Directory_Base {
     }
     
 
-    /* Versao original
-    public void listFiles(String path) {
-		String[] p = path.split("/");
-		String lastDir = p[p.length - 1];
-		File[] files = new File(lastDir).listFiles();
-
-		if (files != null) {
-			for (File file : files) {
-				if (file.isFile()) {
-					System.out.println(file.getName());
-				}
-			}
-			return;
-		}
-		System.out.println("No files were found."); // corrigir isto
-
-	}*/
     
     @Override
     public String getType(){
