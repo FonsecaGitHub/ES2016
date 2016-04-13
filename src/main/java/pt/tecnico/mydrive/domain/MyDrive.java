@@ -117,10 +117,12 @@ public class MyDrive extends MyDrive_Base {
 	}
 	
 	public PlainFile getPlainFileByName(String name){
-		for (PlainFile pf : getPlainfileSet()){
-			if(pf.getName().equals(name))
-				return pf;
+		for (File f : getFileSet()){
+			if(f.getType().equals("Plain File"))
+				if(f.getName().equals(name))
+					return (PlainFile) f;
 		}
+		throw new FileDoesNotExistException(name);
 	}
 	
 	//TODO SETPERMISSIONS !!!
