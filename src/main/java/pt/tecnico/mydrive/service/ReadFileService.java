@@ -1,7 +1,5 @@
 package pt.tecnico.mydrive.service;
 
-import pt.tecnico.mydrive.exception.MyDriveException;
-
 import pt.tecnico.mydrive.exception.*;
 import pt.tecnico.mydrive.domain.*;
 
@@ -9,11 +7,11 @@ import pt.tecnico.mydrive.domain.*;
 public class ReadFileService extends MyDriveService{
 
 	private String name;
-	private String cont;
+	private String content;
 	
 	public ReadFileService(long userToken, String name){
-	this.userToken = userToken;
-	this.name = name;
+		super.userToken = userToken;
+		this.name = name;
 	
 	}
 	
@@ -21,10 +19,10 @@ public class ReadFileService extends MyDriveService{
 	protected void dispatch() throws MyDriveException {
 		MyDrive md = MyDrive.getInstance();
 		PlainFile pf = md.getPlainFileByName(name);
-		cont = pf.getContent();
+		content = pf.getContent();
 	}
-	public final String getCont(){
-		return cont; 
+	public final String getContent(){
+		return content; 
 	}
 	
 }
