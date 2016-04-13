@@ -72,6 +72,7 @@ public class Directory extends Directory_Base {
     	}
     	return files;
 	}
+    
     public File getFileByName(String fileName) {
     	for(File f: getOwnedSet()){
     		if(f.getName().equals(fileName)){
