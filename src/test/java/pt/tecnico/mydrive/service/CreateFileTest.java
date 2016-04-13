@@ -11,33 +11,38 @@ import pt.tecnico.mydrive.exception.*;
 public class CreateFileTest extends AbstractServiceTest {
 	
 	private long userToken;
-	
-	private int id = 10;
 	private String name = "ola";
-	private String type = "File";//verificar qual o type do file
+	private String type = "File";
 	private String content = "ola mundo";
+	private PlainFile f;
+	private Directory d; 
+	private MyDrive md;
+	private Session s;
+	private User u;
+	
 	
     protected void populate() {
-    	MyDrive md = MyDrive.getInstance();
-    	// o que populamos?
-    	File f =  new File(id, name);
-       
+    	md = MyDrive.getInstance();
+    	f = new PlainFile(md, name, content);
+    	u = md.getUserByToken(userToken);
+    	s = u.getSession();
+    	d = s.getWorkDir();
     }
 
-   
-
     @Test
-    public void success() {
+    public void createPlainFile() {
     	CreateFileService service = new CreateFileService(userToken, name, type, content); 
     	service.execute();
     	
-    	File f = new File (id, name);
-    	assertEquals(id, f.getId());
+    	assertEquals(d, f.getDir());
+    	assertEquals(u, f.getOwner());
     	assertEquals(name, f.getName());
     	assertEquals(type, f.getType());
-    	//verifica-se o content? e o token?
+    	assertEquals(content, f.getContent());
+    	
     }
-    
+  
+    //insucesso token invalido, nome maior 
     //corrigir teste
     @Test(expected = FileAlreadyExistsException.class)
     public void unauthorizedFileCreation() {

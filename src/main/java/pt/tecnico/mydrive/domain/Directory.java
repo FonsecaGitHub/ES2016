@@ -58,16 +58,16 @@ public class Directory extends Directory_Base {
     
     //Corrigir isto: verificar se estou a por dir ou files
     
-    public void listAllFiles() {
+    public List<String> listAllFiles() {
+    	List<String> files = new ArrayList<>();
     	for(File f: getOwnedSet()){
-    		System.out.print(f.getType());
-    		//System.out.print(f.getPermissions());
-    		//System.out.print(f.getContent());
-    		System.out.print(f.getOwner().getUsername());
-    		System.out.print(f.getId());
-    		System.out.print(f.getDatamod());
-    		System.out.println(f.getName());
+    		String result = f.toString();    
+    		files.add(result);
+    		/* Nao esquecer o get content e o permission
+    		System.out.print(f.getPermissions());
+    		System.out.print(f.getContent());*/
     	}
+    	return files;
 	}
 
     public boolean fileExists(int id){

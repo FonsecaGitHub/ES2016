@@ -11,16 +11,16 @@ public class CreateFileService extends MyDriveService{
 	private int id;
 	private String name;
 	private String type;
+	private String content;
 
 	public CreateFileService(long userToken, String name, String type, String content) {
 		this.userToken = userToken;
 		this.name = name;
 		this.type = type;
+		this.content = content;
 	}
 	public CreateFileService(long userToken, String name, String type) {
-		this.userToken = userToken;
-		this.name = name;
-		this.type = type;
+		this(userToken, name, type, null);
 		
 	}
 	

@@ -53,4 +53,7 @@ public class File extends File_Base {
 	public String getType(){
 		return "File";
 	}
+	 public String toString(){
+		 return getType() + " " + getOwner().getUsername() + " " + getId() + " " + getDatamod() + " " + getName() + "\n";
+	 }
 }
