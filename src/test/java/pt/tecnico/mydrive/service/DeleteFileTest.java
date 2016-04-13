@@ -12,24 +12,26 @@ public class DeleteFileTest extends AbstractServiceTest {
 
 	private long userToken;
 	
+	private User user;
+	private File f;
+	private Directory dir;
+	
 	private static final int FILE_ID = 20;
 	private static final String FILE_NAME = "Test";
 	private static final String FILE_NAMES = "Dir";
-	private static final String FILE_TYPE = "File";
-	private static final String FILE_TYPE_DIRECTORY = "Directory";
 	private static final String FILE_PATH = "x/y/z";
 	
 	private static final String USER_NAME = "Antonio";
 	private static final String USER_USERNAME = "To";
 	private static final String USER_PASSWORD = "xpto";
-	
+
 	
 	
     protected void populate() {
     	MyDrive md = MyDrive.getInstance();
-    	User user = new User(md, USER_USERNAME, USER_NAME, USER_PASSWORD);
-    	File f = new File(md, FILE_ID, FILE_NAME); //Falta qualquer coisa
-    	Directory dir = new Directory(FILE_PATH, FILE_NAMES);
+    	user = new User(md, USER_USERNAME, USER_NAME, USER_PASSWORD);
+    	f = new File(md, FILE_ID, FILE_NAME); //Falta qualquer coisa
+    	dir = new Directory(FILE_PATH, FILE_NAMES);
     	
     }
 
@@ -43,6 +45,34 @@ public class DeleteFileTest extends AbstractServiceTest {
        assertNull(f.getFile(FILE_ID));    
     }
     
+    @Test
+    public void successdir() {
+       DeleteFileService service = new DeleteFileService(userToken, FILE_NAMES);
+       service.execute();
     
+       assertNull(dir.getFileByPath(FILE_PATH));    
+    } 
     
+    @Test(expected = DirectoryDoesNotExistException.class)
+    public void directorymissing() {
+        DeleteFileService service = new DeleteFileService(userToken, FILE_NAMES);
+        service.execute();
+    
+    }
+  
+    @Test(expected = FileDoesNotExistException.class)
+    public void filemissing() {
+        DeleteFileService service = new DeleteFileService(userToken, FILE_NAME);
+        service.execute();
+    
+    }
+    
+    @Test(expected = UnauthorizedOperationException.class)
+    public void notauthorized() {
+        DeleteFileService service = new DeleteFileService(userToken, FILE_NAME);
+        service.execute();
+    
+    }
+    
+
 }
