@@ -7,13 +7,13 @@ import pt.tecnico.mydrive.exception.*;
 
 public class ChangeDirectoryService extends MyDriveService{
    
-   private MyToken _token;
-   private String _path;
-   private String _newPath;
+   private MyToken token;
+   private String path;
+   private String newPath;
    
    public ChangeDirectoryService(MyToken token, String path){
-    		_token = token;
-    		_path = path;
+    		this.token = token;
+    		this.path = path;
     }
    
    @Override 
