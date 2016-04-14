@@ -1,6 +1,8 @@
 package pt.tecnico.mydrive.domain;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import org.joda.time.*;
 
@@ -8,9 +10,12 @@ import pt.tecnico.mydrive.exception.*;
 
 
 public class Session extends Session_Base {
+
+	private Map<String, String> env;
     
     public Session() {
         super();
+		env = new HashMap<String, String>();
     }    
     
     /**
@@ -82,7 +87,8 @@ public class Session extends Session_Base {
 	if(user.getPassword().equals(password)) {
 		long token = createToken();
 		MyToken mt = new MyToken(token, user);
-		addMytoken(mt);	
+		addMytoken(mt);
+		env.put("user", getUserFromToken(token).getName());
 		return mt;
 	}
 	else
