@@ -24,7 +24,8 @@ public class CreateFileTest extends AbstractServiceTest {
     protected void populate() {
     	md = MyDrive.getInstance();
     	f = new PlainFile(md, name, content);
-    	u = md.getUserByToken(userToken);
+    	//u = md.getUserByToken(userToken);
+    	u = new User(md,"joao","joao","123456");
     	s = u.getSession();
     	d = s.getWorkDir();
     }
