@@ -22,7 +22,9 @@ public class ChangeDirectoryService extends MyDriveService{
 	 Directory dir = token.getCurrentDirectory();   
 	 if(token.isValid() == true){
    		token.dateReset();
+
    		if(dir.fileExists( dir.getFileByPath(path).getId())== true){
+
    			if(path.equals(".")){
    				newPath=dir.getPath() + dir.getName();
    			}
