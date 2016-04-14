@@ -1,9 +1,16 @@
 package pt.tecnico.mydrive.domain;
 
 import org.joda.time.DateTime;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+
+
 
 public class MyToken extends MyToken_Base {
-    
+
+    final static Logger logger = LogManager.getLogger(MyToken.class);
+
     public MyToken() {
         super();
     }
@@ -35,7 +42,8 @@ public class MyToken extends MyToken_Base {
         DateTime now = new DateTime();
         if (this.getInitialDate().isAfter(now.minusHours(2))) 
             return true;
-        else
+
+            logger.warn("Invalid Token", this);
             return false;
    }
 
