@@ -30,7 +30,7 @@ public class DeleteFileTest extends AbstractServiceTest {
     protected void populate() {
     	MyDrive md = MyDrive.getInstance();
     	user = new User(md, USER_USERNAME, USER_NAME, USER_PASSWORD);
-    	f = new File(md, FILE_ID, FILE_NAME); //Falta qualquer coisa
+    	f = new File(md, FILE_ID, FILE_NAME); //Falta qualquer coisa TODO
     	dir = new Directory(FILE_PATH, FILE_NAMES);
     	
     }

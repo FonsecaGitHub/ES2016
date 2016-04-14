@@ -25,7 +25,7 @@ public class CreatePlainFileService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		User user = md.getSession().getUserFromToken(userToken);
 		if(user == null || !md.getSession().inSession(user)) {
-			throw new UserIsNotInSessionException();
+			throw new UserIsNotInSessionException(user.getMyToken());
 		}
 		PlainFile plainFile = new PlainFile(md, fileName, fileContent);
 	}

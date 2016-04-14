@@ -20,15 +20,21 @@ public class File extends File_Base {
 		setId(md.incNumberOfFiles());
 		setMydrive(md); //Adiciona este file a aplicacao
 	}
+
+	public File getFile(int id){ //TODO só aqui para compilar - nao faz sentido
+		return this;
+	}
     
     /**
      * Cria um ficheiro inciando todos os atributos desta
-     * @param rootObject
+	 * @param rootObject
      * @param nome do ficheiro
-     */   
-    public File(MyDrive root, String name) {
+	 * @param id
+	 */
+    public File(MyDrive root, int id, String name) {
     	this(root);
     	setName(name);
+		//TODO something with id
     	setDatamod(new DateTime());
     	
     }

@@ -138,6 +138,8 @@ relation DirectoryContaisFiles{
 	}
 }
 
+/**
+ * este codigo aparenta estar a mais. verifiquem sff.
 relation UserHasHomeDir{
 	User playsRole user {
 		multiplicity 0..1;
@@ -146,7 +148,7 @@ relation UserHasHomeDir{
 	Directory playsRole directory {
 		multiplicity 1..1;
 	}
-}
+}*/
 //Onde diz "RELACAO A MAIS" sao relacao que nao sao necessarias 
 //pois vai se buscar a partir do UserContainsFiles
 

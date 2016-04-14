@@ -22,6 +22,14 @@ public class PlainFile extends PlainFile_Base {
         setName(name);
         setContent(content);
     }
+
+    public PlainFile(){
+        super();
+    }
+
+    public PlainFile(String filepath, String filename){
+        super();
+    }
     
     public void delete() {
     	//TODO ver se e preciso apagar o que esta pra tras

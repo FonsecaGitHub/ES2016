@@ -37,4 +37,10 @@ public class LoginUserService extends MyDriveService{
 	public final long getToken() {
 		return token;
 	}
+
+	//todo ver se isto pertence aqui ou nao
+	public User getUserByToken(long token) {
+		//todo implement and fix
+		return this.getUserByToken(token);
+	}
 }
