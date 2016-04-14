@@ -18,7 +18,22 @@ public class CreateFileService extends MyDriveService{
 		this.name = name;
 		this.type = type;
 		this.content = content;
+
+		switch (type) {
+			case "PlainFile":  ;//todo
+				break;
+			case "Link":  ;//todo
+				break;
+			case "Directory":  ;//todo
+				break;
+			case "Application":  ;//todo
+				break;
+			default:  ;//todo
+				break;
+		}
 	}
+
+
 	public CreateFileService(long userToken, String name, String type) {
 		this(userToken, name, type, null);
 		
