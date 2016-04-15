@@ -1,10 +1,10 @@
 package pt.tecnico.mydrive.exception;
 
-public class WrongFileTypeToReadException extends MyDriveException {
+public class WrongFileTypeToWriteException extends MyDriveException {
 
     private static final long serialVersionUID = 1L;
 
-    public WrongFileTypeToReadException() {
+    public WrongFileTypeToWriteException() {
         super("Can only write to files of type PlainFile");
     }
 }

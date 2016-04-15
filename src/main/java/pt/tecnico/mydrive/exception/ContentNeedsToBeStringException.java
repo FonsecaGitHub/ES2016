@@ -1,10 +1,10 @@
 package pt.tecnico.mydrive.exception;
 
-public class WrongFileTypeToReadException extends MyDriveException {
+public class ContentNeedsToBeStringException extends MyDriveException {
 
     private static final long serialVersionUID = 1L;
 
-    public WrongFileTypeToReadException() {
+    public ContentNeedsToBeStringExceptionException() {
         super("Content needs to be a String type");
     }
 }
