@@ -64,7 +64,7 @@ public class WriteFileTest extends AbstractServiceTest {
     
     @Test(expected = ContentNeedsToBeStringException.class)
     public void ContentNeedsToBeStringException() {
-    	WriteFileService service = new WriteFileService(userToken, filename, 1); 
+    	WriteFileService service = new WriteFileService(userToken, filename, content); 
         service.execute();
     }
 }
