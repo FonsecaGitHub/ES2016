@@ -65,7 +65,7 @@ public class Directory extends Directory_Base {
     public List<String> listAllFiles() {
     	List<String> files = new ArrayList<>();
     	for(File f: getOwnedSet()){
-    		String result = f.toString();    
+    		String result = f.getName();
     		files.add(result);
     		/* Nao esquecer o get content e o permission
     		System.out.print(f.getPermissions());
