@@ -18,14 +18,13 @@ public class ReadFileTest extends AbstractServiceTest {
 	private Directory d;
 	private MyDrive md;
 	private User u;
-	private Session s;
 
     protected void populate() {
     	md = MyDrive.getInstance();
     	f = new PlainFile(md, filename, content);
     	u = new User(md,"kinas","kinas","123456789");
-    	s = u.getSession();
-    	d = s.getWorkDir();
+    	userToken = u.getMyToken();
+    	d = new Directory();
     }
 
    
@@ -36,11 +35,11 @@ public class ReadFileTest extends AbstractServiceTest {
     	ReadFileService service = new ReadFileService(userToken, filename); 
     	service.execute();
     	
-    	assertEquals(d, f.getDir());
     	assertEquals(u, f.getOwner());
     	assertEquals(filename, f.getName());
     	assertEquals(type, f.getType());
     	assertEquals(content, f.getContent());
+    	assertEquals(userToken, f.getOwner().getMyToken());
     }
     
     @Test(expected = FileDoesNotExistException.class)
