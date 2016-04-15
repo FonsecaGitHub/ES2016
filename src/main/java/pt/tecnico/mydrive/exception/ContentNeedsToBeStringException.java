@@ -4,7 +4,7 @@ public class ContentNeedsToBeStringException extends MyDriveException {
 
     private static final long serialVersionUID = 1L;
 
-    public ContentNeedsToBeStringExceptionException() {
+    public ContentNeedsToBeStringException() {
         super("Content needs to be a String type");
     }
 }

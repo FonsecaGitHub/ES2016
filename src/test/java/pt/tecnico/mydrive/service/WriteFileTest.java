@@ -34,7 +34,7 @@ public class WriteFileTest extends AbstractServiceTest {
 
     @Test
     public void WriteFile() {
-    	WriteFileService service = new WriteFileService(userToken, filename, content)); 
+    	WriteFileService service = new WriteFileService(userToken, filename, content); 
     	service.execute();
     	
     	assertEquals(d, f.getDir());
@@ -46,25 +46,25 @@ public class WriteFileTest extends AbstractServiceTest {
     
     @Test(expected = FileDoesNotExistException.class)
     public void FileDoesNotExist() {
-    	WriteFileService service = new WriteFileService(userToken, "FICHEIRINHO", content)); 
+    	WriteFileService service = new WriteFileService(userToken, "FICHEIRINHO", content); 
         service.execute();
     }
     
     @Test(expected = WrongFileTypeToWriteException.class)
     public void WrongFileTypeToRead() {
-    	WriteFileService service = new WriteFileService(userToken, d.getName(), content)); 
+    	WriteFileService service = new WriteFileService(userToken, d.getName(), content); 
         service.execute();
     }
     
     @Test(expected = UnauthorizedOperationException.class)
     public void UnauthorizedOperation() {
-    	WriteFileService service = new WriteFileService(userToken, filename, content)); 
+    	WriteFileService service = new WriteFileService(userToken, filename, content); 
         service.execute();
     }
     
     @Test(expected = ContentNeedsToBeStringException.class)
     public void ContentNeedsToBeStringException() {
-    	WriteFileService service = new WriteFileService(userToken, filename, 1)); 
+    	WriteFileService service = new WriteFileService(userToken, filename, 1); 
         service.execute();
     }
 }
