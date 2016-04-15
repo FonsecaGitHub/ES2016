@@ -22,7 +22,7 @@ public class DeleteFileTest extends AbstractServiceTest {
 	private static final String FILE_PATH = "x/y/z";
 	
 	private static final String USER_NAME = "Antonio";
-	private static final String USER_USERNAME = "To";
+	private static final String USER_USERNAME = "Tonio";
 	private static final String USER_PASSWORD = "xpto";
 
 	
@@ -30,7 +30,7 @@ public class DeleteFileTest extends AbstractServiceTest {
     protected void populate() {
     	MyDrive md = MyDrive.getInstance();
     	user = new User(md, USER_USERNAME, USER_NAME, USER_PASSWORD);
-    	f = new File(md, FILE_ID, FILE_NAME); //Falta qualquer coisa TODO
+    	f = new File(md, FILE_ID, FILE_NAME); 
     	dir = new Directory(FILE_PATH, FILE_NAMES);
     	
     }
