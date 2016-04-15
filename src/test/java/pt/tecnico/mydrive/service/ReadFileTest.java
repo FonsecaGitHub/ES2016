@@ -23,8 +23,6 @@ public class ReadFileTest extends AbstractServiceTest {
     protected void populate() {
     	md = MyDrive.getInstance();
     	f = new PlainFile(md, filename, content);
-    	//u = md.getUserByToken(userToken);
-    	//dir = new Directory();
     	u = new User(md,"kinas","kinas","123456789");
     	s = u.getSession();
     	d = s.getWorkDir();
