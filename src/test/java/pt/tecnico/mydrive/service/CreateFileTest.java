@@ -15,19 +15,15 @@ public class CreateFileTest extends AbstractServiceTest {
 	private String type = "Plain File";
 	private String content = "ola mundo";
 	private PlainFile f;
-	private Directory d; 
 	private MyDrive md;
-	private Session s;
 	private User u;
 	
 	
     protected void populate() {
     	md = MyDrive.getInstance();
-    	f = new PlainFile(md, name, content);
-    	//u = md.getUserByToken(userToken);
-    	u = new User(md,"joao","joao","123456");
-    	s = u.getSession();
-    	d = s.getWorkDir();
+    	f = new PlainFile(md,name,content);
+    	u = new User(md,"joao","feneja","123456");
+    	userToken = u.getMyToken();
     }
 
     @Test
@@ -35,12 +31,11 @@ public class CreateFileTest extends AbstractServiceTest {
     	CreateFileService service = new CreateFileService(userToken, name, type, content); 
     	service.execute();
     	
-    	assertEquals(d, f.getDir());
     	assertEquals(u, f.getOwner());
     	assertEquals(name, f.getName());
     	assertEquals(type, f.getType());
     	assertEquals(content, f.getContent());
-    	
+    	assertEquals(userToken, f.getOwner().getMyToken());
     }
    
    
@@ -64,12 +59,14 @@ public class CreateFileTest extends AbstractServiceTest {
     
     @Test(expected = InvalidFileTypeException.class)
     public void invalidType() {
-        CreateFileService service = new CreateFileService(userToken, name, "Texto", content); 
+    	String invType = "Texto";
+        CreateFileService service = new CreateFileService(userToken, name, invType, content); 
         service.execute();
     }
     @Test(expected = InvalidTokenException.class)
     public void invalidToken() {
-        CreateFileService service = new CreateFileService(10, name, type, content); 
+    	int token =10;
+        CreateFileService service = new CreateFileService(token, name, type, content); 
         service.execute();
     }
 }
