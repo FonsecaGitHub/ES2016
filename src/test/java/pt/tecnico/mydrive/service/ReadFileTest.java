@@ -32,6 +32,7 @@ public class ReadFileTest extends AbstractServiceTest {
 
     @Test
     public void ReadFile() {
+    	/*Dont forget permissions*/
     	ReadFileService service = new ReadFileService(userToken, filename); 
     	service.execute();
     	
