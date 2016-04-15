@@ -15,15 +15,19 @@ public class ReadFileTest extends AbstractServiceTest {
 	private String type = "Plain File";
 	private String content = "ola mundo";
 	private PlainFile f;
-	private Directory dir;
+	private Directory d;
 	private MyDrive md;
 	private User u;
+	private Session s;
 
     protected void populate() {
     	md = MyDrive.getInstance();
     	f = new PlainFile(md, filename, content);
-    	u = md.getUserByToken(userToken);
-    	dir = new Directory();
+    	//u = md.getUserByToken(userToken);
+    	//dir = new Directory();
+    	u = new User(md,"kinas","kinas","123456789");
+    	s = u.getSession();
+    	d = s.getWorkDir();
     }
 
    
@@ -33,6 +37,7 @@ public class ReadFileTest extends AbstractServiceTest {
     	ReadFileService service = new ReadFileService(userToken, filename); 
     	service.execute();
     	
+    	assertEquals(d, f.getDir());
     	assertEquals(u, f.getOwner());
     	assertEquals(filename, f.getName());
     	assertEquals(type, f.getType());
@@ -47,7 +52,7 @@ public class ReadFileTest extends AbstractServiceTest {
     
     @Test(expected = WrongFileTypeToReadException.class)
     public void WrongFileTypeToRead() {
-        ReadFileService service = new ReadFileService(userToken, dir.getName()); 
+        ReadFileService service = new ReadFileService(userToken, d.getName()); 
         service.execute();
     }
     
