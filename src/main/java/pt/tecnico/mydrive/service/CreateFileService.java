@@ -1,9 +1,7 @@
 package pt.tecnico.mydrive.service;
 
-import pt.tecnico.mydrive.exception.MyDriveException;
-
-//import pt.tecnico.mydrive.exception.*;
-//import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.exception.*;
 
 
 public class CreateFileService extends MyDriveService{
@@ -18,31 +16,60 @@ public class CreateFileService extends MyDriveService{
 		this.name = name;
 		this.type = type;
 		this.content = content;
-
-		switch (type) {
-			case "PlainFile":  ;//todo
-				break;
-			case "Link":  ;//todo
-				break;
-			case "Directory":  ;//todo
-				break;
-			case "Application":  ;//todo
-				break;
-			default:  ;//todo
-				break;
-		}
 	}
 
-
-	public CreateFileService(long userToken, String name, String type) {
-		this(userToken, name, type, null);
-		
-	}
 	
 	@Override
-	protected void dispatch() throws MyDriveException {
-		// TODO Auto-generated method stub
-		
+	protected void dispatch() throws FileAlreadyExistsException, DirectoryDoesNotExistException, UserIsNotInSessionException, InvalidFileTypeException {
+		try {
+			MyDrive md = MyDrive.getInstance();
+			User user = md.getSession().getUserFromToken(userToken);
+			if(user == null || !md.getSession().inSession(user)) {
+				throw new UserIsNotInSessionException(user.getMyToken());
+			}
+
+			String tempPath = md.getDirectory().getPath();
+			if(tempPath != null)
+				throw new DirectoryDoesNotExistException(name);
+
+			File temp = md.getPlainFileByName(name);
+			if(temp != null)
+				throw new FileNameAlreadyExistsException(name);
+
+
+			switch (type) {
+				case "Plain File":
+					PlainFile plainFile = new PlainFile(md, name, content);
+					md.addFile(plainFile);
+					break;
+				case "Link":
+					Link link = new Link(content);
+					md.addFile(link);
+					break;
+				case "Directory":
+					Directory dir = new Directory(content, name);
+					md.addFile(dir);
+					break;
+				case "Application":
+					Application app = new Application(content);
+					md.addFile(app);
+					break;
+				default:  throw new InvalidFileTypeException(type);
+			}
+
+		}
+		catch (FileAlreadyExistsException faee) {
+			faee.getMessage();
+		}
+		catch (DirectoryDoesNotExistException ddne) {
+			ddne.getMessage();
+		}
+		catch (InvalidFileTypeException ifte) {
+			ifte.getMessage();
+		}
+		catch (UserIsNotInSessionException uinise) {
+			uinise.getMessage();
+		}
 	}
 	
 	
