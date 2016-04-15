@@ -14,10 +14,9 @@ public class WriteFileService extends MyDriveService{
 	private String type;
 	private String content;
 
-	public WriteFileService(long userToken, String name, String type, String content) {
+	public WriteFileService(long userToken, String name, String content) {
 		this.userToken = userToken;
 		this.name = name;
-		this.type = type;
 		this.content = content;
 	}
 
@@ -61,7 +60,7 @@ public class WriteFileService extends MyDriveService{
 				default:  throw new InvalidFileTypeException(type);
 			}
 
-			user.removeFile(pf);
+			user.removeFile(file);
 
 
 		}
