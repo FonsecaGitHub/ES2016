@@ -163,6 +163,7 @@ public class User extends User_Base {
 		return getUsername().equals("root");
 	}
 
+	//TODO isto retorna um long, mas faz mais sentido retornar o proprio token
 	public long getMyToken() {
 		return myToken;
 	}
@@ -170,4 +171,5 @@ public class User extends User_Base {
 	public void setMyToken(long myToken) {
 		this.myToken = myToken;
 	}
+	
 }
