@@ -32,7 +32,7 @@ public class SetupDomain {
 		// User root faz login na MyDrive
 		LoginUserService rootLogin = new LoginUserService("root", "rootroot");
 		rootLogin.execute();
-		long rootToken = rootLogin.getToken();
+		//long rootToken = rootLogin.getToken();
 		
 		
 	}

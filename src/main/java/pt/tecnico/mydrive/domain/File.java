@@ -4,7 +4,6 @@ import org.jdom2.Element;
 import org.joda.time.DateTime;
 
 import pt.tecnico.mydrive.exception.ImportDocumentException;
-import pt.tecnico.mydrive.exception.UsernameAlreadyExistsException;
 
 public class File extends File_Base {
 	

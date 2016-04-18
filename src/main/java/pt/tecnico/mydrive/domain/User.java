@@ -1,8 +1,6 @@
 package pt.tecnico.mydrive.domain;
 
 import org.jdom2.Element;
-import java.io.UnsupportedEncodingException;
-import org.jdom2.DataConversionException;
 
 import pt.tecnico.mydrive.exception.*;
 

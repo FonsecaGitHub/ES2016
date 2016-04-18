@@ -1,13 +1,10 @@
 package pt.tecnico.mydrive.domain;
 
-import org.jdom2.Element;
-
 import pt.tecnico.mydrive.exception.FileDoesNotExistException;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import org.jdom2.DataConversionException;
+
 
 
 

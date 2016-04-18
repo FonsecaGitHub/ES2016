@@ -6,7 +6,7 @@ import pt.tecnico.mydrive.exception.*;
 
 public class CreateFileService extends MyDriveService{
 	
-	private int id;
+	//private int id;
 	private String name;
 	private String type;
 	private String content;

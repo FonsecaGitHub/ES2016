@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 
 import pt.ist.fenixframework.FenixFramework;
 import pt.ist.fenixframework.core.WriteOnReadError;
-import pt.tecnico.mydrive.MydriveApplication;
+//import pt.tecnico.mydrive.MydriveApplication;
 
 public abstract class AbstractServiceTest {
     protected static final Logger log = LogManager.getRootLogger();

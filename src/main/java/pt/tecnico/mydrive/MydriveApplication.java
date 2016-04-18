@@ -1,7 +1,7 @@
 package pt.tecnico.mydrive;
 
+import java.io.IOException;/*
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.io.File;
 
@@ -13,7 +13,7 @@ import org.jdom2.output.XMLOutputter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import pt.ist.fenixframework.Config;
+import pt.ist.fenixframework.Config;*/
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.FenixFramework;
 import pt.tecnico.mydrive.domain.*;

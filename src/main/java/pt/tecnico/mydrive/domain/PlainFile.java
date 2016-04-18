@@ -1,13 +1,9 @@
 package pt.tecnico.mydrive.domain;
 
 import java.io.*;
-import java.io.File;
-import java.util.Scanner;
-
-import javax.lang.model.element.Element;
 
 import pt.tecnico.mydrive.domain.MyDrive;
-import pt.tecnico.mydrive.domain.User;
+
 
 public class PlainFile extends PlainFile_Base {
 	
