@@ -10,6 +10,7 @@ Especificação e documentação do problema no [pdf](https://fenix.tecnico.ulis
 
 * [First Sprint](https://fenix.tecnico.ulisboa.pt/downloadFile/563568428731757/es16p1.pdf)
 * [Second Sprint](https://fenix.tecnico.ulisboa.pt/downloadFile/563568428736236/es16p2.pdf)
+* [Third Sprint](https://fenix.tecnico.ulisboa.pt/downloadFile/845043405447749/es16p3.pdf)
 
 ## Configuração
 
