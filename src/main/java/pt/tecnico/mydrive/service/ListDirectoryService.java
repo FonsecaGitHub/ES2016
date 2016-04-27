@@ -5,18 +5,24 @@ import java.util.List;
 
 import pt.tecnico.mydrive.exception.*;
 import pt.tecnico.mydrive.domain.*;
+import pt.tecnico.mydrive.dto.FileDTO;
 
 
 public class ListDirectoryService extends MyDriveService{
 	
-	List<String> result;
+	private List<FileDTO> result;
+	private String path;
 	
-	public ListDirectoryService(long token) {
+	public ListDirectoryService(long token, String path) {
 		super.userToken = token;
+		this.path = path;
 		result = new ArrayList<>();
 	}
+	public ListDirectoryService(long token) {
+		this(token, null);
+	}
 	
-	public List<String> getResult(){
+	public List<FileDTO> getResult(){
 		return result;
 	}
 	
@@ -25,9 +31,20 @@ public class ListDirectoryService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		User u = md.getUserByToken(userToken);
 		Session s = u.getSession();
-		Directory d = s.getWorkDir();
+		Directory d;
+		if(path == null){
+			d = s.getWorkDir();
+		}
+		else{
+			d = s.getDirectoryByPath(path);
+		}
 		if(u.isInSession()){
-			this.result = d.listAllFiles();
+			result.add(new FileDTO(d.getType(), d.getOwner().getUsername(), d.getId(), d.getDatamod(), "."));
+			result.add(new FileDTO(d.getDir().getType(), d.getDir().getOwner().getUsername(), d.getDir().getId(), d.getDir().getDatamod(), "..")); 
+			for(File f: d.getOwnedSet()){
+				FileDTO dto= new FileDTO(f.getType(), f.getOwner().getUsername(), f.getId(), f.getDatamod(), f.getName());
+				result.add(dto);
+			}
 		}
 		
 	}

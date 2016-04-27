@@ -1,25 +1,23 @@
 package pt.tecnico.mydrive.presentation;
+import pt.tecnico.mydrive.dto.FileDTO;
 import pt.tecnico.mydrive.service.ListDirectoryService;
 
 public class List extends MdCommand {
 
     public List(Shell sh) {
-    	super(sh, "list", "list persons (or person contacts, given person name");
+    	super(sh, "ls", "list files in the directory");
     }
     public void execute(String[] args) {
-	/*if (args.length == 0) {
-	    ListPeopleService lds = new ListPeopleService();
-	    lds.execute();
-	    for (String s: lds.result())
-		System.out.println(s);
-	    System.out.println("use 'list <name>' to list a person contacts");
-	} else {
-	    ListPersonPhoneBook lpp = new ListPersonPhoneBook(args[0]);
-	    lpp.execute();
-	    System.out.println("Contacts for "+args[0]);
-	    for (ContactDto d: lpp.result())
-		System.out.println(d.getName()+" -> "+d.getPhoneNumber()
-		      + (d.getEmail().length() > 0 ? " " + d.getEmail() : ""));
-	}*/
+    	ListDirectoryService lds;
+    	long token = ((MdShell) shell()).getUserToken();
+		if (args.length == 0) {
+    		lds = new ListDirectoryService(token);
+    	} else {
+    		lds = new ListDirectoryService(token, args[0]);
+    	}
+    	
+    	lds.execute();
+    	for (FileDTO dto: lds.getResult())
+    		System.out.println(dto.getType()+ dto.getUsername() + dto.getId()+dto.getDate().toString()+ dto.getName());
     }
 }

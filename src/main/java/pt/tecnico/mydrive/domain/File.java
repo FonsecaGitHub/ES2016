@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 
 import pt.tecnico.mydrive.exception.ImportDocumentException;
 
-public class File extends File_Base {
+public abstract class File extends File_Base {
 	
 	protected File() { /* for derived classes */ }
 	
@@ -56,10 +56,5 @@ public class File extends File_Base {
 			
 	}
     
-	public String getType(){
-		return "File";
-	}
-	 public String toString(){
-		 return getType() + " " + getOwner().getUsername() + " " + getId() + " " + getDatamod() + " " + getName() + "\n";
-	 }
+	public abstract String getType();
 }

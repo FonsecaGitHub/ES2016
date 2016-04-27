@@ -87,7 +87,7 @@ public class Directory extends Directory_Base {
         return (file != null);
     }
 
-    public pt.tecnico.mydrive.domain.File getFileByPath(String path) {
+    public File getFileByPath(String path) {
         for(pt.tecnico.mydrive.domain.File file : getOwnedSet()){
             if(file.getPath().equals(path))
                 return file;
@@ -95,7 +95,11 @@ public class Directory extends Directory_Base {
         return null;
     }
     
-
+    //CORRIGIR ISTO E POR BEM; ESTA AQUI SO PARA NAO ATORFIAR A MALTA
+    public Directory getDirectoryByPath(String path){ 
+    	Directory dir=new Directory(path,"");
+    	return dir;
+    }
     
     @Override
     public String getType(){

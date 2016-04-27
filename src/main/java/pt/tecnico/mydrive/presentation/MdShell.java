@@ -2,19 +2,41 @@ package pt.tecnico.mydrive.presentation;
 
 public class MdShell extends Shell {
 
-  public static void main(String[] args) throws Exception {
-    MdShell sh = new MdShell();
-    sh.execute();
-  }
+	private long userToken;
+	private String userName; 
+	//Segundo o stor precisamos de um mapa de tokens e usernames;
+	
+	
+	public static void main(String[] args) throws Exception {
+		MdShell sh = new MdShell();
+		sh.execute();
+	}
 
-  public MdShell() { // add commands here
-    super("MyDrive");
-   /* new CreatePerson(this);
-    new CreateContact(this);
-    new RemovePerson(this);
-    new RemoveContact(this);
-    new List(this);
-    new Import(this);
-    new Export(this);*/
-  }
+	public MdShell() { // add commands here
+		super("MyDrive");
+		new Login(this);
+		new ChangeWorkingDirectory(this);
+		new List(this);
+		new Execute(this);
+		new Write(this);
+		new Environment(this);
+		new Key(this);
+	}
+	
+	public long getUserToken() {
+		return userToken;
+	}
+
+	public void setUserToken(long userToken) {
+		this.userToken = userToken;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 }

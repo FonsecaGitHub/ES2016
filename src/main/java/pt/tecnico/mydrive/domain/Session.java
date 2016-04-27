@@ -10,7 +10,8 @@ import pt.tecnico.mydrive.exception.*;
 
 
 public class Session extends Session_Base {
-
+ 
+	//ir para o dml
 	private Map<String, String> env;
     
     public Session() {
@@ -139,5 +140,7 @@ public class Session extends Session_Base {
     	Directory dir = this.getWorkingdirectory();
     	return dir;
     }
-
+    public Directory getDirectoryByPath(String path){ 
+    	return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
+    }
 }
