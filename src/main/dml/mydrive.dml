@@ -123,7 +123,7 @@ relation UserHasSession {
   }
 }
 
-relation DirectoryContaisFiles{
+relation DirectoryContainsFiles{
 //mudar dir para parent (conselho do prof para conseguirmos identificar)
 //se mudarmos nomes nao esquecer de mudar tanto nas classes 
 //como nos servicos como nos testes

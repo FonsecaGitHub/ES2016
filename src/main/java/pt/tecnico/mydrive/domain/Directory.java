@@ -97,9 +97,13 @@ public class Directory extends Directory_Base {
     
     //CORRIGIR ISTO E POR BEM; ESTA AQUI SO PARA NAO ATORFIAR A MALTA
     public Directory getDirectoryByPath(String path){ 
-    	Directory dir=new Directory(path,"");
-    	return dir;
-    }
+    	for(File f : getOwnedSet()){
+            if(f.getPath().equals(path))
+            	if(f.getType().equals("Directory"))
+            			return (Directory) f;
+        }
+         return null;
+     }
     
     @Override
     public String getType(){
