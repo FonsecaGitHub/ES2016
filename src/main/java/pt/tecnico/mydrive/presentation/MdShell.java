@@ -4,7 +4,6 @@ public class MdShell extends Shell {
 
 	private long userToken;
 	private String userName; 
-	//Segundo o stor precisamos de um mapa de tokens e usernames;
 	
 	
 	public static void main(String[] args) throws Exception {

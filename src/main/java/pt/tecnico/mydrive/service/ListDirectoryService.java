@@ -38,6 +38,7 @@ public class ListDirectoryService extends MyDriveService{
 		else{
 			d = s.getDirectoryByPath(path);
 		}
+		//ver se esta em sessao:DOMINIOOOOOO
 		if(u.isInSession()){
 			result.add(new FileDTO(d.getType(), d.getOwner().getUsername(), d.getId(), d.getDatamod(), "."));
 			result.add(new FileDTO(d.getDir().getType(), d.getDir().getOwner().getUsername(), d.getDir().getId(), d.getDir().getDatamod(), "..")); 
