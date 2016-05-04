@@ -89,8 +89,9 @@ public class Directory extends Directory_Base {
 
     public File getFileByPath(String path) {
         for(pt.tecnico.mydrive.domain.File file : getOwnedSet()){
-            if(file.getPath().equals(path))
-                return file;
+            if(file.getPath().equals(path)){
+        			return (Directory) file;
+            }
         }
         return null;
     }
@@ -104,6 +105,11 @@ public class Directory extends Directory_Base {
         }
          return null;
      }
+    
+    @Override
+    public void execute(User u, List<String> args){
+    	
+    }
     
     @Override
     public String getType(){

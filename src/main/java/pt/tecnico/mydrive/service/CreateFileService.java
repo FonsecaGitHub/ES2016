@@ -25,6 +25,7 @@ public class CreateFileService extends MyDriveService{
 			MyDrive md = MyDrive.getInstance();
 			User user = md.getSession().getUserFromToken(userToken);
 			if(user == null || !md.getSession().inSession(user)) {
+				//user a null por isso no test lança null pointer exception
 				throw new UserIsNotInSessionException(user.getMyToken());
 			}
 

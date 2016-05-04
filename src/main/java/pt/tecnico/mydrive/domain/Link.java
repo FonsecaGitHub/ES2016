@@ -1,5 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
+import java.util.List;
+
 public class Link extends Link_Base {
     
     public Link() {
@@ -10,6 +12,13 @@ public class Link extends Link_Base {
         super();
         this.setContent(content);
     }
+    
+    
+    @Override
+    public void execute(User u, List<String> args){
+    	
+    }
+
     
     @Override
     public String getType(){

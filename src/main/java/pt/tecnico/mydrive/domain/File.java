@@ -1,5 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
+import java.util.List;
+
 import org.jdom2.Element;
 import org.joda.time.DateTime;
 
@@ -55,6 +57,7 @@ public abstract class File extends File_Base {
         return element;
 			
 	}
-    
+	public abstract void execute(User u, List<String> args);
+	
 	public abstract String getType();
 }

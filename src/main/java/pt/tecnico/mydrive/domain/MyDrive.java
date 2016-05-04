@@ -46,7 +46,7 @@ public class MyDrive extends MyDrive_Base {
 	
 	public User getUserByToken(long token) throws UserIsNotInSessionException {
 		for (User user : getUserSet()) {
-			if (user.isInSession() && user.getMytoken().equals(token)) {
+			if (user.isInSession() && user.getMytoken().getToken() == token) {
 				return user;
 			}
 		}
@@ -124,6 +124,18 @@ public class MyDrive extends MyDrive_Base {
 		}
 		throw new FileDoesNotExistException(name);
 	}
+	
+	
+	public File getFileByPath(String path) {
+        for(File file : getFileSet()){
+            if(file.getPath().equals(path)){
+        			return file;
+            }
+        }
+        return null;
+    }
+	
+	
 	
 	//TODO SETPERMISSIONS !!!
 

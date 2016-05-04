@@ -18,6 +18,7 @@ public class List extends MdCommand {
     	
     	lds.execute();
     	for (FileDTO dto: lds.getResult())
-    		System.out.println(dto.getType()+ dto.getUsername() + dto.getId()+dto.getDate().toString()+ dto.getName());
+    		System.out.println(dto.getType() + " " + dto.getUsername() 
+    			+ " " + dto.getId() + " " + dto.getDate().toString() + " " + dto.getName());
     }
 }
