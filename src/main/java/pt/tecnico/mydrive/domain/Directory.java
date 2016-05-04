@@ -1,6 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
 import pt.tecnico.mydrive.exception.FileDoesNotExistException;
+import pt.tecnico.mydrive.exception.UserIsNotInSessionException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +109,9 @@ public class Directory extends Directory_Base {
     
     @Override
     public void execute(User u, List<String> args){
-    	
+    	if (!u.isInSession()) {
+			throw new UserIsNotInSessionException(u.getMyToken());
+		}
     }
     
     @Override
