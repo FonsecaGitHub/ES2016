@@ -73,6 +73,13 @@ public class Session extends Session_Base {
    		MyToken mt = user.getMytoken();
    		return validSession(mt);
   	}
+   
+   	/*
+   	public String getUsersInSession() {
+   		for(User user : getUserInSessionSet()) {
+   			
+   		}
+   	}*/
    	
     public long createToken() {
     	return new BigInteger(64, new Random()).longValue();

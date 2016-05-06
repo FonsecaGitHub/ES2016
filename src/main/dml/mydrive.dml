@@ -76,17 +76,6 @@ relation MyDriveContainsSession
 	}
 }
 
-relation SessionContainsMyToken
-{
-	Session playsRole session {
-		multiplicity 0..1;
-	}
-
-	MyToken playsRole mytoken {
-		multiplicity *;
-	}
-}
-
 relation DomainRootHasMyDrive {
   .pt.ist.fenixframework.DomainRoot playsRole root {
     multiplicity 0..1;
@@ -114,13 +103,24 @@ relation UserContainsFiles{
 	}
 }
 
-relation UserHasSession {
-  User playsRole userInSession {
-    multiplicity 1..1;
-  }
-  Session playsRole session {
-    multiplicity 0..1;
-  }
+relation SessionContainsMyToken
+{
+	Session playsRole session {
+		multiplicity 0..1;
+	}
+
+	MyToken playsRole mytoken {
+		multiplicity *;
+	}
+}
+
+relation SessionContainsUser {
+	Session playsRole session {
+    	multiplicity 0..1;
+  	}
+  	User playsRole userInSession {
+    	multiplicity *;
+  	} 
 }
 
 relation DirectoryContainsFiles{
