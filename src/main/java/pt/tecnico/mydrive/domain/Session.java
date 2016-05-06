@@ -30,7 +30,6 @@ public class Session extends Session_Base {
      * @param token
      * @return
      */
-   
    public boolean validSession(MyToken token){
 	   DateTime now = new DateTime();
 		if (token.getInitialDate().isAfter(now.minusHours(2)))	
@@ -85,7 +84,6 @@ public class Session extends Session_Base {
      * @param username, password
      * @return
      */
-    
     public MyToken createSession(String username, String password) throws WrongPasswordException {
 	User user = getMyDrive().getUser(username);
 	
@@ -140,10 +138,20 @@ public class Session extends Session_Base {
     	return null;
     }
     
+    /**
+     * Retorna a directoria que esta actualmente em sessao.
+     * @return
+     */
     public Directory getWorkDir(){ 
     	Directory dir = this.getWorkingdirectory();
     	return dir;
     }
+    
+    /**
+     * Retorna uma directoria a partir de uma String de path.
+     * @param path
+     * @return
+     */
     public Directory getDirectoryByPath(String path){ 
     	return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
     }

@@ -46,12 +46,6 @@ public class Directory extends Directory_Base {
     	setOwner(null);
     	deleteDomainObject();
     }
-
-   
-
-    public void createDir(String dirPath) {
-        //TODO
-    }
     
     public String getPath(){
     	return getDir().getPath() + "/" + getName();
