@@ -13,6 +13,12 @@ public class ListDirectoryService extends MyDriveService{
 	private List<FileDTO> result;
 	private String path;
 	
+	/**
+	 * Efetua a listagem completa 
+	 * da diretoria corrente.
+	 * @param token
+	 * @param path
+	 */
 	public ListDirectoryService(long token, String path) {
 		super.userToken = token;
 		this.path = path;

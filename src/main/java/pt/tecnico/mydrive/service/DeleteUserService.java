@@ -11,6 +11,11 @@ public class DeleteUserService extends MyDriveService{
 	private String username;
 	private long token;
 
+	/**
+	 * Apaga um utilizador do MyDrive.
+	 * @param userToken
+	 * @param usernameToDelete
+	 */
 	public DeleteUserService(long userToken, String usernameToDelete) {
 		token = userToken;
 		username = usernameToDelete;

@@ -14,6 +14,13 @@ public class WriteFileService extends MyDriveService{
 	private String type;
 	private String content;
 
+	/**
+	 * Altera o conteudo de um ficheiro de texto, 
+	 * nao de uma directoria.
+	 * @param userToken
+	 * @param name
+	 * @param content
+	 */
 	public WriteFileService(long userToken, String name, String content) {
 		this.userToken = userToken;
 		this.name = name;

@@ -14,6 +14,12 @@ public class ExecuteFile extends MyDriveService{
 	private String path;
 	private List<String> args;
 
+	/**
+	 * Executa um ficheiro de texto.
+	 * @param userToken
+	 * @param path
+	 * @param args
+	 */
 	public ExecuteFile(long userToken, String path, List<String> args) {
 		this.userToken = userToken;
 		this.path = path;

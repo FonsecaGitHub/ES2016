@@ -14,6 +14,10 @@ public class Session extends Session_Base {
 	//ir para o dml
 	private Map<String, String> env;
     
+	/**
+	 * Classe Session faz o papel de Login.
+	 * 
+	 */
     public Session() {
         super();
 		env = new HashMap<String, String>();

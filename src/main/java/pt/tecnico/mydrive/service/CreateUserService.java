@@ -11,6 +11,13 @@ public class CreateUserService extends MyDriveService{
 	private String _name;
 	private String _password;
 
+	/**
+	 * Cria e adiciona um utilizador ao MyDrive.
+	 * @param userToken
+	 * @param newUsername
+	 * @param name
+	 * @param password
+	 */
 	public CreateUserService(long userToken, String newUsername, String name, String password) {
 		_userToken = userToken;
 		_newUser = newUsername;

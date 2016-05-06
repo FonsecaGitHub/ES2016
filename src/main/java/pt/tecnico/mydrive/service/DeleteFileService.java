@@ -9,6 +9,11 @@ public class DeleteFileService extends MyDriveService{
 
 	private String filename;
 	
+	/**
+	 * Apaga um ficheiro do MyDrive.
+	 * @param token
+	 * @param filename
+	 */
 	public DeleteFileService(Long token, String filename){
 		super.userToken = token;
 		this.filename = filename;

@@ -9,7 +9,8 @@ import pt.tecnico.mydrive.exception.ImportDocumentException;
 
 public abstract class File extends File_Base {
 	
-	protected File() { /* for derived classes */ }
+	protected File() { 
+	}
 	
 	/**
 	 * Cria um ficheiro iniciando apenas o id, e adiciona-a a aplicacao

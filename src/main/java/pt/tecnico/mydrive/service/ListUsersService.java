@@ -6,11 +6,14 @@ import java.util.Collections;
 
 import pt.tecnico.mydrive.domain.*;
 
-
 public class ListUsersService extends MyDriveService{
 
 	private List<String> registeredUsers;
 
+	/**
+	 * Devolve uma lista com os nomes
+	 * de utilizadores registados.
+	 */
     public ListUsersService() {
     }
 

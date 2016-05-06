@@ -10,9 +10,13 @@ public class LoginUserService extends MyDriveService{
 	private long token;
 	private String username;
 	private String password;
-	
 	private MyToken mt;
 
+	/**
+	 * Cria uma sessao para um utilizador.
+	 * @param username
+	 * @param password
+	 */
 	public LoginUserService(String username, String password) {
 		this.username = username;
 		this.password = password;

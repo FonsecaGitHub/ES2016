@@ -1,6 +1,5 @@
 package pt.tecnico.mydrive.service;
 
-//import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
@@ -24,13 +23,15 @@ public class DeleteFileTest extends AbstractServiceTest {
 	private static final String USER_NAME = "Antonio";
 	private static final String USER_USERNAME = "Tonio";
 	private static final String USER_PASSWORD = "xpto";
+	
+	private static final String FILE_CONTENT = "O meu cao comeu o TPC";
 
 	
 	
     protected void populate() {
     	MyDrive md = MyDrive.getInstance();
     	user = new User(md, USER_USERNAME, USER_NAME, USER_PASSWORD);
-    	f = new File(md, FILE_ID, FILE_NAME); 
+    	f = new PlainFile(md, FILE_NAME, FILE_CONTENT); 
     	dir = new Directory(FILE_PATH, FILE_NAMES);
     	
     }

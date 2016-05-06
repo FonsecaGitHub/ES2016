@@ -1,4 +1,4 @@
- package pt.tecnico.mydrive.integration;
+/*package pt.tecnico.mydrive.integration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -27,6 +27,6 @@ public class SystemTest extends AbstractServiceTest {
         new RemoveContact(sh).execute(new String[] { "Xana", "Xico" } );
         new RemovePerson(sh).execute(new String[] { "Sofia" } );
         new Export(sh).execute(new String[] { } );
-	*/
+	
     }
-}
+}*/

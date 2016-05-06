@@ -11,6 +11,15 @@ public class CreateFileService extends MyDriveService{
 	private String type;
 	private String content;
 
+	/**
+	 * Cria um ficheiro na directoria corrente.
+	 * Analisa os argumentos recebidos e executa 
+	 * o tipo de ficheiro especifico.
+	 * @param userToken
+	 * @param name
+	 * @param type
+	 * @param content
+	 */
 	public CreateFileService(long userToken, String name, String type, String content) {
 		this.userToken = userToken;
 		this.name = name;

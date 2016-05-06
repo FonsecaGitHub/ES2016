@@ -11,6 +11,11 @@ public class ChangeDirectoryService extends MyDriveService{
    private String path;
    private String newPath;
    
+   /**
+    * Altera a directoria corrente da sessao.
+    * @param token
+    * @param path
+    */
    public ChangeDirectoryService(MyToken token, String path){
     		this.token = token;
     		this.path = path;

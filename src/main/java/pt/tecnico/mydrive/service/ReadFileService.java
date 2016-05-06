@@ -9,6 +9,12 @@ public class ReadFileService extends MyDriveService{
 	private String name;
 	private String content;
 	
+	/**
+	 * Le o conteudo de um ficheiro de texto, 
+	 * nao de uma directoria.
+	 * @param userToken
+	 * @param name
+	 */
 	public ReadFileService(long userToken, String name){
 		super.userToken = userToken;
 		this.name = name;
