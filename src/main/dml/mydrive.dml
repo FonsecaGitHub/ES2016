@@ -114,12 +114,13 @@ relation SessionContainsMyToken
 	}
 }
 
+/*um user pode ter varias sessoes*/
 relation SessionContainsUser {
 	Session playsRole session {
     	multiplicity 0..1;
   	}
   	User playsRole userInSession {
-    	multiplicity *;
+    	multiplicity 1..1;
   	} 
 }
 
