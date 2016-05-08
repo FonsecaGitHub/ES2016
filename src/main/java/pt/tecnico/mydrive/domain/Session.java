@@ -26,7 +26,11 @@ public class Session extends Session_Base {
     /**
      * Funcao que verifica se a sessao e valida, ao verificar se a
      * data de inicio do TokenAcesso dado esta compreendida no intervalo
-     * da data imediata (agora) e ha duas horas atras (agora -2 horas)
+     * da data imediata (agora) e o tempo respectivo para cada tipo de utilizador
+     * Utilizador root: 10 minutos
+     * Utilizador guest: sem tempo definido
+     * Qualquer outro utilizador: 2 horas
+     * 
      * @param token
      * @return
      */
