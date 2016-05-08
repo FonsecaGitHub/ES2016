@@ -16,6 +16,10 @@ class User {
 	String mask;
 }
 
+class RootUser extends User;
+
+class GuestUser extends User;
+
 //Professor disse para eliminar esta classe
 //E juntar o codigo de MyToken a classe session
 class MyToken {
