@@ -9,5 +9,4 @@ public class GuestUser extends GuestUser_Base {
         setPassword("");
         setMask("rxwdr-x-");
     }
-    
 }
