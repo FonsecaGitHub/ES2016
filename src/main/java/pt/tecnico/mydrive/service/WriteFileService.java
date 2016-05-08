@@ -13,6 +13,7 @@ public class WriteFileService extends MyDriveService{
 	private String name;
 	private String type;
 	private String content;
+	private String path;
 
 	/**
 	 * Altera o conteudo de um ficheiro de texto, 
@@ -21,12 +22,12 @@ public class WriteFileService extends MyDriveService{
 	 * @param name
 	 * @param content
 	 */
+	//TODO em vez de um name passa a receber um path
 	public WriteFileService(long userToken, String name, String content) {
 		this.userToken = userToken;
 		this.name = name;
 		this.content = content;
 	}
-
 
 	protected void dispatch() throws FileAlreadyExistsException, DirectoryDoesNotExistException, UserIsNotInSessionException, InvalidFileTypeException {
 		try {
