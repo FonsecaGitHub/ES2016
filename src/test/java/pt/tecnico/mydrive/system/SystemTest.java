@@ -1,32 +1,31 @@
-/*package pt.tecnico.mydrive.integration;
+package pt.tecnico.mydrive.system;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-//TODO meter directoria dos testes
-//import pt.tecnico.mydrive.service.AbstractServiceTest ;
+import pt.tecnico.mydrive.service.AbstractServiceTest ;
 import pt.tecnico.mydrive.presentation.*;
 
 public class SystemTest extends AbstractServiceTest {
 
-    private PbShell sh;
+    private MdShell sh;
 
     protected void populate() {
-        sh = new PbShell();
+        sh = new MdShell();
     }
 
     @Test
     public void success() {
-        //exemplos do phonebook
-	/*
-	new Import(sh).execute(new String[] { "other.xml" } );
-        new CreatePerson(sh).execute(new String[] { "Rui" } );
-        new CreateContact(sh).execute(new String[] { "Rui", "SOS", "112" } );
+    	//new Import(sh).execute(new String[] { "other.xml" } );
+        new Login(sh).execute(new String[] { "Miguel", "password" } );
+        new Key(sh).execute(new String[] { } );
+        new Key(sh).execute(new String[] { "Joao", "iloveist" } );
+        //new ChangeWorkingDirectory(sh).execute(new String[] { "/home/test2" } );
         new List(sh).execute(new String[] { } );
-        new RemoveContact(sh).execute(new String[] { "Xana", "Xico" } );
-        new RemovePerson(sh).execute(new String[] { "Sofia" } );
-        new Export(sh).execute(new String[] { } );
+        new Write(sh).execute(new String[] { "/home/test/file.txt", "Hello World" } );
+        //new Environment(sh).execute(new String[] { } );
+        
 	
     }
-}*/
+}
