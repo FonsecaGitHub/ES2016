@@ -32,10 +32,21 @@ public class Session extends Session_Base {
      */
    public boolean validSession(MyToken token){
 	   DateTime now = new DateTime();
-		if (token.getInitialDate().isAfter(now.minusHours(2)))	
-			return true;
-		else
-			return false;
+	   
+	   User user = token.getUser();
+	   String username = user.getUsername();
+	   
+	   if(username == "root") {
+		   if (token.getInitialDate().isAfter(now.minusMinutes(10)))	
+				return true;
+		   else
+			   return false;
+	   } else if (username == "nobody") {
+		   return true;
+	   } else if (token.getInitialDate().isAfter(now.minusHours(2)))
+		   return true;
+	   else
+		   return false;
    }
    
    /**

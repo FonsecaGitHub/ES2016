@@ -1,5 +1,7 @@
 package pt.tecnico.mydrive.domain;
 
+import org.joda.time.DateTime;
+
 public class RootUser extends RootUser_Base {
     
     public RootUser() {
@@ -8,5 +10,4 @@ public class RootUser extends RootUser_Base {
         setName("Super User");
         setPassword("***");
     }
-    
 }
