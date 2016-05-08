@@ -1,7 +1,5 @@
 package pt.tecnico.mydrive.presentation;
 
-import pt.tecnico.mydrive.domain.MyDrive;
-import pt.tecnico.mydrive.presentation.MdShell;
 import pt.tecnico.mydrive.service.WriteFileService;
 
 public class Write extends MdCommand {

@@ -1,5 +1,10 @@
 package pt.tecnico.mydrive.presentation;
 
+import java.util.Arrays;
+import java.util.List;
+
+import pt.tecnico.mydrive.service.ExecuteFile;
+
 public class Execute extends MdCommand {
 
 	//TODO
@@ -20,9 +25,12 @@ public class Execute extends MdCommand {
      long token = shell.getUserToken();
      shell = null;
      
+     String [] items = args[1].split(",");
+     List<String> container = Arrays.asList(items);
+     
      if(args.length < 2)
       throw new RuntimeException("USAGE: "+name()+" <path> <args>");
-     new ExecuteFile(token,args[0], args[1]).execute();
+     new ExecuteFile(token,args[0], container).execute();
         
     }
 }
