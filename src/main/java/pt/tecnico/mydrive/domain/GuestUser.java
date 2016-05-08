@@ -7,6 +7,7 @@ public class GuestUser extends GuestUser_Base {
         setUsername("nobody");
         setName("Guest");
         setPassword("");
+        setMask("rxwdr-x-");
     }
     
 }

@@ -9,5 +9,6 @@ public class RootUser extends RootUser_Base {
         setUsername("root");
         setName("Super User");
         setPassword("***");
+        setMask("rwxdr-x-");
     }
 }

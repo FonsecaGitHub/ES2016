@@ -1,7 +1,5 @@
 package pt.tecnico.mydrive.system;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 import pt.tecnico.mydrive.service.AbstractServiceTest ;
