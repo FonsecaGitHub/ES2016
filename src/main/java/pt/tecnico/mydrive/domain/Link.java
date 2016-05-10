@@ -21,6 +21,11 @@ public class Link extends Link_Base {
     	if (!u.isInSession()) {
 			throw new UserIsNotInSessionException(u.getMyToken());
 		}
+    	MyDrive md = MyDrive.getInstance();
+    	if(getContent()!=null){
+    		File f = md.getFileByPath(getContent());
+    		f.execute(u,args);
+    	}
     }
 
     
