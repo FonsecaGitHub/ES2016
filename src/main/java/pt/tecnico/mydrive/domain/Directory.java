@@ -102,13 +102,6 @@ public class Directory extends Directory_Base {
      }
     
     @Override
-    public void execute(User u, List<String> args){
-    	if (!u.isInSession()) {
-			throw new UserIsNotInSessionException(u.getMyToken());
-		}
-    }
-    
-    @Override
     public String getType(){
     	return "Directory";
     }
