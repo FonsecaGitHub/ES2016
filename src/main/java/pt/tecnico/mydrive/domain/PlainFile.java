@@ -2,7 +2,9 @@ package pt.tecnico.mydrive.domain;
 
 import java.io.*;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import pt.tecnico.mydrive.domain.MyDrive;
 import pt.tecnico.mydrive.exception.UserIsNotInSessionException;
@@ -73,22 +75,72 @@ public class PlainFile extends PlainFile_Base {
 		if (!u.isInSession()) {
 			throw new UserIsNotInSessionException(u.getMyToken());
 		}/*
-		Class<?> cls;
-		Method meth;
-		String name = "PlainFile";
-		try { // name is a class: call main()
-			cls = Class.forName(name);
-			meth = cls.getMethod("readFile", void[].class);
-		} 
-		catch (ClassNotFoundException cnfe) { // name is a method
-			int pos;
-			if ((pos = name.lastIndexOf('.')) < 0)
-				throw cnfe;
-			cls = Class.forName(name.substring(0, pos));
-			meth = cls.getMethod(name.substring(pos + 1), String[].class);
+		String input;
+		Thread master = Thread.currentThread();
+		Scanner scan = new Scanner(System.in);
+
+		ProcessBuilder builder;
+		if (args.size() == 0)
+			builder = new ProcessBuilder(arg[]);
+		else {
+			java.util.List<String> l = new ArrayList<String>();
+			for (String s : args)
+				l.add(s);
+			builder = new ProcessBuilder(l);
 		}
-		meth.invoke(null, (Object) args); // static method (ignore return)*/
-	}
+		builder.redirectErrorStream(true);
+		Process proc = builder.start();
+		OutputStream stdin = proc.getOutputStream();
+		InputStream stdout = proc.getInputStream();
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
+		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stdin));
+
+		Thread throut = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				String line;
+				try {
+					while ((line = reader.readLine()) != null) {
+						out.println("Stdout: " + line);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				System.err.println("Stdout is now closed!!!");
+			}
+		});
+		throut.start();
+
+	
+		for (;;) {
+			do
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+				}
+			while (proc.isAlive() && !scan.hasNext());
+			if (proc.isAlive()) {
+				if ((input = scan.nextLine()) != null) {
+					writer.write(input);
+					writer.newLine();
+					writer.flush();
+				}
+			} else
+				break;
+		}
+	
+		try {
+			proc.waitFor();
+		} catch (InterruptedException e) {
+		}
+
+		System.err.println("exit: " + proc.exitValue());
+		proc.destroy();
+
+	*/}
+
+    
 
 	
     
