@@ -101,6 +101,10 @@ public class Directory extends Directory_Base {
          return null;
      }
     
+    public void execute(User u, List<String> args){
+    	//NOTHING TO DO
+    }
+    
     @Override
     public String getType(){
     	return "Directory";

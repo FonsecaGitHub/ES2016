@@ -74,14 +74,14 @@ public class PlainFile extends PlainFile_Base {
     public void doExecute(User u, String programName, List<String> args){
 		if (!u.isInSession()) {
 			throw new UserIsNotInSessionException(u.getMyToken());
-		}/*
-		String input;
+		}
+		/*String input;
 		Thread master = Thread.currentThread();
 		Scanner scan = new Scanner(System.in);
 
 		ProcessBuilder builder;
 		if (args.size() == 0)
-			builder = new ProcessBuilder(arg[]);
+			builder = new ProcessBuilder(args);
 		else {
 			java.util.List<String> l = new ArrayList<String>();
 			for (String s : args)
@@ -96,23 +96,20 @@ public class PlainFile extends PlainFile_Base {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stdout));
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stdin));
 
-		Thread throut = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				String line;
-				try {
-					while ((line = reader.readLine()) != null) {
-						out.println("Stdout: " + line);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				System.err.println("Stdout is now closed!!!");
-			}
-		});
-		throut.start();
 
-	
+	    Thread throut = new Thread(new Runnable() {
+	    @Override
+	    public void run() {
+	    	String line;
+	    	try {
+	    		while ((line = reader.readLine ()) != null) {
+	    			out.println ("Stdout: " + line);
+	    		}
+	    	} catch (IOException e) { e.printStackTrace(); }
+	    		System.err.println ("Stdout is now closed!!!");
+	      	}
+	    }
+
 		for (;;) {
 			do
 				try {
@@ -132,13 +129,11 @@ public class PlainFile extends PlainFile_Base {
 	
 		try {
 			proc.waitFor();
-		} catch (InterruptedException e) {
-		}
+		} catch (InterruptedException e) {}
 
 		System.err.println("exit: " + proc.exitValue());
-		proc.destroy();
-
-	*/}
+		proc.destroy();*/
+	}
     
     @Override
 	public void execute(User u,  List<String> args) {
@@ -146,6 +141,7 @@ public class PlainFile extends PlainFile_Base {
 			String[] arguments = getContent().split("\n");
 			for (int i = 0; i < arguments.length; i++) {
 				String[] a = arguments[i].split(" ");
+				//doExecute(u,a[0],a);
 			}
 		}
 	}
