@@ -22,15 +22,15 @@ Cada membro deve copiar a pasta `phonebook-V1/src/main/resources` para `mydrive/
 
 ## Compilação
   
-  ### 3º Sprint - Compilação, teste e execução:
-  $ mvn clean install site exec:java -Dexec.args=drive.xml
+### 3º Sprint - Compilação, teste e execução:
+`$ mvn clean install site exec:java -Dexec.args=drive.xml`
 
 ### Sprints anteriores
-  * Normal:
-  $ mvn clean package exec:java
+* Normal:
+`$ mvn clean package exec:java`
 
-  * Testes:
-  $ mvn clean test cobertura:cobertura site
+* Testes:
+`$ mvn clean test cobertura:cobertura site`
 
 
 
