@@ -28,6 +28,10 @@ Cada membro deve copiar a pasta `phonebook-V1/src/main/resources` para `mydrive/
   * Testes:
   $ mvn clean test cobertura:cobertura site
 
+  * 3º Sprint
+  ** Compilação, teste e execução:
+  $ mvn clean install site exec:java -Dexec.args=drive.xml
+
 ## Importação e exportação XML
 
 * Importação
