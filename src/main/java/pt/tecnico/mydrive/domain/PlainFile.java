@@ -70,8 +70,8 @@ public class PlainFile extends PlainFile_Base {
         //TODO
     }
     
-    @Override
-    public void execute(User u, List<String> args){
+    
+    public void doExecute(User u, String programName, List<String> args){
 		if (!u.isInSession()) {
 			throw new UserIsNotInSessionException(u.getMyToken());
 		}/*
@@ -139,8 +139,16 @@ public class PlainFile extends PlainFile_Base {
 		proc.destroy();
 
 	*/}
-
     
+    @Override
+	public void execute(User u,  List<String> args) {
+		if (getContent() != null) {
+			String[] arguments = getContent().split("\n");
+			for (int i = 0; i < arguments.length; i++) {
+				String[] a = arguments[i].split(" ");
+			}
+		}
+	}
 
 	
     
