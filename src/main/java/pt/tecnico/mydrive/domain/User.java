@@ -4,6 +4,8 @@ import org.jdom2.Element;
 
 import pt.tecnico.mydrive.exception.*;
 
+import java.util.Random;
+
 public class User extends User_Base {
 
 	private long myToken;
@@ -64,7 +66,20 @@ public class User extends User_Base {
 		return getFileByName(fileName) != null;
 	}
 	
-	
+	public boolean checkPasswordLenght(String password){
+		if(password.length() >= 8)
+			return true;
+
+		this.setPassword(newRandomPassword());
+		return false;
+
+	}
+
+	public static String newRandomPassword(){
+		Random random = new Random();
+		String string = Long.toString(Math.abs(random.nextLong()));
+		return string.substring(0, 8);
+	}
 
 	// HANDLES DIRECTORY
 	public Directory getDirectoryByPath(String path) {
