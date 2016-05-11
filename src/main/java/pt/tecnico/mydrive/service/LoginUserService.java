@@ -27,6 +27,9 @@ public class LoginUserService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		Session session = md.getSession();
 		session.removeInactives();
+
+		//if(md.getUser(this.username).checkPasswordLenght(this.password)); //changes the password if it has less than 8 characters
+		//preventing the user from logging in
 		
 		mt = session.createSession(this.username, this.password);
 		String tokenString = Long.toString(mt.getToken());
