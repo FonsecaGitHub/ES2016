@@ -5,6 +5,7 @@ import org.jdom2.Element;
 import pt.tecnico.mydrive.exception.*;
 
 import java.util.Random;
+import java.util.TreeMap;
 
 public class User extends User_Base {
 
@@ -16,12 +17,22 @@ public class User extends User_Base {
 
 	public User(MyDrive md, String username, String name, String password) throws InvalidUsernameException {
 		super();
-		if (username.length() < 3 || !isAlphaNumeric(username)) {
-			throw new InvalidUsernameException(username);
+
+		try {
+			if (!checkPasswordLenght(password)) {
+				throw new WrongPasswordLengthException();
+			}
+
+			if (username.length() < 3 || !isAlphaNumeric(username)) {
+				throw new InvalidUsernameException(username);
+			}
+			setUsername(username);
+			setName(name);
+			setPassword(password);
 		}
-		setUsername(username);
-		setName(name);
-		setPassword(password);
+		catch(WrongPasswordLengthException wple){
+			wple.toString();
+		}
 	}
 
 	public User(MyDrive md, Element xml) {
@@ -70,7 +81,7 @@ public class User extends User_Base {
 		if(password.length() >= 8)
 			return true;
 
-		this.setPassword(newRandomPassword());
+		//this.setPassword(newRandomPassword());
 		return false;
 
 	}
