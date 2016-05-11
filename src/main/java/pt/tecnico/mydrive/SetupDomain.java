@@ -33,6 +33,8 @@ public class SetupDomain {
 		LoginUserService rootLogin = new LoginUserService("root", "rootroot");
 		rootLogin.execute();
 		//long rootToken = rootLogin.getToken();
+
+
 		
 		
 	}
