@@ -1,5 +1,6 @@
 package pt.tecnico.mydrive.presentation;
 
+import pt.tecnico.mydrive.domain.MyToken;
 import pt.tecnico.mydrive.service.ChangeDirectoryService;
 
 
@@ -16,17 +17,17 @@ public class ChangeWorkingDirectory extends MdCommand {
      * 
      * cwd [path]
      */
-    public void execute(String[] args) { /*
+    public void execute(String[] args) {
     ChangeDirectoryService cwd; 
-    long token = ((MdShell) shell()).getUserToken();     
+    MyToken token = ((MdShell) shell()).getMyToken();     
     
     if(args.length < 1)
         throw new RuntimeException("USAGE: "+name()+" <path> ");
        cwd =  new ChangeDirectoryService(token, args[0]);
-       */
+
        //execute
        //imprimir nova directoria
-       //cwd.execute();
-    	//System.out.println(
+       cwd.execute();
+       //System.out.println(
     }
 }
