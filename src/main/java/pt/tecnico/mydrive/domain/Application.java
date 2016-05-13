@@ -17,7 +17,11 @@ public class Application extends Application_Base {
 		this.setContent(content);
 	}
 
-
+	public void delete(){
+		setOwner(null);
+		setMydrive(null);
+		deleteDomainObject();
+    }
 
 	public void doExecute(User u, String args) throws NoSuchMethodException, SecurityException, ClassNotFoundException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
 		if (!u.isInSession()) {

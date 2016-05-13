@@ -41,10 +41,7 @@ public abstract class File extends File_Base {
 
 	}
 
-	public void delete() {
-		setOwner(null);
-		deleteDomainObject();
-	}
+	public abstract void delete();
 
 	//TODO
 	public void xmlImpport(Element fileElement) throws ImportDocumentException {

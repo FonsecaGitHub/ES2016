@@ -42,10 +42,16 @@ public class Directory extends Directory_Base {
     }*/
 
 
-	public void remove(){
+	public void delete(){
+		String path = getPath();
+		Directory directoryToRemove = getDirectoryByPath(path);
+		for (File f : directoryToRemove.getOwnedSet()){
+			f.delete();
+			}
 		setOwner(null);
+		setMydrive(null);
 		deleteDomainObject();
-	}
+	    }
 
 	public String getPath(){
 		return getDir().getPath() + "/" + getName();
