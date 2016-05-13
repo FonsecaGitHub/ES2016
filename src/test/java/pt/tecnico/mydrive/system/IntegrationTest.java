@@ -18,8 +18,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
 import org.jdom2.output.Format;
 
-import pt.tecnico.mydrive.domain.MyDrive; // Mockup
-import pt.tecnico.mydrive.domain.MyToken;
+import pt.tecnico.mydrive.domain.*; // Mockup
 import pt.tecnico.mydrive.service.*;
 import pt.tecnico.mydrive.dto.*;
 import pt.tecnico.mydrive.exception.*;
@@ -42,6 +41,7 @@ public class IntegrationTest extends AbstractServiceTest {
 	private static final String type2 = "Directory";
 	private static final String content1 = "ls";
 	private static final String content2 = "/home/test";
+	private static final String content3 = "/home/$user/profile";
 	private static final String filename = "teste";
 	private static final String filename2 = "teste2";
 	
@@ -120,6 +120,22 @@ public void success() throws Exception {
 	
 	
 	//TODO MOCK-UPS
+	
+	//O servico addvariable tem de estar a funcionar 
+	//no Link tem de se tem um metodo para ir buscar a variavel de ambiente
+	/*new MockUp<Link>() {
+		  @Mock
+		  List<String> result() { return variable; }
+		};
+	        Link l = new Link(content3);
+	        MyDrive md=l.getMydrive();
+	        User u=new User(md,u2,n2,p2);
+	        l.execute(u,args);
+	        assertEquals(l.result(), "$user");
+	 */
+	
+	
+
 	
 	
 
