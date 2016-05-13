@@ -41,10 +41,16 @@ public class Application extends Application_Base {
     @Override
     public void execute(User u, List<String> args){
     	if (getContent() != null) {
-			String[] arguments = getContent().split("\n");
-			for (int i = 0; i < arguments.length; i++) {
-				//doExecute(u, arguments[i]);
-			}
+			String arguments = getContent();
+			try {
+				doExecute(u, arguments);
+			} 
+			catch (NoSuchMethodException e) {e.printStackTrace();}
+			catch (SecurityException e) {e.printStackTrace();}
+			catch (ClassNotFoundException e) {e.printStackTrace();}
+			catch (IllegalAccessException e) {e.printStackTrace();} 
+			catch (IllegalArgumentException e) {e.printStackTrace();} 
+			catch (InvocationTargetException e) {e.printStackTrace();}
 		}
     }
    

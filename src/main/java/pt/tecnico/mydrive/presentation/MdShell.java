@@ -1,9 +1,12 @@
 package pt.tecnico.mydrive.presentation;
 
+import pt.tecnico.mydrive.domain.MyToken;
+
 public class MdShell extends Shell {
 
 	private long userToken;
-	private String userName; 
+	private String userName;
+	private MyToken token; 
 	
 	
 	public static void main(String[] args) throws Exception {
@@ -24,6 +27,10 @@ public class MdShell extends Shell {
 	
 	public long getUserToken() {
 		return userToken;
+	}
+	
+	public MyToken getMyToken() {
+		return token; 
 	}
 
 	public void setUserToken(long userToken) {
