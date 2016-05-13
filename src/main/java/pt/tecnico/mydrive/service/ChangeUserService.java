@@ -20,10 +20,7 @@ public class ChangeUserService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		
 		md.getSession();
-		/*
-		if(username == null) {
-			return
-		}*/
+		
 	}
 	
 	
