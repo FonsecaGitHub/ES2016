@@ -69,14 +69,16 @@ public class MyDrive extends MyDrive_Base {
 	// @Override
 	public void addUser(User userToBeAdded) throws UsernameAlreadyExistsException {
 
+		 if(userToBeAdded.getUsername().isEmpty())  
+			 throw new EmptyUsernameException(); 
+		
 		if (hasUser(userToBeAdded.getUsername()))
 			throw new UsernameAlreadyExistsException(userToBeAdded.getUsername());
+		
 		/*
 		 * //JOAO VE ESTA EXCEPCAO if (getUserByUsername(username) != null) {
 		 * throw new DuplicateUsernameException(username); }
 		 * 
-		 * //JOAO ADICIONA ESTA EXCEPCAO if(username.isEmpty()) { throw new
-		 * EmptyUsernameException(); }
 		 * 
 		 * //JOAO ADICIONA ESTA EXCEPCAO if (username.equals("root")) { throw
 		 * new UnauthorizedOperationException(); }
@@ -86,8 +88,7 @@ public class MyDrive extends MyDrive_Base {
 
 	public void removeUser(String username) {
 		if (username.equals("root")) {
-			// JOAO ADICIONA ESTA EXCEPCAO
-			// throw new UnauthorizedOperationException();
+			throw new UnauthorizedOperationException();
 		} else {
 			User userToRemove = getUser(username);
 			if (userToRemove == null) {
