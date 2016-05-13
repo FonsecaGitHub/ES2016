@@ -11,6 +11,8 @@ public class User extends User_Base {
 
 	private long myToken;
 
+	private TreeMap<String, String> fileAssociations;
+
 	public User() {
 		super();
 	}
@@ -26,6 +28,7 @@ public class User extends User_Base {
 			if (username.length() < 3 || !isAlphaNumeric(username)) {
 				throw new InvalidUsernameException(username);
 			}
+			this.fileAssociations = new TreeMap<String, String>();
 			setUsername(username);
 			setName(name);
 			setPassword(password);
@@ -39,6 +42,14 @@ public class User extends User_Base {
 		super();
 		// xmlImport(xml);
 		setMydrive(md);
+	}
+
+	public TreeMap<String, String> getFileAssociations() {
+		return fileAssociations;
+	}
+
+	public void setFileAssociations(TreeMap<String, String> fileAssociations) {
+		this.fileAssociations = fileAssociations;
 	}
 
 	@Override
@@ -59,10 +70,13 @@ public class User extends User_Base {
 
 	@Override
 	public void addFile(File fileToBeAdded) throws FileNameAlreadyExistsException {
+		String dot = ".";
 		if (hasFile(fileToBeAdded.getName()))
 			throw new FileNameAlreadyExistsException(fileToBeAdded.getName());
 
 		super.addFile(fileToBeAdded);
+		//put k,v into map -> k is file extension, v is filename
+		this.getFileAssociations().put(dot+fileToBeAdded.getName().split("\\.")[1], fileToBeAdded.getName());
 	}
 
 	// ATENCAO aqui talvez seja por ID em vez de ser por nome

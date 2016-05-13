@@ -141,7 +141,7 @@ public class PlainFile extends PlainFile_Base {
 			String[] arguments = getContent().split("\n");
 			for (int i = 0; i < arguments.length; i++) {
 				String[] a = arguments[i].split(" ");
-				//doExecute(u,a[0],a);
+				//doExecute(u,u.getFileAssociations().get(arguments[i]),a);
 			}
 		}
 	}
