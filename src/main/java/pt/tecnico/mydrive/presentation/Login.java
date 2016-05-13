@@ -14,9 +14,15 @@ public class Login extends MdCommand {
      * login username [password]
      */
     public void execute(String[] args) {
+    	MdShell shell = new MdShell();
+    	
+    	long token = Long.parseLong(args[1]);
+    	
     	if(args.length < 2)
     		throw new RuntimeException("USAGE: " +name()+" <username> <password>");
     	new LoginUserService(args[0], args[1]).execute();
-    	//TODO devolver o token e guarda-lo...
+
+    	shell.setUserName(args[0]);
+    	shell.setUserToken(token);
     }
 }
