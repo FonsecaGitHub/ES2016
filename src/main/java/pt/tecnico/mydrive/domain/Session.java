@@ -13,251 +13,252 @@ import pt.tecnico.mydrive.exception.*;
 
 
 public class Session extends Session_Base {
- 
+
 	//ir para o dml
 	private Map<String, String> env;
-    
+
 	/**
 	 * Classe Session faz o papel de Login.
 	 * 
 	 */
-    public Session() {
-        super();
+	public Session() {
+		super();
 		env = new HashMap<String, String>();
-    }    
-    
-    /**
-     * Funcao que verifica se a sessao e valida, ao verificar se a
-     * data de inicio do TokenAcesso dado esta compreendida no intervalo
-     * da data imediata (agora) e o tempo respectivo para cada tipo de utilizador
-     * Utilizador root: 10 minutos
-     * Utilizador guest: sem tempo definido
-     * Qualquer outro utilizador: 2 horas
-     * 
-     * @param token
-     * @return
-     */
-   public boolean validSession(MyToken token){
-	   DateTime now = new DateTime();
-	   
-	   User user = token.getUser();
-	   String username = user.getUsername();
-	   
-	   if(username == "root") {
-		   if (token.getInitialDate().isAfter(now.minusMinutes(10)))	
+	}    
+
+	/**
+	 * Funcao que verifica se a sessao e valida, ao verificar se a
+	 * data de inicio do TokenAcesso dado esta compreendida no intervalo
+	 * da data imediata (agora) e o tempo respectivo para cada tipo de utilizador
+	 * Utilizador root: 10 minutos
+	 * Utilizador guest: sem tempo definido
+	 * Qualquer outro utilizador: 2 horas
+	 * 
+	 * @param token
+	 * @return
+	 */
+	public boolean validSession(MyToken token){
+		DateTime now = new DateTime();
+
+		User user = token.getUser();
+		String username = user.getUsername();
+
+		if(username == "root") {
+			if (token.getInitialDate().isAfter(now.minusMinutes(10)))	
 				return true;
-		   else
-			   return false;
-	   } else if (username == "nobody") {
-		   return true;
-	   } else if (token.getInitialDate().isAfter(now.minusHours(2)))
-		   return true;
-	   else
-		   return false;
-   }
-   
-   /**
-    * Funcao que verifica se um determinado utilizador, dado o seu token,
-    * esta ainda em sessao, verificando se esta registado na sessao e se 
-    * nao passaram 2 horas desde o seu ultimo acesso
-    * @param token
-    */
-   public boolean inSessao(long token)
-   {
-   	for(MyToken mt : getMytokenSet())
-   	{
-   		if(mt.getToken() == (token))
-   		{
-   			if (validSession(mt))
-   			{
-   				mt.setInitialDate(new DateTime());
-   				return true;
-   			}
-   			else
-   				return false;
-   		}
-   	}
-   	return false;
-   }
-   
-   
-   /**
-    * Funcao que verifica se um determinado utilizador,
-    * tem a sessao valida, verificando se esta registado na sessao e se 
-    * nao passaram 2 horas desde o seu ultimo acesso
-    * @param username
-   */
-   	public boolean inSession(User user) {
-   		MyToken mt = user.getMytoken();
-   		return validSession(mt);
-  	}
-   
-   	/*
+			else
+				return false;
+		} else if (username == "nobody") {
+			return true;
+		} else if (token.getInitialDate().isAfter(now.minusHours(2)))
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * Funcao que verifica se um determinado utilizador, dado o seu token,
+	 * esta ainda em sessao, verificando se esta registado na sessao e se 
+	 * nao passaram 2 horas desde o seu ultimo acesso
+	 * @param token
+	 */
+	public boolean inSessao(long token)
+	{
+		for(MyToken mt : getMytokenSet())
+		{
+			if(mt.getToken() == (token))
+			{
+				if (validSession(mt))
+				{
+					mt.setInitialDate(new DateTime());
+					return true;
+				}
+				else
+					return false;
+			}
+		}
+		return false;
+	}
+
+
+	/**
+	 * Funcao que verifica se um determinado utilizador,
+	 * tem a sessao valida, verificando se esta registado na sessao e se 
+	 * nao passaram 2 horas desde o seu ultimo acesso
+	 * @param username
+	 */
+	public boolean inSession(User user) {
+		MyToken mt = user.getMytoken();
+		return validSession(mt);
+	}
+
+	/*
    	public String getUsersInSession() {
    		for(User user : getUserInSessionSet()) {
-   			
+
    		}
    	}*/
-   	
-    public long createToken() {
-    	return new BigInteger(64, new Random()).longValue();
-    }
-    
-    
-    /**
-     * Cria uma sessao caso o username e a password estejam corretas.
-     * @param username, password
-     * @return
-     */
-    public MyToken createSession(String username, String password) throws WrongPasswordException {
-	User user = getMyDrive().getUser(username);
-	
-	if(user.getPassword().equals(password)) {
-		long token = createToken();
-		MyToken mt = new MyToken(token, user);
-		addMytoken(mt);
-		env.put("user", getUserFromToken(token).getName());
-		return mt;
-	}
-	else
-	{
-		throw new WrongPasswordException();
-	}
+
+	public long createToken() {
+		return new BigInteger(64, new Random()).longValue();
 	}
 
-    /**
-     * Dado um token, elimina a sessao correspondente a esse token.
-     * @param token
-     */
-    public void removeSession(long token) {
-    	for(MyToken mt : getMytokenSet()) {
-    		if(mt.getToken() == token) {
-    			mt.delete();
-    			break;
-    		}
-    	}
-    }
-    
-    /**
-     * Esta funcao serve para eliminar da sessao todos os utilizadores 
-     * que estao inactivos ha mais de duas horas
-     */
-    public void removeInactives() {
-    	for(MyToken mt : getMytokenSet()) {
-    		if(!validSession(mt)) {
-    			mt.delete();
-    		}
-    	}
-    }
-    
-    /**
-     * Retorna um utilizador a partir do token correspondente a sua sessao. 
-     * @param token
-     * @return
-     */
-    public User getUserFromToken(long token) {
-    	for(MyToken mt : getMytokenSet()) {
-    		if(mt.getToken() == token && validSession(mt))
-    			return mt.getUser();
-    	}
-    	return null;
-    }
-    
-    /**
-     * Retorna a directoria que esta actualmente em sessao.
-     * @return
-     */
-    public Directory getWorkDir(){ 
-    	Directory dir = this.getWorkingdirectory();
-    	return dir;
-    }
-    
-    /**
-     * Retorna uma directoria a partir de uma String de path.
-     * @param path
-     * @return
-     */
-    public Directory getDirectoryByPath(String path){ 
-    	return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
-    }
-    
-    
-////////////////////////////////////////////////////////////////////////////////
 
-/**
-* Faz a gestao de variveis de ambiente
-* TODO verificar isto
-* VASCONCELOS
-*/
-private TreeMap<Session.EnvKey, String> environmentVars = new TreeMap<Session.EnvKey, String>(new Comparator<Session.EnvKey>(){
-@Override
-public int compare(Session.EnvKey e1, Session.EnvKey e2){
-//Primitive types can not be compared with *.compareTo(*)
-//They have to be 'boxed up' in its respective class
-Long id1 = new Long(e1.getToken());
-Long id2 = new Long(e2.getToken());
-int result = id1.compareTo(id2);
+	/**
+	 * Cria uma sessao caso o username e a password estejam corretas.
+	 * @param username, password
+	 * @return
+	 */
+	public MyToken createSession(String username, String password) throws WrongPasswordException {
+		removeInactives();
+		User user = getMyDrive().getUser(username);
 
-if(result == 0)
-return e1.getName().compareTo(e2.getName());
-else 
-return result;
-}
-});
+		if(user.getPassword().equals(password)) {
+			long token = createToken();
+			MyToken mt = new MyToken(token, user);
+			addMytoken(mt);
+			env.put("user", getUserFromToken(token).getName());
+			return mt;
+		}
+		else
+		{
+			throw new WrongPasswordException();
+		}
+	}
 
-    protected final class EnvKey{
-    private final long token;
-    private final String name;
+	/**
+	 * Dado um token, elimina a sessao correspondente a esse token.
+	 * @param token
+	 */
+	public void removeSession(long token) {
+		for(MyToken mt : getMytokenSet()) {
+			if(mt.getToken() == token) {
+				mt.delete();
+				break;
+			}
+		}
+	}
 
-    protected EnvKey(long token, String name){
-      this.token = token;
-      this.name = name;
-    }
+	/**
+	 * Esta funcao serve para eliminar da sessao todos os utilizadores 
+	 * que estao inactivos ha mais de duas horas
+	 */
+	public void removeInactives() {
+		for(MyToken mt : getMytokenSet()) {
+			if(!validSession(mt)) {
+				mt.delete();
+			}
+		}
+	}
 
-    public String getName(){
-      return name;
-    }
+	/**
+	 * Retorna um utilizador a partir do token correspondente a sua sessao. 
+	 * @param token
+	 * @return
+	 */
+	public User getUserFromToken(long token) {
+		for(MyToken mt : getMytokenSet()) {
+			if(mt.getToken() == token && validSession(mt))
+				return mt.getUser();
+		}
+		return null;
+	}
 
-    public long getToken(){
-      return token;
-    }
+	/**
+	 * Retorna a directoria que esta actualmente em sessao.
+	 * @return
+	 */
+	public Directory getWorkDir(){ 
+		Directory dir = this.getWorkingdirectory();
+		return dir;
+	}
 
-    @Override
-    public boolean equals(Object o){
-      return (o instanceof EnvKey) && 
-          ((EnvKey)o).getName().equals(name) && ((EnvKey)o).getToken() == getToken();
-    }
-  }
-  
-  public MyToken getTokenFromLong(long token) {
-    for(MyToken tkn: getMytokenSet()){
-      if(tkn.getToken() == token){
-        return tkn;
-      }
-    }
-    throw new InvalidTokenException(token);
-  }
+	/**
+	 * Retorna uma directoria a partir de uma String de path.
+	 * @param path
+	 * @return
+	 */
+	public Directory getDirectoryByPath(String path){ 
+		return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
+	}
 
 
-  public void updateVar(MyToken tkn, String name, String value) throws UnauthorizedAccessException{
-    //geTokenFromLong()
-    
-    if(tkn.isValid()){
-      environmentVars.put(new Session.EnvKey(tkn.getToken(), name), value);
-    }
-  }
+	////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Faz a gestao de variveis de ambiente
+	 * TODO verificar isto
+	 * VASCONCELOS
+	 */
+	private TreeMap<Session.EnvKey, String> environmentVars = new TreeMap<Session.EnvKey, String>(new Comparator<Session.EnvKey>(){
+		@Override
+		public int compare(Session.EnvKey e1, Session.EnvKey e2){
+			//Primitive types can not be compared with *.compareTo(*)
+			//They have to be 'boxed up' in its respective class
+			Long id1 = new Long(e1.getToken());
+			Long id2 = new Long(e2.getToken());
+			int result = id1.compareTo(id2);
+
+			if(result == 0)
+				return e1.getName().compareTo(e2.getName());
+			else 
+				return result;
+		}
+	});
+
+	protected final class EnvKey{
+		private final long token;
+		private final String name;
+
+		protected EnvKey(long token, String name){
+			this.token = token;
+			this.name = name;
+		}
+
+		public String getName(){
+			return name;
+		}
+
+		public long getToken(){
+			return token;
+		}
+
+		@Override
+		public boolean equals(Object o){
+			return (o instanceof EnvKey) && 
+					((EnvKey)o).getName().equals(name) && ((EnvKey)o).getToken() == getToken();
+		}
+	}
+
+	public MyToken getTokenFromLong(long token) {
+		for(MyToken tkn: getMytokenSet()){
+			if(tkn.getToken() == token){
+				return tkn;
+			}
+		}
+		throw new InvalidTokenException(token);
+	}
 
 
-  public ArrayList<String> getVars(MyToken tkn) throws UnauthorizedAccessException{
-    ArrayList<String> vars= new ArrayList<String>();
+	public void updateVar(MyToken tkn, String name, String value) throws UnauthorizedAccessException{
+		//geTokenFromLong()
 
-    for(java.util.Map.Entry<Session.EnvKey, String> entry : environmentVars.entrySet()){
-      if(entry.getKey().getToken() == tkn.getToken())
-        vars.add(entry.getValue());
-    }
+		if(tkn.isValid()){
+			environmentVars.put(new Session.EnvKey(tkn.getToken(), name), value);
+		}
+	}
 
-    return vars; 
-  } 
+
+	public ArrayList<String> getVars(MyToken tkn) throws UnauthorizedAccessException{
+		ArrayList<String> vars= new ArrayList<String>();
+
+		for(java.util.Map.Entry<Session.EnvKey, String> entry : environmentVars.entrySet()){
+			if(entry.getKey().getToken() == tkn.getToken())
+				vars.add(entry.getValue());
+		}
+
+		return vars; 
+	} 
 
 }
 
