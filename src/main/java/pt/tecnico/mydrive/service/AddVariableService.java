@@ -27,6 +27,18 @@ public class AddVariableService extends MyDriveService{
 	
 	@Override
 	protected void dispatch() throws MyDriveException {
-	
+		if(userToken.isValid()) {
+			md.getSession().updateVar(userToken, varName, varValue);
+			java.util.ArrayList<String> variables = md.getSession().getVars(userToken);
+			
+			for(String s : variables)
+				System.out.println(s);
+		}
+		else {
+			System.out.println("The token " + userToken.getToken() + " is valid.");
+			throw new UnauthorizedAccessException();
+		}
+		
+			
 	}
 }

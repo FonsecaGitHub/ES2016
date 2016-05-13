@@ -177,4 +177,61 @@ public class Session extends Session_Base {
     public Directory getDirectoryByPath(String path){ 
     	return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
     }
+
+    protected final class EnvKey{
+    private final long token;
+    private final String name;
+
+    protected EnvKey(long token, String name){
+      this.token = token;
+      this.name = name;
+    }
+
+    public String getName(){
+      return name;
+    }
+
+    public long getToken(){
+      return token;
+    }
+
+    @Override
+    public boolean equals(Object o){
+      return (o instanceof EnvKey) && 
+          ((EnvKey)o).getName().equals(name) && ((EnvKey)o).getToken() == getToken();
+    }
+  }
+  
+  public MyToken getTokenFromLong(long token) {
+    for(MyToken tkn: getMytokenSet()){
+      if(tkn.getToken() == token){
+        return tkn;
+      }
+    }
+    throw new InvalidTokenException(token);
+  }
+
+
+  public void updateVar(MyToken tkn, String name, String value) throws UnauthorizedAccessException{
+    //geTokenFromLong()
+    
+    if(tkn.isValid()){
+      environmentVars.put(new Session.EnvKey(tkn.getToken(), name), value);
+    }
+  }
+
+
+  public ArrayList<String> getVars(MyToken tkn) throws UnauthorizedAccessException{
+    ArrayList<String> vars= new ArrayList<String>();
+
+    for(java.util.Map.Entry<Session.EnvKey, String> entry : environmentVars.entrySet()){
+      if(entry.getKey().getToken() == tkn.getToken())
+        vars.add(entry.getValue());
+    }
+
+    return vars; 
+  } 
+
 }
+
+
