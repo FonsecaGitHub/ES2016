@@ -24,7 +24,7 @@ public class MyDrive extends MyDrive_Base {
 		setNumberOfFiles(new Integer(0));
 		setSession(new Session());
 	}
-	
+
 	public int getFileCount() {
 		return getNumberOfFiles();
 	}
@@ -33,7 +33,7 @@ public class MyDrive extends MyDrive_Base {
 		setNumberOfFiles(new Integer(getNumberOfFiles() + inc));
 		return getFileCount();
 	}
-	
+
 	public int incNumberOfFiles() {
 		return incNumberOfFiles(1);
 	}
@@ -43,7 +43,7 @@ public class MyDrive extends MyDrive_Base {
 		users++;
 		setNumberOfUsers(users);
 	}
-	
+
 	public User getUserByToken(long token) throws UserIsNotInSessionException {
 		for (User user : getUserSet()) {
 			if (user.isInSession() && user.getMytoken().getToken() == token) {
@@ -69,12 +69,12 @@ public class MyDrive extends MyDrive_Base {
 	// @Override
 	public void addUser(User userToBeAdded) throws UsernameAlreadyExistsException {
 
-		 if(userToBeAdded.getUsername().isEmpty())  
-			 throw new EmptyUsernameException(); 
-		
+		if(userToBeAdded.getUsername().isEmpty())  
+			throw new EmptyUsernameException(); 
+
 		if (hasUser(userToBeAdded.getUsername()))
 			throw new UsernameAlreadyExistsException(userToBeAdded.getUsername());
-		
+
 		/*
 		 * //JOAO VE ESTA EXCEPCAO if (getUserByUsername(username) != null) {
 		 * throw new DuplicateUsernameException(username); }
@@ -116,7 +116,7 @@ public class MyDrive extends MyDrive_Base {
 		}
 		return null;
 	}
-	
+
 	public PlainFile getPlainFileByName(String name){
 		for (File f : getFileSet()){
 			if(f.getType().equals("Plain File"))
@@ -125,19 +125,19 @@ public class MyDrive extends MyDrive_Base {
 		}
 		throw new FileDoesNotExistException(name);
 	}
-	
-	
+
+
 	public File getFileByPath(String path) {
-        for(File file : getFileSet()){
-            if(file.getPath().equals(path)){
-        			return file;
-            }
-        }
-        return null;
-    }
-	
-	
-	
+		for(File file : getFileSet()){
+			if(file.getPath().equals(path)){
+				return file;
+			}
+		}
+		return null;
+	}
+
+
+
 	//TODO SETPERMISSIONS !!!
 
 	public void addPlainFile(PlainFile plainFile) {

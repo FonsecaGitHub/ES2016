@@ -18,8 +18,6 @@ public class Environment extends MdCommand {
 	 * env [name [value]]
 	 */
 	public void execute(String[] args) {
-
-		//TODO verificar se isto esta certo
 		long token = ((MdShell) shell()).getUserToken();
 		
 		MyDrive md = MyDrive.getInstance();

@@ -21,9 +21,7 @@ public class AddVariableService extends MyDriveService{
 		this.userToken = tk;
 		this.varName = varName;
 		this.varValue = varValue;
-		
 	}
-
 	
 	@Override
 	protected void dispatch() throws MyDriveException {

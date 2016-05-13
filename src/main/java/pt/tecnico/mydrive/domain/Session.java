@@ -183,29 +183,28 @@ public class Session extends Session_Base {
 	}
 
 
-	////////////////////////////////////////////////////////////////////////////////
-
 	/**
-	 * Faz a gestao de variveis de ambiente
-	 * TODO verificar isto
-	 * VASCONCELOS
+	 * Cria um Mapa para as variaveis de ambiente
 	 */
 	private TreeMap<Session.EnvKey, String> environmentVars = new TreeMap<Session.EnvKey, String>(new Comparator<Session.EnvKey>(){
 		@Override
-		public int compare(Session.EnvKey e1, Session.EnvKey e2){
-			//Primitive types can not be compared with *.compareTo(*)
-			//They have to be 'boxed up' in its respective class
-			Long id1 = new Long(e1.getToken());
-			Long id2 = new Long(e2.getToken());
-			int result = id1.compareTo(id2);
+		public int compare(Session.EnvKey t1, Session.EnvKey t2){
+			Long token1 = new Long(t1.getToken());
+			Long token2 = new Long(t2.getToken());
+			int result = token1.compareTo(token2);
 
 			if(result == 0)
-				return e1.getName().compareTo(e2.getName());
+				return t1.getName().compareTo(t2.getName());
 			else 
 				return result;
 		}
 	});
 
+	/**
+	 * Classe para variavel de ambiente
+	 * @author Miguel
+	 *
+	 */
 	protected final class EnvKey{
 		private final long token;
 		private final String name;
@@ -230,6 +229,12 @@ public class Session extends Session_Base {
 		}
 	}
 
+	/**
+	 * Recebe um identificador do token
+	 * e devolve o objecto correspondente
+	 * @param token
+	 * @return
+	 */
 	public MyToken getTokenFromLong(long token) {
 		for(MyToken tkn: getMytokenSet()){
 			if(tkn.getToken() == token){
@@ -238,7 +243,6 @@ public class Session extends Session_Base {
 		}
 		throw new InvalidTokenException(token);
 	}
-
 
 	public void updateVar(MyToken tkn, String name, String value) throws UnauthorizedAccessException{
 		//geTokenFromLong()
