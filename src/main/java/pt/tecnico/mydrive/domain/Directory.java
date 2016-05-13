@@ -2,6 +2,7 @@ package pt.tecnico.mydrive.domain;
 
 import pt.tecnico.mydrive.exception.FileDoesNotExistException;
 import pt.tecnico.mydrive.exception.UserIsNotInSessionException;
+import pt.tecnico.mydrive.exception.PathTooLongException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,11 @@ public class Directory extends Directory_Base {
 		super();
 	}
     
-    public Directory(String path, String name)/* throws PathTooLongException */{
+    public Directory(String path, String name) throws PathTooLongException{
     	super();
     	String pathString = path.toString();
-    	//VASCONCELOS ADDICIONA EXCEPCAO
     	if (pathString.length() > 1024) {
-    		//throw new PathTooLongException(path);
+    		throw new PathTooLongException();
     	}
     	setPath(path);
     	setName(name);
