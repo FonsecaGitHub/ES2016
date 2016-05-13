@@ -1,5 +1,8 @@
 package pt.tecnico.mydrive.presentation;
 
+import pt.tecnico.mydrive.domain.MyDrive;
+import pt.tecnico.mydrive.domain.MyToken;
+import pt.tecnico.mydrive.domain.Session;
 import pt.tecnico.mydrive.service.AddVariableService;
 
 public class Environment extends MdCommand {
@@ -19,7 +22,7 @@ public class Environment extends MdCommand {
 		//TODO verificar se isto esta certo
 		long token = ((MdShell) shell()).getUserToken();
 
-		
+
 		MyDrive md = MyDrive.getInstance();
 		Session s = md.getSession();
 		
