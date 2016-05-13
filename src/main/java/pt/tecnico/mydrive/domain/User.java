@@ -127,15 +127,8 @@ public class User extends User_Base {
 		super.addDirectory(directoryToBeAdded);
 	}
 
-	public void removeDirectory(String path) {
-		Directory directoryToRemove = getDirectoryByPath(path);
-		if (directoryToRemove == null) {
-			throw new DirectoryDoesNotExistException(path);
-		}
-		for (File f : directoryToRemove.getOwnedSet()){
-			f.delete();
-		}
-		directoryToRemove.remove();
+	public void removeFile(File f) {
+		f.delete();
 	}
 	
 	

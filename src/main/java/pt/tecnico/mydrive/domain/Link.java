@@ -15,6 +15,11 @@ public class Link extends Link_Base {
         this.setContent(content);
     }
     
+    public void delete(){
+		setOwner(null);
+		setMydrive(null);
+		deleteDomainObject();
+        }
     
     @Override
     public void execute(User u, List<String> args){

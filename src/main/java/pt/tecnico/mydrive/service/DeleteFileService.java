@@ -26,6 +26,6 @@ public class DeleteFileService extends MyDriveService{
 		MyDrive md = MyDrive.getInstance();
 		User u = md.getUserByToken(userToken);
 		File f = u.getFileByName(filename);
-			u.removeDirectory(f.getPath());
+			u.removeFile(f);
 	}
 }	

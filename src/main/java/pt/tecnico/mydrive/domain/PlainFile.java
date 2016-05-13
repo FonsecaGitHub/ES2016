@@ -31,7 +31,6 @@ public class PlainFile extends PlainFile_Base {
 	}
 
 	public void delete() {
-		// TODO ver se e preciso apagar o que esta pra tras
 		setOwner(null);
 		setMydrive(null);
 		deleteDomainObject();
