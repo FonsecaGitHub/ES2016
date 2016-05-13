@@ -44,6 +44,8 @@ public class IntegrationTest extends AbstractServiceTest {
 	private static final String content3 = "/home/$user/profile";
 	private static final String filename = "teste";
 	private static final String filename2 = "teste2";
+	private static final String variable = "$user";
+	private static final int users = 2;
 	
 	//private static final String importFile = "other.xml";
 
@@ -125,14 +127,25 @@ public void success() throws Exception {
 	//no Link tem de se tem um metodo para ir buscar a variavel de ambiente
 	/*new MockUp<Link>() {
 		  @Mock
-		  List<String> result() { return variable; }
+		  String getContent() { return variable; }
 		};
 	        Link l = new Link(content3);
 	        MyDrive md=l.getMydrive();
 	        User u=new User(md,u2,n2,p2);
 	        l.execute(u,args);
-	        assertEquals(l.result(), "$user");
+	        assertEquals(l.result(), variable);
 	 */
+	
+	new MockUp<MyDrive>() {
+		@Mock
+		 int removeUser(String u1) { return users;}
+		};
+    DeleteUserService dus = new DeleteUserService(userToken,u5);
+    dus.execute();
+   	lu = new ListUsersService();
+   	lu.execute();
+    assertEquals(lu.result(), users);
+	 
 	
 	
 
