@@ -21,8 +21,7 @@ public class Environment extends MdCommand {
 
 		//TODO verificar se isto esta certo
 		long token = ((MdShell) shell()).getUserToken();
-
-
+		
 		MyDrive md = MyDrive.getInstance();
 		Session s = md.getSession();
 		
@@ -30,7 +29,10 @@ public class Environment extends MdCommand {
 
 		if(args.length < 2)
 			throw new RuntimeException("USAGE: "+name()+" <name> <value>");
-		new AddVariableService(token,args[0], args[1]).execute();
+		
+		new AddVariableService(tk,args[0], args[1]).execute();
+
+
 
 	}
 }

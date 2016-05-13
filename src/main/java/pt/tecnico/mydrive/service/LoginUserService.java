@@ -6,7 +6,7 @@ import pt.tecnico.mydrive.domain.*;
 
 
 public class LoginUserService extends MyDriveService{
-	
+
 	private long token;
 	private String username;
 	private String password;
@@ -30,7 +30,7 @@ public class LoginUserService extends MyDriveService{
 
 		//if(md.getUser(this.username).checkPasswordLenght(this.password)); //changes the password if it has less than 8 characters
 		//preventing the user from logging in
-		
+
 		mt = session.createSession(this.username, this.password);
 		String tokenString = Long.toString(mt.getToken());
 		this.username = tokenString;
@@ -38,15 +38,15 @@ public class LoginUserService extends MyDriveService{
 		// para que servem estas duas? 
 		//String tokenString = Long.toString(mt.getToken());
 		//this.username = tokenString;
-		
-		
+
+
 		//this.token = session.createToken();
 	}
 
 	public final long getToken() {
 		return token;
 	}
-	
+
 	//Feneja nao me venha chatear com isto que preciso dele
 	public final MyToken getMyToken() {
 		return mt;

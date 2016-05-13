@@ -180,6 +180,30 @@ public class Session extends Session_Base {
     public Directory getDirectoryByPath(String path){ 
     	return getUserInSession().getMydrive().getDirectory().getDirectoryByPath(path);
     }
+    
+    
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+* Faz a gestao de variveis de ambiente
+* TODO verificar isto
+* VASCONCELOS
+*/
+private TreeMap<Session.EnvKey, String> environmentVars = new TreeMap<Session.EnvKey, String>(new Comparator<Session.EnvKey>(){
+@Override
+public int compare(Session.EnvKey e1, Session.EnvKey e2){
+//Primitive types can not be compared with *.compareTo(*)
+//They have to be 'boxed up' in its respective class
+Long id1 = new Long(e1.getToken());
+Long id2 = new Long(e2.getToken());
+int result = id1.compareTo(id2);
+
+if(result == 0)
+return e1.getName().compareTo(e2.getName());
+else 
+return result;
+}
+});
 
     protected final class EnvKey{
     private final long token;

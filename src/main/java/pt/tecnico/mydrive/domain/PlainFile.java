@@ -76,7 +76,7 @@ public class PlainFile extends PlainFile_Base {
 		if (args.size() == 0)
 			builder = new ProcessBuilder("/bin/bash");
 		else {
-			
+
 			builder = new ProcessBuilder(args);
 		}
 		builder.redirectErrorStream(true);
@@ -141,9 +141,9 @@ public class PlainFile extends PlainFile_Base {
 			String[] arguments = getContent().split("\n");
 			for (int i = 0; i < arguments.length; i++) {
 				String[] a = arguments[i].split(" ");
-<<<<<<< HEAD
+
 				//doExecute(u,u.getFileAssociations().get(arguments[i]),a);
-=======
+
 				List<String> list = new ArrayList<String>();
 				for(int j = 0; j< a.length;j++){
 					list.add(a[j]);
@@ -154,7 +154,7 @@ public class PlainFile extends PlainFile_Base {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
->>>>>>> f1bb356bc09c9d228b0fe6c41b6bd8011a36a3d5
+
 			}
 		}
 	}

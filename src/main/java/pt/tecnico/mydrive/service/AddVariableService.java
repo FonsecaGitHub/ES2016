@@ -5,7 +5,7 @@ import pt.tecnico.mydrive.domain.*;
 
 public class AddVariableService extends MyDriveService{
 
-	private long userToken;	
+	private MyToken userToken;	
 	private String varName;
 	private String varValue;
 
@@ -17,8 +17,8 @@ public class AddVariableService extends MyDriveService{
 	 * @param varName
 	 * @param varValue
 	 */
-	public AddVariableService(long userToken, String varName, String varValue) {
-		this.userToken = userToken;
+	public AddVariableService(MyToken tk, String varName, String varValue) {
+		this.userToken = tk;
 		this.varName = varName;
 		this.varValue = varValue;
 		
@@ -27,6 +27,7 @@ public class AddVariableService extends MyDriveService{
 	
 	@Override
 	protected void dispatch() throws MyDriveException {
+		MyDrive md = MyDrive.getInstance();
 		if(userToken.isValid()) {
 			md.getSession().updateVar(userToken, varName, varValue);
 			java.util.ArrayList<String> variables = md.getSession().getVars(userToken);
@@ -40,5 +41,6 @@ public class AddVariableService extends MyDriveService{
 		}
 		
 			
+		}
+	
 	}
-}
